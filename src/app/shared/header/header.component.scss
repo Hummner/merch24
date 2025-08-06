@@ -1,0 +1,31 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+    
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1920px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+}
+
+.logo {
+    img {
+        width: 150px;
+    }
+}
+

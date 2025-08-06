@@ -1,1 +1,91 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #748DAE;
+    --secondary-color: #4E71FF;
+    --bg-color: #F5F5F5;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Roboto;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+
+a {
+    text-decoration: none;
+    font-size: 32px;
+    color: var(--primary-color);
+    transform: scale(1.0);
+    transition: transform 75ms ease-in-out;
+    font-weight: bold;
+
+    &:hover {
+        transform: scale(1.2);
+        color: var(--secondary-color);
+    }
+}
+
+.primary-button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 75ms ease-in-out;
+    width: fit-content;
+
+
+
+    >span {
+        color: white;
+        width: fit-content;
+        font-size: 24px;
+    }
+
+
+    &:hover {
+        filter: brightness(1.2);
+        transform: scale(1.1);
+
+    }
+}
+
+.secondary-button {
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 75ms ease-in-out;
+    width: fit-content;
+
+
+
+    >span {
+        color: white;
+        width: fit-content;
+        font-size: 24px;
+    }
+
+
+    &:hover {
+        filter: brightness(1.4);
+        transform: scale(1.1);
+
+    }
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(assets/fonts/Roboto_Condensed-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(assets/fonts/Roboto_Condensed-Bold.ttf);
+    font-weight: bold;
+}
