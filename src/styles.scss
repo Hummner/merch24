@@ -1,6 +1,13 @@
+// :root {
+//     --primary-color: #748DAE;
+//     --secondary-color: #4E71FF;
+//     --bg-color: #F5F5F5;
+// }
+
 :root {
-    --primary-color: #748DAE;
-    --secondary-color: #4E71FF;
+    --primary-color: #23322E;
+    --secondary-color: #71A294;
+    --tertiary-color: #98D9C5;
     --bg-color: #F5F5F5;
 }
 
@@ -37,6 +44,7 @@ a {
     transform: scale(1);
     transition: transform 75ms ease-in-out;
     width: fit-content;
+    border-radius: 20px;
 
 
 
@@ -48,7 +56,7 @@ a {
 
 
     &:hover {
-        filter: brightness(1.2);
+        filter: brightness(1.5);
         transform: scale(1.1);
 
     }
@@ -61,6 +69,7 @@ a {
     transform: scale(1);
     transition: transform 75ms ease-in-out;
     width: fit-content;
+    border-radius: 20px;
 
 
 
@@ -72,7 +81,7 @@ a {
 
 
     &:hover {
-        filter: brightness(1.4);
+        filter: brightness(1.1);
         transform: scale(1.1);
 
     }

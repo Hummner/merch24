@@ -1,9 +1,12 @@
 .service-containers {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    
     max-width: 1920px;
     width: 100%;
+    flex-wrap: wrap;
+    gap: 64px;
      
 }
 
