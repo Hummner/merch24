@@ -1,0 +1,33 @@
+section {
+    width: 100%;
+    background-color: var(--tertiary-color);
+    display: flex;
+    justify-content: center;
+}
+
+:host {
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+    max-width: 1920px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 64px;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 24px;
+    font-size: 36px;
+}
+
+p {
+    color: white;
+    font-size: 21px;
+    margin-bottom: 8px;
+    text-align: center;
+}

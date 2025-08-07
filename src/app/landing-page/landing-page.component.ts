@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ServicesComponent } from "./services/services.component";
 import { HEROComponent } from "./hero/hero.component";
+import { GreetingComponent } from "./greeting/greeting.component";
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [ServicesComponent, HEROComponent],
+  imports: [ServicesComponent, HEROComponent, GreetingComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'
 })
