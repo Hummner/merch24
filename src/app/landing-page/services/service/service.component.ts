@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-service',
@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './service.component.scss'
 })
 export class ServiceComponent {
+  
+  @Input()service: any;
 
+  constructor() {
+    console.log(this.service);
+    
+  }
+  
 }
