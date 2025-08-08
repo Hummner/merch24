@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ServiceComponent } from "./service/service.component";
 import { CategoryServiceService } from '../../services/category-service.service';
 
@@ -9,17 +9,9 @@ import { CategoryServiceService } from '../../services/category-service.service'
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
-export class ServicesComponent implements OnInit {
+export class ServicesComponent{
 
 
   db = inject(CategoryServiceService);
   categories = this.db.categories
-
-
-
-  ngOnInit(): void {
-    console.log(this.categories);
-    
-
-  }
 }
