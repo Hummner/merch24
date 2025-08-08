@@ -3,6 +3,9 @@
         <div class="logo">
             <a href="#home"><img src="assets/img/logo/merch24.png" alt=""></a>
         </div>
+
+
+
         <nav>
             <a href="">Home</a>
             <a href="">Produkte</a>
@@ -15,5 +18,17 @@
                 </a>
             </div>
         </nav>
+        <div class="mobile-menu">
+            <mat-icon [matMenuTriggerFor]="mobileMenu">menu</mat-icon>
+        </div>
+        <mat-menu #mobileMenu="matMenu">
+            <div class="mobile-nav">
+                <a href="">Home</a>
+                <a href="">Produkte</a>
+                <a href="">Über uns</a>
+                <a href="">Kontakt</a>
+            </div>
+
+        </mat-menu>
     </div>
 </section>

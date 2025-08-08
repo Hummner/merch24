@@ -8,7 +8,7 @@ section {
     top: 0;
     width: 100%;
     background-color: var(--bg-color);
-    
+
 }
 
 .content {
@@ -34,3 +34,40 @@ nav {
     }
 }
 
+.mobile-menu {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: var(--primary-color);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    mat-icon {
+        color: white
+    }
+}
+
+.mobile-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+
+    a {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mobile-menu {
+        display: flex;
+    }
+
+    nav {
+        display: none;
+    }
+}
