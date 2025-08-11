@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-service',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './service.component.html',
   styleUrl: './service.component.scss'
 })

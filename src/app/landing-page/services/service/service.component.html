@@ -7,9 +7,16 @@
             <div class="text-container">
                 <div class="title"><span>{{ service.title }}</span></div>
                 <div class="text"><span>{{ service.text }}</span></div>
-                <div class="primary-button">
-                    <span>Kontakt</span>
+                <div class="buttons">
+                    <div class="primary-button">
+                        <span>Kontakt</span>
+                    </div>
+                    <div class="secondary-button" *ngIf="service.link">
+                        <a class="link-button" target="_blank" href="{{service.link}}"><span>{{service.linkName}}</span></a>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>
