@@ -1,5 +1,5 @@
 <section>
-    <div class="content">
+    <div class="content" (click)="navigateTo('pokale')">
         <div class="container">
             <div class="img-container">
                 <img src="assets/img/{{ service.img }}.jpg" alt="">
@@ -8,10 +8,10 @@
                 <div class="title"><span>{{ service.title }}</span></div>
                 <div class="text"><span>{{ service.text }}</span></div>
                 <div class="buttons">
-                    <div class="primary-button">
+                    <div class="primary-button" (click)="$event.stopPropagation()">
                         <span>Kontakt</span>
                     </div>
-                    <div class="secondary-button" *ngIf="service.link">
+                    <div class="secondary-button" *ngIf="service.link" (click)="$event.stopPropagation()">
                         <a class="link-button" target="_blank" href="{{service.link}}"><span>{{service.linkName}}</span></a>
                     </div>
 

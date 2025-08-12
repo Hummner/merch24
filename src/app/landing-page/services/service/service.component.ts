@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service',
@@ -13,6 +14,7 @@ export class ServiceComponent {
 
 
   @Input()service: any;
+  router = inject(Router)
   product!: string
 
   constructor(private route: ActivatedRoute) {
@@ -22,6 +24,10 @@ export class ServiceComponent {
     console.log(this.product);
     
     
+  }
+
+  navigateTo(link:string) {
+    this.router.navigateByUrl('/product/' + link);
   }
   
 }

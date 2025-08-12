@@ -28,6 +28,9 @@ section {
     justify-content: center;
     align-items: flex-end;
     gap: 8px;
+    h3 {
+        color: var(--tertiary-color);
+    }
     a {
         color: white;
         font-size: 21px;
