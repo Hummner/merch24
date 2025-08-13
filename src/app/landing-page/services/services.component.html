@@ -1,5 +1,10 @@
-<div class="service-containers">
-    @for (service of categories; track $index) {
-    <app-service [service]="service" ></app-service>
-    }
-</div>
+<section>
+    <h2>Unsere Produkte</h2>
+    <div class="service-containers">
+        @for (service of categories; track $index) {
+        <app-service [service]="service"></app-service>
+        }
+    </div>
+
+
+</section>

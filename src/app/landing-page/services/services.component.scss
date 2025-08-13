@@ -1,3 +1,16 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2 {
+    padding: 64px 0;
+    font-size: 64px;
+    color: var(--primary-color);
+}
+
 .service-containers {
     display: flex;
     align-items: center;
