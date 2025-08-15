@@ -8,15 +8,13 @@
                 <div class="title"><span>{{ service.title }}</span></div>
                 <div class="text"><span>{{ service.text }}</span></div>
                 <div class="buttons">
-                    <div class="primary-button" (click)="$event.stopPropagation()">
+                    <div class="primary-button" (click)="$event.stopPropagation(); router.navigateByUrl('contact')">
                         <span>Kontakt</span>
                     </div>
                     <div class="secondary-button" *ngIf="service.link" (click)="$event.stopPropagation()">
                         <a class="link-button" target="_blank" href="{{service.link}}"><span>{{service.linkName}}</span></a>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

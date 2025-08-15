@@ -11,13 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductComponent {
   product!: string
 
-    constructor(private route: ActivatedRoute) {
-   
-  
-        this.route.params.subscribe((params => this.product = params['id']))
-    console.log(this.product);
-      
-      
-    }
-
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe((params => this.product = params['id']))
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }
 }
