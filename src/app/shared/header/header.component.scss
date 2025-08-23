@@ -30,8 +30,14 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
     img {
         width: 100px;
+    }
+    span {
+        color: var(--primary-color);
     }
 }
 

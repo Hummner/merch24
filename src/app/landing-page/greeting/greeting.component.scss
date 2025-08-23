@@ -20,14 +20,16 @@ section {
 }
 
 h2 {
-    color: white;
+    
     margin-bottom: 24px;
     font-size: 36px;
+    color: var(--primary-color);
 }
 
 p {
-    color: white;
+    
     font-size: 21px;
     margin-bottom: 8px;
     text-align: center;
+    color: var(--primary-color);
 }
