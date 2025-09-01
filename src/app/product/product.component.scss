@@ -20,7 +20,7 @@ section {
 
 .name {
     padding: 64px 0;
-    
+
     h2 {
         font-size: 48px;
     }
@@ -35,8 +35,8 @@ section {
     display: flex;
     justify-content: space-around;
     align-items: center;
-   
-    
+
+
 }
 
 .img-container {
@@ -69,7 +69,59 @@ section {
 
 .details {
     padding: 100px;
+
     p {
         font-size: 21px;
+    }
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    background-color: var(--tertiary-color);
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 100px;
+
+    .image {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+
+        }
+    }
+}
+
+.box-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    justify-content: space-between;
+
+
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+
+    mat-icon {
+        font-size: 60px;
+        background-color: white;
+        border-radius: 100%;
+        width: 64px;
+        height: 64px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 32px;
     }
 }

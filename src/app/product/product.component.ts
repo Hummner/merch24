@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [MatIcon],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
