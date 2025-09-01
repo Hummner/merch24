@@ -54,4 +54,11 @@ export class CategoryServiceService {
     },
 
   ]
+
+
+  detail = {
+    pokale : {
+      titel: "abc"
+    }
+  }
 }
