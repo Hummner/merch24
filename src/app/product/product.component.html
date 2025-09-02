@@ -1,5 +1,9 @@
 <section>
     <div class="content">
+        <div (click)="back()" class="back-button">
+            <mat-icon>arrow_back</mat-icon>
+
+        </div>
         @for (product of currentlyProduct; track $index) {
 
         <div class="box">
@@ -28,6 +32,9 @@
 
                     </div>
                     }
+                    <div (click)="router.navigateByUrl('contact')" class="primary-button">
+                        <span >Jetzt Anfragen!</span>
+                    </div>
                 </div>
 
             </div>

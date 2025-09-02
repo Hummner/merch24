@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { CategoryServiceService } from '../services/category-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -12,10 +13,11 @@ import { CategoryServiceService } from '../services/category-service.service';
 })
 export class ProductComponent {
   categoryService = inject(CategoryServiceService)
+  router = inject(Router)
   product!: any;
   currentlyProduct!: any;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private location: Location) {
     this.route.params.subscribe((params => {
       this.product = params['id'];
       window.scrollTo({ top: 0, behavior: "instant" });
@@ -34,5 +36,9 @@ export class ProductComponent {
 
   getDeatail(id: keyof CategoryServiceService["detail"]) {
     return this.currentlyProduct = this.categoryService.detail[id]
+  }
+
+  back() {
+    this.location.back()
   }
 }
