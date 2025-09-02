@@ -1,52 +1,40 @@
 <section>
     <div class="content">
-        <div></div>
-        <div class="name">
-            <h2>
-                Grafikdesign – dein Look, dein Stil
-            </h2>
-        </div>
+        @for (product of currentlyProduct; track $index) {
+
         <div class="box">
-            <div class="image">
-                <img src="assets/img/design.jpg" alt="">
-
-            </div>
-            <div class="box-container">
-                <div class="row">
-                    <mat-icon>check</mat-icon>
-                    <p>Einheitlicher Look für ein starkes Wir-Gefühl</p>
+            <div class="box-header">
+                <div class="name">
+                    <h2>
+                        {{product.title}}
+                    </h2>
                 </div>
+            </div>
+            <div class="box-main">
+                <div class="image">
+                    <img src="assets/img/{{product.img}}.jpg" alt="">
 
-                <div class="row">
-                    <div class="icon">
-                        <mat-icon>check</mat-icon>
+                </div>
+                <div class="box-container">
+                    @for (text of product.text; track $index) {
+                    <div class="row">
+                        <div class="icon">
+                            <mat-icon>check</mat-icon>
+                        </div>
+
+                        <p>{{text}}</p>
+
+
+
                     </div>
-
-                    <p>Individuell gestaltete Designs mit Logo und Farben</p>
-                </div>
-
-                <div class="row">
-                    <mat-icon>check</mat-icon>
-                    <p>Hochwertige Materialien für Komfort und Langlebigkeit</p>
-                </div>
-
-                <div class="row">
-                    <mat-icon>check</mat-icon>
-                    <p>Professioneller Auftritt bei Events, Messen oder im Alltag</p>
-                </div>
-
-                <div class="row">
-                    <mat-icon>check</mat-icon>
-                    <p>Vielseitig einsetzbar – von Sport bis Business</p>
-                </div>
-
-                <div class="row">
-                    <mat-icon>check</mat-icon>
-                    <p>Personalisierung mit Namen oder Position möglich</p>
+                    }
                 </div>
 
             </div>
+
         </div>
+        }
+
     </div>
 
 </section>

@@ -12,7 +12,6 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 0 64px;
     width: 100%;
     max-width: 1920px;
 
@@ -20,10 +19,14 @@ section {
 
 
 .name {
-    padding: 64px 0;
+    padding: 12px 0;
+    width: 100%;
+    background-color: var(--primary-color);
 
     h2 {
-        font-size: 48px;
+        font-size: 42px;
+        text-align: center;
+        color: white;
     }
 }
 
@@ -78,6 +81,8 @@ section {
 
 .box {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 80%;
     height: 500px;
@@ -86,16 +91,7 @@ section {
     overflow: hidden;
     margin-bottom: 100px;
 
-    .image {
-        width: 50%;
-        height: 100%;
-        overflow: hidden;
 
-        img {
-            object-fit: cover;
-
-        }
-    }
 }
 
 .box-container {
@@ -103,14 +99,40 @@ section {
     flex-direction: column;
     padding: 24px;
     justify-content: space-between;
+    height: 100%;
+    width: 50%;
 
 
+}
+
+.box-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 63px);
+
+    .image {
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex: 1;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+
+        }
+    }
+}
+
+.box-header {
+    width: 100%;
 }
 
 .icon {
     width: 50px;
     height: 50px;
-    background-color: white;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -133,5 +155,7 @@ section {
 
     p {
         font-size: 25px;
+        width: 89%;
+        font-weight: bold;
     }
 }

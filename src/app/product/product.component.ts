@@ -13,12 +13,15 @@ import { CategoryServiceService } from '../services/category-service.service';
 export class ProductComponent {
   categoryService = inject(CategoryServiceService)
   product!: any;
+  currentlyProduct!: any;
 
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe((params => {
       this.product = params['id'];
       window.scrollTo({ top: 0, behavior: "instant" });
-      console.log(this.getDeatail(this.product));
+      this.currentlyProduct = this.getDeatail(this.product);
+      console.log(this.currentlyProduct);
+      
     }))
     
 
@@ -30,6 +33,6 @@ export class ProductComponent {
   }
 
   getDeatail(id: keyof CategoryServiceService["detail"]) {
-    return this.categoryService.detail[id].titel
+    return this.currentlyProduct = this.categoryService.detail[id]
   }
 }

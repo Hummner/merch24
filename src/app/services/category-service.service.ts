@@ -57,8 +57,96 @@ export class CategoryServiceService {
 
 
   detail = {
-    pokale : {
-      titel: "abc"
-    }
+    sticker: [{
+      title: "Stickerei – edel & langlebig",
+      text: ["Qualität und Haltbarkeit: wasch- und farbecht, sehr langlebig",
+        "Professioneller Look: edle Optik, ideal für Logos und Branding",
+        "Individualisierung: Einzelstück bis Serie, Position und Größe frei wählbar",
+        "Stichanzahl und Motivgröße; einmalige Logo-Digitalisierung möglich",
+        "auf links waschen, mildes Programm, nicht zu heiß bügeln"
+      ],
+      img: "sticker"
+    }],
+    flex: [
+      {
+        title: "Flexdruck robust & elastisch",
+        text: [
+          "Hohe Deckkraft mit matter Oberfläche auch auf dunklen Textilien",
+          "Elastisch und rissfest ideal für Sportbekleidung",
+          "Perfekt für Namen Nummern und klare Vektormotive",
+          "Kosteneffizient ab 1 Stück schnelle Umsetzung",
+          "Pflegeleicht auf links bis 40 °C waschen nicht in den Trockner"
+        ],
+        img: "flex"
+      },
+      {
+        title: "Foliendruck für Aufkleber & Beschriftungen",
+        text: [
+          "Geeignet für glatte Oberflächen wie Glas Metall Kunststoff",
+          "Indoor und Outdoor UV und wetterbeständig",
+          "Feine Details und Konturschnitt sauber umsetzbar",
+          "Großformate und Fahrzeugbeschriftung möglich",
+          "Optionales Laminat für zusätzlichen Kratz und UV Schutz"
+        ],
+        img: "flex"
+      },
+      {
+        title: "DTF fotorealistisch & flexibel",
+        text: [
+          "Brillante Farben mit Weißunterlegung auch auf dunklen Stoffen",
+          "Weicher Griff hohe Elastizität für Baumwolle und Mischgewebe",
+          "Ideal für kleine bis mittlere Serien und wechselnde Motive",
+          "Feine Details und Farbverläufe ohne Probleme",
+          "Waschbeständig bis 40 °C auf links bügeln"
+        ],
+        img: "flex"
+      },
+      {
+        title: "UV DTF für harte Oberflächen",
+        text: [
+          "Hochauflösende Transfers für Glas Metall Keramik und Kunststoff",
+          "Sehr kratzfest und wasserresistent sofort einsatzbereit",
+          "Ideal für Tassen Flaschen Geräte und Werbegeschenke",
+          "Feine Details und kleine Schrift sauber darstellbar",
+          "Handwäsche empfohlen nicht spülmaschinenfest"
+        ],
+        img: "flex"
+      },
+      {
+        title: "Siebdruck langlebig & wirtschaftlich",
+        text: [
+          "Beste Wahl für große Stückzahlen niedrige Stückpreise",
+          "Extrem haltbare Farben mit hoher Waschbeständigkeit",
+          "Exakte Pantone Farbwiedergabe und Sonderfarben möglich",
+          "Ideal für große Flächen und einfache bis mittlere Motive",
+          "Einrichtung je Farbe einmalig erforderlich spart später Kosten"
+        ],
+        img: "flex"
+      },
+
+    ],
+    photogift: [
+      {
+        title: "Fototasse brillant & alltagstauglich",
+        text: [
+          "Keramik mit kräftigen Farben auch als Panoramadruck",
+          "Wahl zwischen Standard innenfarbig oder Magic",
+          "Mikrowellengeeignet spülmaschinenfest je nach Motiv",
+          "Große Druckfläche beidseitig oder umlaufend",
+          "Ideal ab 1 Stück schnelle Produktion"
+        ],
+        img: "tasse"
+      },
+      {
+        title: "Schlüsselanhänger robust & personalisiert",
+        text: [
+          "Metall oder Acryl beidseitig bedruckbar",
+          "Kratzfester Druck mit klaren Details",
+          "Leicht und stabil für den Alltag",
+          "Verschiedene Formen rund eckig herz",
+          "Geschenk oder Werbeartikel mit Namen oder Logo"
+        ],
+        img: "keydeco"
+      }]
   }
 }
