@@ -33,4 +33,23 @@ h3 {
     margin-bottom: 24px;
 }
 
+a {
+    color: white;
+}
+
+@media (max-width:500px) {
+    a {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+    
+}
+
 

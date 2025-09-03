@@ -1,5 +1,12 @@
 <section>
-    <h2>Unsere Produkte</h2>
+    <div class="header">
+        <img class="brush" src="assets/img/strich.png" alt="">
+        <h2>Unsere Produkte </h2>
+
+        
+    </div>
+    
+    
     <div class="service-containers">
         @for (service of categories; track $index) {
         <app-service [service]="service"></app-service>

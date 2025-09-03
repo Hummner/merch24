@@ -20,16 +20,32 @@ section {
 }
 
 h2 {
-    
+
     margin-bottom: 24px;
     font-size: 36px;
     color: var(--primary-color);
 }
 
 p {
-    
+
     font-size: 21px;
     margin-bottom: 8px;
     text-align: center;
     color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+
+    h2 {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
 }

@@ -88,3 +88,18 @@
     width: 100%;
     padding: 0 50px
 }
+
+
+@media (max-width: 600px) {
+
+    .buttons {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .container {
+        width: 240px;
+        height: fit-content;
+    }
+    
+}

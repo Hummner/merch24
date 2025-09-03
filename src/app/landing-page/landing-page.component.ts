@@ -5,6 +5,7 @@ import { GreetingComponent } from "./greeting/greeting.component";
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -13,5 +14,6 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './landing-page.component.scss'
 })
 export class LandingPageComponent {
+
 
 }

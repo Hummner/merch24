@@ -60,10 +60,16 @@ section {
     flex: 1;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 24px;
 
     span {
         color: white;
         font-size: 21px;
+        text-align: center;
+    }
+
+    a {
+        text-align: center;
     }
 }
 
@@ -84,4 +90,24 @@ table {
         height: 25px;
         color: white;
     }
+}
+
+@media (max-width: 600px) {
+
+    .logo {
+        display: none;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .left-side {
+        flex-direction: column;
+    }
+
+    .social-media {
+        flex-direction: row;
+    }
+    
 }

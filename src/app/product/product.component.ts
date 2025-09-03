@@ -39,6 +39,7 @@ export class ProductComponent {
   }
 
   back() {
-    this.location.back()
+    // this.location.back()
+    this.router.navigateByUrl('#product')
   }
 }

@@ -33,9 +33,11 @@ nav {
     display: flex;
     align-items: flex-end;
     gap: 16px;
+
     img {
         width: 100px;
     }
+
     span {
         color: var(--primary-color);
     }
@@ -50,6 +52,7 @@ nav {
     justify-content: center;
     align-items: center;
     display: none;
+    
 
     mat-icon {
         color: white
@@ -63,9 +66,10 @@ nav {
     flex-direction: column;
     gap: 16px;
     padding: 24px;
+    width: 235px;
 
     a {
-        font-size: 21px;
+        font-size: 25px;
     }
 }
 
@@ -81,4 +85,18 @@ nav {
     nav {
         display: none;
     }
+}
+
+@media (max-width: 600px) {
+    .logo {
+        img {
+            width: 80px;
+        }
+
+    }
+
+    .content {
+        padding: 0 12px;
+    }
+
 }
