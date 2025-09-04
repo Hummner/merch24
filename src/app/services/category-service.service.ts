@@ -66,11 +66,11 @@ export class CategoryServiceService {
   detail = {
     sticker: [{
       title: "Stickerei – edel & langlebig",
-      text: ["Qualität und Haltbarkeit: wasch- und farbecht, sehr langlebig",
+      text: ["Höchste Qualität und Haltbarkeit: wasch- und farbecht, sehr langlebig",
         "Professioneller Look: edle Optik, ideal für Logos und Branding",
-        "Individualisierung: Einzelstück bis Serie, Position und Größe frei wählbar",
-        "Stichanzahl und Motivgröße; einmalige Logo-Digitalisierung möglich",
-        "auf links waschen, mildes Programm, nicht zu heiß bügeln"
+        "auf links waschen, mildes Programm, nicht zu heiß bügeln",
+        "Lieferzeit ist 10 Werktage",
+        "Mindestbestellmenge: 1 Stück"
       ],
       img: "sticker"
     }],
@@ -80,9 +80,9 @@ export class CategoryServiceService {
         text: [
           "Hohe Deckkraft mit matter Oberfläche auch auf dunklen Textilien",
           "Elastisch und rissfest ideal für Sportbekleidung",
-          "Perfekt für Namen Nummern und klare Vektormotive",
+          "Perfekt für Namen, Nummern und klare Vektormotive",
           "Kosteneffizient ab 1 Stück schnelle Umsetzung",
-          "Pflegeleicht auf links bis 40 °C waschen nicht in den Trockner"
+          "Pflegeleicht auf links bis 40 °C, bitte ohne Weißspüler"
         ],
         img: "flex"
       },
@@ -92,8 +92,8 @@ export class CategoryServiceService {
           "Geeignet für glatte Oberflächen wie Glas Metall Kunststoff",
           "Indoor und Outdoor UV und wetterbeständig",
           "Feine Details und Konturschnitt sauber umsetzbar",
-          "Großformate und Fahrzeugbeschriftung möglich",
-          "Optionales Laminat für zusätzlichen Kratz und UV Schutz"
+          "Großformate bis A1 möglich",
+          "Gut für Stickers in kleine Menge"
         ],
         img: "flex"
       },
@@ -115,7 +115,7 @@ export class CategoryServiceService {
           "Sehr kratzfest und wasserresistent sofort einsatzbereit",
           "Ideal für Tassen Flaschen Geräte und Werbegeschenke",
           "Feine Details und kleine Schrift sauber darstellbar",
-          "Handwäsche empfohlen nicht spülmaschinenfest"
+          "Handwäsche empfohlen, nicht spülmaschinenfest"
         ],
         img: "flex"
       },
@@ -157,42 +157,46 @@ export class CategoryServiceService {
       }],
     verein: [
       {
-        title: "Fanschal warm & vereinstreu",
+        title: "Fanschal",
         text: [
-          "Doppelseitiger Jacquard oder Druck je nach Motiv",
-          "Satte Farben mit Vereinslogo beidseitig sichtbar",
+          "HD Jacquard oder gedruckte Schals",
+          "Dein individuelles Design",
           "Fransen in Vereinsfarben optional",
-          "Geeignet für Stadion und Fanclub",
-          "Pflegeleicht bei 30 C waschbar"
+          "Bestellbar ab 30 Stück",
+          "Zwei verschiedene Designs möglich",
+          "Pflegeleicht bei 30°C Grad"
         ],
         img: "schal"
       },
       {
         title: "Strickmütze bequem & individuell",
         text: [
-          "Weiches Acryl oder Baumwollmix angenehm zu tragen",
+          "Angenehm zu tragen",
           "Bestickung mit Logo oder Initialen",
           "Optional Umschlag oder Bommel",
-          "Ideal für Team Ausrüstung und Fanshop",
-          "Auf links waschen Form bleibt stabil"
+          "Ab 30 Stück bestellbar",
+          "Dein individuelles Design",
+          "Auf links waschen Form bleibt stabil",
+
         ],
         img: "muetze"
       },
       {
-        title: "Trikot mit Name & Nummer",
+        title: "Trikot mit Vereinlogo/Sponsoren/Name/Nummer",
         text: [
           "Atmungsaktives Funktionsmaterial für Training und Spiel",
           "Flex oder DTF Veredelung langlebig und elastisch",
           "Individuelle Rückennummern und Spielernamen",
-          "Kinder und Erwachsenengrößen von XS bis XXL",
-          "Waschbeständig bis 40 C auf links bügeln"
+          "Kinder und Erwachsenengrößen von 116 bis XXXL",
+          "Waschbeständig bis 40 °C auf links bügeln",
+          "Ohne Weißspüler"
         ],
         img: "trikot"
       },
       {
         title: "Vereinswimpel repräsentativ & robust",
         text: [
-          "Beidseitiger Druck mit Kordel und Quaste",
+          "Beidseitiger Druck mit Kordel oder Fransen",
           "Mehrere Größen und Formen dreieck rund rechteck",
           "Kanten gesäumt für lange Haltbarkeit",
           "Ideal für Turniere Ehrungen und Tausch",
@@ -207,7 +211,8 @@ export class CategoryServiceService {
           "Rückseite zum Aufnähen Aufbügeln oder Klett",
           "Form frei konturgeschnitten möglich",
           "Ideal für Jacken Taschen Trikots",
-          "Hohe Wasch und Abriebfestigkeit"
+          "Hohe Wasch und Abriebfestigkeit",
+          "Ab 100 Stück bestellbar"
         ],
         img: "aufnaeher"
       }
@@ -228,10 +233,10 @@ export class CategoryServiceService {
         title: "Trikot leicht & atmungsaktiv",
         text: [
           "Funktionsstoff mit guter Belüftung für Spiel und Training",
-          "Kinder und Erwachsenengrößen von XS bis XXL",
+          "Kinder und Erwachsenengrößen",
           "Nummern Namen und Sponsoren sauber umsetzbar",
           "Hohe Farbbrillanz auch bei dunklen Farben",
-          "Waschbeständig bis 40 C auf links bügeln"
+          "Waschbeständig bis 40 °C auf links bügeln"
         ],
         img: "trikot"
       },
@@ -330,11 +335,11 @@ export class CategoryServiceService {
       {
         title: "Vektorgrafik sauber skalierbar",
         text: [
-          "Logos Icons und Piktogramme als SVG",
+          "Logos und Icons als SVG",
           "Skalierung ohne Qualitätsverlust",
           "Pfade sauber ausgerichtet und optimiert",
           "Konturschnitt und Plotdateien korrekt",
-          "Farbräume CMYK Pantone und HKS"
+          "Farbräume CMYK, Pantone und HKS"
         ],
         img: "vektor"
       },
@@ -353,9 +358,7 @@ export class CategoryServiceService {
         title: "Freisteller und Masken exakt",
         text: [
           "Produkte Personen und Objekte freigestellt",
-          "Feine Kanten und Haar Masken",
           "Natürliche Schatten und Spiegelungen",
-          "Vektorpfade und Alpha Masken lieferbar",
           "Ausgabe als PNG PSD oder TIFF"
         ],
         img: "freisteller"
