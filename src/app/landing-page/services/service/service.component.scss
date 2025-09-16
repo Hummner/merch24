@@ -58,6 +58,47 @@
 
 }
 
+.see-more-button {
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 7px 1px #00000087;
+
+
+    .see-more {
+        display: none;
+
+
+    }
+
+    &:hover {
+
+        .want-more {
+            display: none;
+        }
+
+        .see-more {
+            display: block;
+            
+
+            mat-icon {
+                font-size: 30px;
+                animation: arrow-move 2.5s infinite;
+
+            }
+        }
+
+
+    }
+
+}
+
+@keyframes arrow-move {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+
 .text-container {
     height: 50%;
     display: flex;
@@ -101,5 +142,5 @@
         width: 240px;
         height: fit-content;
     }
-    
+
 }

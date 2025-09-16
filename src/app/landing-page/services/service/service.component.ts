@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-service',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIcon],
   templateUrl: './service.component.html',
   styleUrl: './service.component.scss'
 })
@@ -15,7 +16,8 @@ export class ServiceComponent {
 
   @Input()service: any;
   router = inject(Router)
-  product!: string
+  product!: string;
+  switchImage = false;
 
   constructor(private route: ActivatedRoute) {
     console.log(this.service);
@@ -28,6 +30,14 @@ export class ServiceComponent {
 
   navigateTo(link:string) {
     this.router.navigateByUrl('/product/' + link);
+  }
+
+  showPhoto(img: string) {
+    // if (this.switchImage) {
+    //   return
+    // }
+
+    return "assets/img/" + img + ".jpg"
   }
   
 }

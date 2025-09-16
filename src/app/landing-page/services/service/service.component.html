@@ -1,15 +1,15 @@
 <section>
-    <div class="content" (click)="navigateTo(service.img)">
+    <div class="content" (click)="navigateTo(service.img)" (mouseenter)="switchImage = true" (mouseleave)="switchImage = false">
         <div class="container">
             <div class="img-container">
-                <img src="assets/img/{{ service.img }}.jpg" alt="">
+                <img src="{{showPhoto(service.img)}}" alt="">
             </div>
             <div class="text-container">
                 <div class="title"><span>{{ service.title }}</span></div>
                 <div class="text"><span>{{ service.text }}</span></div>
                 <div class="buttons">
-                    <div class="primary-button" (click)="$event.stopPropagation(); router.navigateByUrl('contact')">
-                        <span>Kontakt</span>
+                    <div class="primary-button see-more-button">
+                        <span class="want-more">Neugerig?</span><span class="see-more">Mehr erfahren <mat-icon>arrow_forward</mat-icon></span>
                     </div>
                     <div class="secondary-button" *ngIf="service.link" (click)="$event.stopPropagation()">
                         <a class="link-button" target="_blank" href="{{service.link}}"><span>{{service.linkName}}</span></a>
