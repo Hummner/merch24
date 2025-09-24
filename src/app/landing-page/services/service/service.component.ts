@@ -33,9 +33,9 @@ export class ServiceComponent {
   }
 
   showPhoto(img: string) {
-    // if (this.switchImage) {
-    //   return
-    // }
+    if (this.switchImage) {
+      return "assets/img/" + img + "_2" + ".jpg"
+    }
 
     return "assets/img/" + img + ".jpg"
   }

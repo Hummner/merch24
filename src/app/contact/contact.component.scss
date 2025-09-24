@@ -112,14 +112,16 @@ form {
     align-items: center;
     flex-direction: column;
     gap: 8px;
-    width: 50%;
+    width: 100%;
+    max-width: 600px;
 }
 
 .name {
-        display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    width: 100%;
 
 }
 
@@ -132,6 +134,8 @@ form {
     border: none;
     border-radius: 30px;
     font-size: 21px;
+    flex: 1;
+    resize: vertical;
 
     &::placeholder {
         color: rgba(255, 255, 255, 0.7);
