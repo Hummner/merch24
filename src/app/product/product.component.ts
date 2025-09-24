@@ -1,17 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatIcon } from '@angular/material/icon';
 import { CategoryServiceService } from '../services/category-service.service';
 import { Location } from '@angular/common';
+import  AOS  from 'aos'
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [MatIcon],
+  imports: [],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
-export class ProductComponent {
+export class ProductComponent implements AfterViewInit {
   categoryService = inject(CategoryServiceService)
   router = inject(Router)
   product!: any;
@@ -32,6 +32,10 @@ export class ProductComponent {
     
     
     
+  }
+
+  ngAfterViewInit(): void {
+    AOS.init()
   }
 
   getDeatail(id: keyof CategoryServiceService["detail"]) {

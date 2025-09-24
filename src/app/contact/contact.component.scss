@@ -14,7 +14,9 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 1920px;
+    gap: 64px;
+    padding-bottom: 64px;
+
 
 
 }
@@ -78,10 +80,36 @@ p {
     }
 }
 
+.about-us {
+    h2 {
+        text-align: center;
+    }
+}
+
+.text-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 1920px;
+    
+    h2 {
+        text-align: center;
+        width: 100%;
+    }
+}
+
 .text-info {
     display: flex;
     gap: 24px;
     padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    max-width: 1920px;
+
+    img {
+        filter: brightness(0) saturate(100%)
+    }
 
     p {
         padding: 0;
@@ -128,7 +156,9 @@ form {
 .first-name,
 .last-name,
 .email,
-.tel, select, textarea {
+.tel,
+select,
+textarea {
     padding: 8px 16px;
     background-color: var(--tertiary-color);
     border: none;
@@ -138,17 +168,27 @@ form {
     resize: vertical;
 
     &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(110, 110, 110, 0.63);
     }
+}
+
+textarea {
+    flex: none;
+    min-height: 200px
 }
 
 option {
     font-size: 18px;
 }
 
-.email, .tel, select, textarea {
+.email,
+.tel,
+select,
+textarea {
     width: 100%;
 }
+
+
 
 .contact-form-section {
     display: flex;
@@ -162,6 +202,24 @@ option {
 .shop-img {
     width: 100%;
     padding: 0 64px;
+}
+
+.privacy {
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    label {
+        color: var(--primary-color);
+
+        span {
+            text-decoration: underline;
+            cursor: pointer;
+            color: var(--tertiary-color);
+        }
+    }
 }
 
 @media (max-width:1024px) {

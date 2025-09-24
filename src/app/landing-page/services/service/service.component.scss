@@ -77,11 +77,13 @@
         }
 
         .see-more {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             
 
-            mat-icon {
-                font-size: 30px;
+            img {
+                width: 30px;
                 animation: arrow-move 2.5s infinite;
 
             }

@@ -1,4 +1,4 @@
-<section>
+<section data-aos="fade-down">
     <div class="content" (click)="navigateTo(service.img)" (mouseenter)="switchImage = true" (mouseleave)="switchImage = false">
         <div class="container">
             <div class="img-container">
@@ -9,7 +9,10 @@
                 <div class="text"><span>{{ service.text }}</span></div>
                 <div class="buttons">
                     <div class="primary-button see-more-button">
-                        <span class="want-more">Neugerig?</span><span class="see-more">Mehr erfahren <mat-icon>arrow_forward</mat-icon></span>
+                        <span class="want-more">Neugerig?</span>
+                        <span class="see-more">Mehr erfahren 
+                            <img src="assets/icons/arrow_right.svg" alt="">
+                        </span>
                     </div>
                     <div class="secondary-button" *ngIf="service.link" (click)="$event.stopPropagation()">
                         <a class="link-button" target="_blank" href="{{service.link}}"><span>{{service.linkName}}</span></a>

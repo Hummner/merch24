@@ -1,5 +1,4 @@
 import { Component, HostListener } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from "@angular/router";
@@ -11,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatMenuModule, RouterLink, CommonModule],
+  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { MatIcon } from "@angular/material/icon";
+import  AOS  from 'aos';
 
 @Component({
   selector: 'app-service',
   standalone: true,
-  imports: [CommonModule, MatIcon],
+  imports: [CommonModule],
   templateUrl: './service.component.html',
   styleUrl: './service.component.scss'
 })
-export class ServiceComponent {
+export class ServiceComponent implements AfterViewInit {
 
 
-  @Input()service: any;
+  @Input() service: any;
   router = inject(Router)
   product!: string;
   switchImage = false;
@@ -24,20 +24,24 @@ export class ServiceComponent {
 
     this.route.params.subscribe((params => this.product = params['id']))
     console.log(this.product);
-    
-    
+
+
   }
 
-  navigateTo(link:string) {
+  ngAfterViewInit() {
+    AOS.init();
+  }
+
+  navigateTo(link: string) {
     this.router.navigateByUrl('/product/' + link);
   }
 
   showPhoto(img: string) {
-    if (this.switchImage) {
-      return "assets/img/" + img + "_2" + ".jpg"
-    }
+    // if (this.switchImage) {
+    //   return "assets/img/" + img + "_2" + ".jpg"
+    // }
 
     return "assets/img/" + img + ".jpg"
   }
-  
+
 }

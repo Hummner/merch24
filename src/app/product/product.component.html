@@ -1,12 +1,12 @@
 <section>
     <div class="content">
-        <div (click)="back()" class="back-button">
+        <!-- <div (click)="back()" class="back-button">
             <mat-icon>arrow_back</mat-icon>
 
-        </div>
+        </div> -->
         @for (product of currentlyProduct; track $index) {
 
-        <div class="box">
+        <div class="box" data-aos="flip-left">
             <div class="box-header">
                 <div class="name">
                     <h2>
@@ -23,7 +23,7 @@
                     @for (text of product.text; track $index) {
                     <div class="row">
                         <div class="icon">
-                            <mat-icon>check</mat-icon>
+                            <img src="assets/icons/check.svg" alt="">
                         </div>
 
                         <p>{{text}}</p>
