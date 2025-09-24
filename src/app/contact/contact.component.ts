@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { Route } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
