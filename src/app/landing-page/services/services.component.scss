@@ -10,6 +10,7 @@ h2 {
     font-size: 64px;
     color: var(--primary-color);
     position: relative;
+    text-align: center;
 }
 
 .service-containers {
@@ -44,4 +45,18 @@ h2 {
 
 .header {
     position: relative;
+}
+
+@media (max-width:500px) {
+    :host {
+
+
+        padding: 108px 8px;
+    }
+    
+    .header {
+        img {
+            display: none;
+        }
+    }
 }

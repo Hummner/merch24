@@ -90,9 +90,9 @@ p {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     max-width: 1920px;
-    
+
     h2 {
         text-align: center;
         width: 100%;
@@ -209,7 +209,12 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 24px;
+    margin-top: 24px;
+
+    input {
+        transform: scale(2);
+    }
 
     label {
         color: var(--primary-color);
@@ -236,5 +241,44 @@ textarea {
     .right-side {
         width: 100%;
         margin-bottom: 24px;
+    }
+
+    .text-container {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        padding: 40px 8px;
+    }
+
+    h2 {
+        padding: 40px 8px;
+    }
+
+    .text-info {
+        padding: 0;
+    }
+
+
+    .content {
+        padding: 64px 8px;
+    }
+
+    p {
+        padding: 0;
+    }
+
+    .name {
+        flex-direction: column;
+
+        input {
+            width: 100%;
+        }
+
+    }
+    .privacy {
+        flex-direction: column;
+        gap: 30px;
     }
 }

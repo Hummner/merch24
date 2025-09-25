@@ -17,6 +17,7 @@ section {
 
 .logo {
     margin-right: 100px;
+
     img {
         width: 150px;
     }
@@ -28,10 +29,12 @@ section {
     justify-content: center;
     align-items: center;
     gap: 8px;
+
     h3 {
         color: white;
         font-size: 21px;
     }
+
     a {
         color: var(--tertiary-color);
         font-size: 21px;
@@ -44,11 +47,13 @@ section {
     justify-content: center;
     align-items: center;
     gap: 20px;
+
     img {
         width: 30px;
         transform: scale(1);
         transition: transform 75ms ease-in-out;
         cursor: pointer;
+
         &:hover {
             transform: scale(1.2);
         }
@@ -92,7 +97,7 @@ table {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
 
     .logo {
         display: none;
@@ -100,6 +105,8 @@ table {
 
     .content {
         flex-direction: column;
+        align-items: center;
+        padding: 32px 8px;
     }
 
     .left-side {
@@ -110,5 +117,5 @@ table {
     .social-media {
         flex-direction: row;
     }
-    
+
 }

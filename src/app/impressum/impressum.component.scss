@@ -28,3 +28,9 @@ p {
         font-size: 21px;
     }
 }
+
+@media (max-width:1024px) {
+    section {
+        padding: 0 8px;
+    }
+}

@@ -1,20 +1,20 @@
 <section [ngClass]="getOpacity()">
     <div class="content">
         <div class="logo">
-            <a href="#home"><img src="assets/img/logo/logo.png" alt=""></a>
+            <a [routerLink]="'/'" fragment="home"><img src="assets/img/logo/logo.png" alt=""></a>
             <span>Deine Agentur für alles</span>
         </div>
 
 
 
         <nav>
-            <a href="#home">Home</a>
-            <a href="#about_me">Über uns</a>
-            <a href="#product">Produkte</a>
-            <a href="" routerLink="/contact">Kontakt</a>
+            <a [routerLink]="'/'" fragment="home">Home</a>
+            <a [routerLink]="'/'" fragment="about_me">Über uns</a>
+            <a [routerLink]="'/'" fragment="product">Produkte</a>
+            <a routerLink="/contact">Kontakt</a>
             <div class="whatsapp-button">
 
-                <a target="_blank" href="https://wa.me/0491606252428">
+                <a target="_blank" href="https://wa.me/491606252428">
                     <img src="assets/img/logo/Digital_Glyph_White.svg" alt="">
                 </a>
             </div>
@@ -24,10 +24,10 @@
         </div>
         <mat-menu #mobileMenu="matMenu">
             <div class="mobile-nav">
-                <a href="#home">Home</a>
-                <a href="#about_me">Über uns</a>
-                <a href="#product">Produkte</a>
-                <a href="" routerLink="/contact">Kontakt</a>
+                <a [routerLink]="'/'" fragment="home">Home</a>
+                <a [routerLink]="'/'" fragment="about_me">Über uns</a>
+                <a [routerLink]="'/'" fragment="product">Produkte</a>
+                <a routerLink="/contact">Kontakt</a>
             </div>
 
         </mat-menu>

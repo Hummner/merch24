@@ -1,0 +1,15 @@
+.whatsapp-button {
+    display: none !important;
+}
+
+@media (max-width: 1024px) {
+
+    .whatsapp-button {
+        display: flex !important;
+        position: fixed !important;
+        top: calc(100vh - 100px);
+        right: 32px;
+        width: 60px;
+        height: 60px;
+    }
+}

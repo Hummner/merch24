@@ -40,3 +40,13 @@ li {
     font-size: 21px;
     color: var(--primary-color);
 }
+
+@media (max-width:1024px) {
+    section {
+        padding: 0 8px;
+    }
+
+    h1 {
+        font-size: 32px !important;
+    }
+}
