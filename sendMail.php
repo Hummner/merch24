@@ -15,13 +15,24 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $params = json_decode($json);
     
             $email = $params->email;
-            $name = $params->name;
+            $first_name = $params->firstName;
+            $last_name = $params->lastName;
             
             $message = $params->message;
+            $phone = $params->telephone;
+            $subjectText = $params->subject;
+
     
             $recipient = 'contact@bence-cservenyak.com';  
             $subject = "Contact From <$email>";
-            $message = "From:" . $name . "<br>" . $message ;
+            $message = "
+                <strong>Von:</strong> $first_name  $last_name<br>
+                <strong>Email:</strong> $email<br>
+                <strong>Telefon:</strong> $phone<br>
+                <strong>Betreff:</strong> $subjectText<br><br>
+                <strong>Nachricht:</strong><br>
+                $message
+";
     
             $headers   = array();
             $headers[] = 'MIME-Version: 1.0';

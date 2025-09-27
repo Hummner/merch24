@@ -21,7 +21,8 @@ export class ContactComponent implements OnInit {
   sentEmail: boolean = false;
   trySubmit: boolean = false;
   http = inject(HttpClient);
-  mailTest = true;
+  mailTest = false;
+
 
   constructor() {
 
