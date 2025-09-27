@@ -43,7 +43,7 @@ export class CategoryServiceService {
       title: "Individuelle Pokale & Medaillen – nach Wunsch gestaltet",
       text: "Ob Sportturnier, Firmenfeier, Kindergeburtstag oder Schulfest – bei uns bekommst du Pokale und Medaillen, die perfekt zum Anlass passen.",
       img: "cups",
-      link: "https://www.calameo.com/read/00730084130799099dbe8",
+      link: "https://votresiteclub.com/mag-fr-ss_px/",
       linkName: "Broschüre"
     },
     {

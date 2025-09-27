@@ -31,13 +31,23 @@ section {
 
 }
 
-h1 {
+.header {
     width: 100%;
     background-color: var(--tertiary-color);
     text-align: center;
-    padding: 40px 100px;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+}
+
+h1 {
     color: var(--primary-color);
     font-size: 48px;
+
 }
 
 h2 {
@@ -81,6 +91,7 @@ p {
 }
 
 .about-us {
+    max-width: 1920px;
     h2 {
         text-align: center;
     }
@@ -227,6 +238,8 @@ textarea {
     }
 }
 
+
+
 @media (max-width:1024px) {
     .text {
         flex-direction: column;
@@ -277,6 +290,7 @@ textarea {
         }
 
     }
+
     .privacy {
         flex-direction: column;
         gap: 30px;
