@@ -29,6 +29,16 @@ p {
     }
 }
 
+ul {
+    a {
+        font-size: 21px;
+    }
+
+    li {
+        font-size: 21;
+    }
+}
+
 @media (max-width:1024px) {
     section {
         padding: 0 8px;

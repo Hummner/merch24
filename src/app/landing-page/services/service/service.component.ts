@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import  AOS  from 'aos';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-service',
@@ -11,7 +11,7 @@ import  AOS  from 'aos';
   templateUrl: './service.component.html',
   styleUrl: './service.component.scss'
 })
-export class ServiceComponent implements AfterViewInit {
+export class ServiceComponent implements AfterViewInit, OnInit {
 
 
   @Input() service: any;
@@ -28,10 +28,15 @@ export class ServiceComponent implements AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
-    AOS.init();
+  ngOnInit(): void {
+
+
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => AOS.refreshHard(), 0);
+  }
+  
   navigateTo(link: string) {
     this.router.navigateByUrl('/product/' + link);
   }
