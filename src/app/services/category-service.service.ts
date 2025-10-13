@@ -241,37 +241,15 @@ export class CategoryServiceService {
         img: "trikot"
       },
       {
-        title: "Aufwärmshirt schnell trocknend",
+        title: "Mannschaftssatz",
         text: [
-          "Leichtes Material für Aufwärmen und Training",
-          "Angenehmer Tragekomfort auch bei hoher Belastung",
-          "Ideal für einheitlichen Teamauftritt vor dem Spiel",
-          "Veredelung mit Logo und Initialen möglich",
-          "Pflegeleicht kurze Trocknungszeit"
+          "Texterfassung und Formatierung",
+          "Gestaltung nach typografischen Vorgaben",
+          "Automatisierte Absatz- und Zeichenformate",
+          "Nummerierung und Tabellenlayout",
+          "Feinabstimmung für den Druck"
         ],
-        img: "aufwaermshirt"
-      },
-      {
-        title: "Regenjacke wetterfest im Vereinslook",
-        text: [
-          "Wind und wasserabweisend mit Kapuze",
-          "Atmungsaktive Einsätze für gutes Klima",
-          "Perfekt für Training an nassen Tagen",
-          "Initialen und Rückennummer optional",
-          "Robust und pflegeleicht für lange Nutzung"
-        ],
-        img: "regenjacke"
-      },
-      {
-        title: "Präsentationsjacke stilvoll am Spieltag",
-        text: [
-          "Leichte Jacke für Anreise und Teamauftritt",
-          "Einheitliche Optik passend zur Kollektion",
-          "Saubere Veredelung mit Vereinslogo",
-          "Bequemes Tragegefühl auch im Alltag",
-          "Einfache Nachbestellung über alle Größen"
-        ],
-        img: "praesentationsjacke"
+        img: "mannschaftssatz"
       }
     ],
     cups: [
@@ -307,28 +285,6 @@ export class CategoryServiceService {
           "Edler Look mit langer Haltbarkeit"
         ],
         img: "glaspokal"
-      },
-      {
-        title: "Acryl Award modern und leicht",
-        text: [
-          "Brillante Darstellung mit UV Druck",
-          "Freie Form auch mit Konturschnitt",
-          "Standsockel für sicheren Halt",
-          "Kratzfest und farbintensiv",
-          "Ideal für Firmen und Events"
-        ],
-        img: "acryl"
-      },
-      {
-        title: "Plaketten und Embleme vielseitig",
-        text: [
-          "Metall oder Alu in vielen Größen",
-          "Rund oval oder rechteck verfügbar",
-          "Selbstklebend oder mit Bohrung",
-          "Logo und Text individuell",
-          "Für Pokale Tafeln oder Türen"
-        ],
-        img: "plakette"
       }
     ],
     design: [
@@ -353,26 +309,6 @@ export class CategoryServiceService {
           "Export in passende Formate"
         ],
         img: "photoshop"
-      },
-      {
-        title: "Freisteller und Masken exakt",
-        text: [
-          "Produkte Personen und Objekte freigestellt",
-          "Natürliche Schatten und Spiegelungen",
-          "Ausgabe als PNG PSD oder TIFF"
-        ],
-        img: "freisteller"
-      },
-      {
-        title: "Retusche natürlich und dezent",
-        text: [
-          "Hautretusche ohne Plastiklook",
-          "Falten und Unreinheiten reduzieren",
-          "Formkorrekturen nur wenn sinnvoll",
-          "Farbangleich bei Stoffen und Materialien",
-          "Vorher Nachher Abstimmung"
-        ],
-        img: "retusche"
       },
       {
         title: "Druckdaten und PDF Vorbereitung",
