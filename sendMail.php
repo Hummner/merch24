@@ -23,7 +23,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $subjectText = $params->subject;
 
     
-            $recipient = 'contact@bence-cservenyak.com';  
+            $recipient = 'info@merch24.eu';  
             $subject = "Contact From <$email>";
             $message = "
                 <strong>Von:</strong> $first_name  $last_name<br>
