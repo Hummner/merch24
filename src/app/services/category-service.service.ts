@@ -54,7 +54,9 @@ export class CategoryServiceService {
     {
       title: "Workwear Payper",
       text: "Robuste Arbeitskleidung individuell veredelt mit Logo und Namen langlebig pflegeleicht und einfach nachbestellbar",
-      img: "shirt"
+      img: "payper",
+      link: "https://www.payperwear.com/de/home",
+      linkName: "Payper"
     }
 
 
@@ -84,7 +86,7 @@ export class CategoryServiceService {
           "Kosteneffizient ab 1 Stück schnelle Umsetzung",
           "Pflegeleicht auf links bis 40 °C, bitte ohne Weißspüler"
         ],
-        img: "flex"
+        img: "flexdruck"
       },
       {
         title: "Foliendruck für Aufkleber & Beschriftungen",
@@ -95,7 +97,7 @@ export class CategoryServiceService {
           "Großformate bis A1 möglich",
           "Gut für Stickers in kleine Menge"
         ],
-        img: "flex"
+        img: "folien"
       },
       {
         title: "DTF fotorealistisch & flexibel",
@@ -106,7 +108,7 @@ export class CategoryServiceService {
           "Feine Details und Farbverläufe ohne Probleme",
           "Waschbeständig bis 40 °C auf links bügeln"
         ],
-        img: "flex"
+        img: "dtf"
       },
       {
         title: "UV DTF für harte Oberflächen",
@@ -117,7 +119,7 @@ export class CategoryServiceService {
           "Feine Details und kleine Schrift sauber darstellbar",
           "Handwäsche empfohlen, nicht spülmaschinenfest"
         ],
-        img: "flex"
+        img: "uvdtf"
       },
       {
         title: "Siebdruck langlebig & wirtschaftlich",
@@ -166,7 +168,7 @@ export class CategoryServiceService {
           "Zwei verschiedene Designs möglich",
           "Pflegeleicht bei 30°C Grad"
         ],
-        img: "schal"
+        img: "coming"
       },
       {
         title: "Strickmütze bequem & individuell",
@@ -202,7 +204,7 @@ export class CategoryServiceService {
           "Ideal für Turniere Ehrungen und Tausch",
           "Optional mit Goldrand und Stab"
         ],
-        img: "wimpel"
+        img: "coming"
       },
       {
         title: "Aufnäher & Patches vielseitig",
@@ -214,7 +216,7 @@ export class CategoryServiceService {
           "Hohe Wasch und Abriebfestigkeit",
           "Ab 100 Stück bestellbar"
         ],
-        img: "aufnaeher"
+        img: "coming"
       }
     ],
     jersey: [
@@ -227,7 +229,7 @@ export class CategoryServiceService {
           "Individuelle Veredelung mit Logo Name Nummer",
           "Pflegeleicht und formstabil waschbar bei 30 C"
         ],
-        img: "trainingsanzug"
+        img: "coming"
       },
       {
         title: "Trikot leicht & atmungsaktiv",
@@ -243,13 +245,11 @@ export class CategoryServiceService {
       {
         title: "Mannschaftssatz",
         text: [
-          "Texterfassung und Formatierung",
-          "Gestaltung nach typografischen Vorgaben",
-          "Automatisierte Absatz- und Zeichenformate",
-          "Nummerierung und Tabellenlayout",
-          "Feinabstimmung für den Druck"
+          "Vereinslogo",
+          "Name und Nummerierung",
+          "Sponsorenlogos"
         ],
-        img: "mannschaftssatz"
+        img: "coming"
       }
     ],
     cups: [
@@ -262,7 +262,7 @@ export class CategoryServiceService {
           "Ideal für Turniere und Vereinsfeiern",
           "Schnelle Produktion ab 1 Stück"
         ],
-        img: "pokal"
+        img: "cups"
       },
       {
         title: "Medaillen mit Band",
@@ -273,7 +273,7 @@ export class CategoryServiceService {
           "Rückseitige Gravur möglich",
           "Top Preis Leistung auch für große Mengen"
         ],
-        img: "medaille"
+        img: "medal"
       },
       {
         title: "Glaspokal elegant und hochwertig",
@@ -284,7 +284,7 @@ export class CategoryServiceService {
           "Individuelle Formen und Größen",
           "Edler Look mit langer Haltbarkeit"
         ],
-        img: "glaspokal"
+        img: "cups"
       }
     ],
     design: [
@@ -297,7 +297,7 @@ export class CategoryServiceService {
           "Konturschnitt und Plotdateien korrekt",
           "Farbräume CMYK, Pantone und HKS"
         ],
-        img: "vektor"
+        img: "coming"
       },
       {
         title: "Photoshop Bildbearbeitung präzise",
@@ -308,7 +308,7 @@ export class CategoryServiceService {
           "Schärfen für Web oder Druck",
           "Export in passende Formate"
         ],
-        img: "photoshop"
+        img: "coming"
       },
       {
         title: "Druckdaten und PDF Vorbereitung",
@@ -319,10 +319,10 @@ export class CategoryServiceService {
           "Anschnitt Stanz und Falzmarken",
           "Übergabe an die Druckerei"
         ],
-        img: "druckdaten"
+        img: "coming"
       }
     ],
-    shirt: [
+    payper: [
       {
         title: "Softshelljacke wetterfest und bequem",
         text: [
@@ -343,18 +343,7 @@ export class CategoryServiceService {
           "Bequem durch Stretch Einsätze",
           "Logo Druck oder Stick möglich"
         ],
-        img: "arbeitshose"
-      },
-      {
-        title: "Warnschutz sichtbar und normgerecht",
-        text: [
-          "Payper High Vis in leuchtenden Farben",
-          "EN ISO 20471 je nach Modell Klasse 2 oder 3",
-          "Reflexstreifen mit hoher Sichtbarkeit",
-          "Ideal für Bau Logistik und Service",
-          "Veredelung mit Firmenlogo und Name"
-        ],
-        img: "warnschutz"
+        img: "hose"
       },
       {
         title: "Polo und T Shirt für den Alltag",
@@ -365,7 +354,7 @@ export class CategoryServiceService {
           "Druck oder Stick vorne und hinten",
           "Industriewäsche taugliche Varianten verfügbar"
         ],
-        img: "polo"
+        img: "shirt"
       },
       {
         title: "Hoodie und Sweatjacke warm und strapazierfähig",
@@ -376,7 +365,7 @@ export class CategoryServiceService {
           "Perfekt für Team und Baustelle",
           "Individuelle Veredelung nach Wunsch"
         ],
-        img: "hoodie"
+        img: "pullover"
       }
     ]
 
