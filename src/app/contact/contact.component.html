@@ -198,6 +198,7 @@
             </div>
         </div>
 
+
         <div class="about-us">
             <h2>Über uns</h2>
             <p>
@@ -300,7 +301,8 @@
                         gelesen und akzeptiere sie</label>
                 </div>
 
-                <button type="submit" class="primary-button"  [ngClass]="{'primary-button-disabled': !formEl.checkValidity()}"
+                <button type="submit" class="primary-button"
+                    [ngClass]="{'primary-button-disabled': !formEl.checkValidity()}"
                     (click)="!formEl.checkValidity() && formEl.reportValidity()">
                     <span>Senden</span>
                 </button>
@@ -312,6 +314,10 @@
 
 
         </div>
+
+
+
+
 
 
 

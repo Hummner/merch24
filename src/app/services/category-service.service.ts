@@ -168,7 +168,7 @@ export class CategoryServiceService {
           "Zwei verschiedene Designs möglich",
           "Pflegeleicht bei 30°C Grad"
         ],
-        img: "coming"
+        img: "fanschals"
       },
       {
         title: "Strickmütze bequem & individuell",
@@ -204,7 +204,7 @@ export class CategoryServiceService {
           "Ideal für Turniere Ehrungen und Tausch",
           "Optional mit Goldrand und Stab"
         ],
-        img: "coming"
+        img: "wimpel"
       },
       {
         title: "Aufnäher & Patches vielseitig",
@@ -216,7 +216,7 @@ export class CategoryServiceService {
           "Hohe Wasch und Abriebfestigkeit",
           "Ab 100 Stück bestellbar"
         ],
-        img: "coming"
+        img: "aufnaher"
       }
     ],
     jersey: [
@@ -249,7 +249,7 @@ export class CategoryServiceService {
           "Name und Nummerierung",
           "Sponsorenlogos"
         ],
-        img: "coming"
+        img: "mannschaftssatz"
       }
     ],
     cups: [
@@ -284,7 +284,7 @@ export class CategoryServiceService {
           "Individuelle Formen und Größen",
           "Edler Look mit langer Haltbarkeit"
         ],
-        img: "cups"
+        img: "glaspokale"
       }
     ],
     design: [
@@ -297,7 +297,7 @@ export class CategoryServiceService {
           "Konturschnitt und Plotdateien korrekt",
           "Farbräume CMYK, Pantone und HKS"
         ],
-        img: "coming"
+        img: "photoshop"
       },
       {
         title: "Photoshop Bildbearbeitung präzise",
@@ -308,7 +308,7 @@ export class CategoryServiceService {
           "Schärfen für Web oder Druck",
           "Export in passende Formate"
         ],
-        img: "coming"
+        img: "photoshop"
       },
       {
         title: "Druckdaten und PDF Vorbereitung",
@@ -319,7 +319,7 @@ export class CategoryServiceService {
           "Anschnitt Stanz und Falzmarken",
           "Übergabe an die Druckerei"
         ],
-        img: "coming"
+        img: "merch"
       }
     ],
     payper: [
