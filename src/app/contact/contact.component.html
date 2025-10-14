@@ -258,58 +258,61 @@
         </div>
 
 
-       
 
 
 
 
-            <div class="contact-form-section">
-                <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
-                    <h2>Kontaktformular</h2>
-                    <div class="name">
-                        <input type="text" class="first-name" placeholder="Vorname" name="firstName"
-                            [(ngModel)]="contactData.firstName" required>
-                        <input type="text" class="last-name" placeholder="Nachname" name="lastName"
-                            [(ngModel)]="contactData.lastName" required>
-                    </div>
-                    <input type="email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" class="email"
-                        placeholder="Email" name="email" [(ngModel)]="contactData.email" required>
-                    <input type="tel" class="tel" placeholder="Telefonnummer" name="telephone"
-                        [(ngModel)]="contactData.telephone" pattern="^[0-9\s\-+]{6,20}$">
-                    <select name="category" id="category" [(ngModel)]="contactData.subject" required>
-                        <option value="">Wähl ein Thema...</option>
-                        <option value="Stickerei – edel & langlebig">Stickerei – edel & langlebig</option>
-                        <option value="Flexdruck & Foliendruck & DTF & UV-DTF & Siebdruck">Flexdruck & Foliendruck & DTF
-                            & UV-DTF & Siebdruck</option>
-                        <option value="Vereinsbedarf">Vereinsbedarf</option>
-                        <option value="Grafikdesign – dein Look, dein Stil">Grafikdesign – dein Look, dein Stil</option>
-                        <option value="Professionelle Fotografie – für besondere Momente">Professionelle Fotografie –
-                            für besondere Momente</option>
-                        <option value="Individuelle Pokale & Medaillen – nach Wunsch gestaltet">Individuelle Pokale &
-                            Medaillen – nach Wunsch gestaltet</option>
-                        <option value="7">Teamwear von Stanno & Puma & Jako einheitlich auftreten</option>
-                        <option value="Teamwear von Stanno & Puma & Jako einheitlich auftreten">Workwear Payper</option>
-                        <option value="Sonstiges">Sonstiges</option>
-                    </select>
-                    <textarea name="textarea_input" id="textarea_input" placeholder="Deine Nachricht..." required
-                        [(ngModel)]="contactData.message" minlength="50"></textarea>
-                    <div class="privacy">
-                        <input type="checkbox" id="checkbox" [(ngModel)]="isChecked" required name="checkbox">
-                        <label for="checkbox" class="policy">Ich habe die <span
-                                (click)="this.router.navigateByUrl('/privacy-policy'); $event.stopPropagation()">Datenschutzerklärung</span>
-                            gelesen und akzeptiere sie</label>
-                    </div>
 
-                    <button class="primary-button"><span>Senden</span></button>
+        <div class="contact-form-section">
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate #formEl>
+                <h2>Kontaktformular</h2>
+                <div class="name">
+                    <input type="text" class="first-name" placeholder="Vorname" name="firstName"
+                        [(ngModel)]="contactData.firstName" required>
+                    <input type="text" class="last-name" placeholder="Nachname" name="lastName"
+                        [(ngModel)]="contactData.lastName" required>
+                </div>
+                <input type="email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" class="email"
+                    placeholder="Email" name="email" [(ngModel)]="contactData.email" required>
+                <input type="tel" class="tel" placeholder="Telefonnummer" name="telephone"
+                    [(ngModel)]="contactData.telephone" pattern="^[0-9\s\-+]{6,20}$">
+                <select name="category" id="category" [(ngModel)]="contactData.subject" required>
+                    <option value="">Wähl ein Thema...</option>
+                    <option value="Stickerei – edel & langlebig">Stickerei – edel & langlebig</option>
+                    <option value="Flexdruck & Foliendruck & DTF & UV-DTF & Siebdruck">Flexdruck & Foliendruck & DTF
+                        & UV-DTF & Siebdruck</option>
+                    <option value="Vereinsbedarf">Vereinsbedarf</option>
+                    <option value="Grafikdesign – dein Look, dein Stil">Grafikdesign – dein Look, dein Stil</option>
+                    <option value="Professionelle Fotografie – für besondere Momente">Professionelle Fotografie –
+                        für besondere Momente</option>
+                    <option value="Individuelle Pokale & Medaillen – nach Wunsch gestaltet">Individuelle Pokale &
+                        Medaillen – nach Wunsch gestaltet</option>
+                    <option value="7">Teamwear von Stanno & Puma & Jako einheitlich auftreten</option>
+                    <option value="Teamwear von Stanno & Puma & Jako einheitlich auftreten">Workwear Payper</option>
+                    <option value="Sonstiges">Sonstiges</option>
+                </select>
+                <textarea name="textarea_input" id="textarea_input" placeholder="Deine Nachricht..." required
+                    [(ngModel)]="contactData.message" minlength="50"></textarea>
+                <div class="privacy">
+                    <input type="checkbox" id="checkbox" [(ngModel)]="isChecked" required name="checkbox">
+                    <label for="checkbox" class="policy">Ich habe die <span
+                            (click)="this.router.navigateByUrl('/privacy-policy'); $event.stopPropagation()">Datenschutzerklärung</span>
+                        gelesen und akzeptiere sie</label>
+                </div>
+
+                <button type="submit" class="primary-button"  [ngClass]="{'primary-button-disabled': !formEl.checkValidity()}"
+                    (click)="!formEl.checkValidity() && formEl.reportValidity()">
+                    <span>Senden</span>
+                </button>
 
 
-                </form>
+            </form>
 
 
 
 
-            </div>
-        
+        </div>
+
 
 
     </div>
