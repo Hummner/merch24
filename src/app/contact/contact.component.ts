@@ -5,12 +5,13 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -34,6 +35,10 @@ export class ContactComponent implements OnInit {
     console.log("scroll");
 
   }
+
+  // scrollDown() {
+  //   window.scrollTo({ bottom: 100, behavior: "smooth" })
+  // }
 
   contactData = {
     firstName: "",
@@ -82,5 +87,7 @@ export class ContactComponent implements OnInit {
       this.trySubmit = false;
     }
   };
+
+  
 
 }

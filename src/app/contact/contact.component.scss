@@ -115,7 +115,7 @@ p {
     display: flex;
     gap: 24px;
     padding: 12px 24px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     max-width: 1920px;
 
@@ -250,6 +250,13 @@ textarea {
     }
 }
 
+.placeholder {
+    background-color: black;
+    width: 2px;
+    height: 250px;
+    margin-top: 36px;
+}
+
 
 
 @media (max-width:1024px) {
@@ -306,5 +313,29 @@ textarea {
     .privacy {
         flex-direction: column;
         gap: 30px;
+    }
+
+    .placeholder {
+        background-color: black;
+        height: 2px;
+        width: 100%;
+        margin-top: 36px;
+    }
+
+    .placeholder-mobile {
+        background-color: black;
+        height: 2px;
+        width: 100%;
+        margin-top: 36px;
+    }
+
+    .header {
+        padding: 40px 25px;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 36px;
     }
 }

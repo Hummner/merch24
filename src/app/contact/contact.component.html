@@ -161,12 +161,17 @@
                     <p>Telefon: <a href="tel:+4920179875194">+49 201 - 79875194 </a><br>
                         Mobil: <a href="tel:+491606252428">+49 160 6252428</a></p>
                 </div>
-
                 <div class="text-info">
                     <img src="assets/icons/mail.svg" alt="">
                     <p>E-Mail: <a href="mailto:info@merch24.de">info&#64;merch24.de</a></p>
                 </div>
+
+                <div class="text-info">
+                    <img src="assets/icons/mail.svg" alt="">
+                    <p><a [routerLink]="'/contact'" fragment="form">Kontaktformular</a></p>
+                </div>
             </div>
+            <div class="placeholder"></div>
             <div>
                 <h2>Wo findest du uns?</h2>
                 <div class="text-info">
@@ -179,6 +184,7 @@
                     </p>
                 </div>
             </div>
+            <div class="placeholder"></div>
             <div>
                 <h2>Wann sind wir für dich da?</h2>
                 <div class="text-info">
@@ -196,6 +202,7 @@
                 </div>
 
             </div>
+            <div class="placeholder-mobile"></div>
         </div>
 
 
@@ -264,7 +271,7 @@
 
 
 
-        <div class="contact-form-section">
+        <div class="contact-form-section" id="form">
             <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate #formEl>
                 <h2>Kontaktformular</h2>
                 <div class="name">

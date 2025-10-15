@@ -3,7 +3,7 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 120px;
     width: 100%;
 }
 
@@ -15,6 +15,29 @@ section {
     width: 100%;
     max-width: 1920px;
 
+}
+
+h1 {
+    margin-bottom: 64px;
+    font-size: 64px;
+    color: var(--primary-color);
+    position: relative;
+    text-align: center;
+    background-image: url(/assets/img/strich.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.brush {
+    position: absolute;
+    top: 0;
+    width: 400px;
+    left: 0;
+}
+
+.header {
+    position: relative;
 }
 
 
@@ -117,6 +140,7 @@ section {
     border-radius: 30px;
     overflow: hidden;
     margin-bottom: 100px;
+    box-shadow: 4px 7px 11px 8px #00000036;
 
 
 }
@@ -188,7 +212,7 @@ section {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
 
     .box-container {
         height: unset;
@@ -225,4 +249,18 @@ section {
         width: 100%;
     }
 
+    .content {
+        padding: 0 8px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 36px;
+    }
 }
