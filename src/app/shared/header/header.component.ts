@@ -14,7 +14,7 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
   imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  
+
 })
 export class HeaderComponent {
   viewPosition!: [number, number];
@@ -26,25 +26,19 @@ export class HeaderComponent {
   }
 
 
-@HostListener('window:scroll', ['$event']) // for window scroll events
-onScroll() {
-  this.viewPosition = this.view.getScrollPosition();
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll() {
+    this.viewPosition = this.view.getScrollPosition();
 
-  let sum = this.viewPosition.reduce((a, b) => a + b, 0)
-  if (sum == 0) {
-    this.headerOpacity = true;
-  } else {
-    this.headerOpacity = false
+    let sum = this.viewPosition.reduce((a, b) => a + b, 0)
+    if (sum == 0) {
+      this.headerOpacity = true;
+    } else {
+      this.headerOpacity = false
+    }
   }
 
-  console.log(this.headerOpacity);
-
-
-}
-
-getOpacity() {
-  return this.headerOpacity ? 'opacity' : '-'
-}
-
-
+  getOpacity() {
+    return this.headerOpacity ? 'opacity' : '-'
+  }
 }
