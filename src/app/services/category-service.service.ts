@@ -48,7 +48,7 @@ export class CategoryServiceService {
     {
       title: "Teamwear von Stanno & Puma & Jako einheitlich auftreten",
       text: "Einheitliche Teamkleidung von Jako Puma und Stanno individuell veredelt mit Logo Namen und Nummern langlebig und einfach nachbestellbar",
-      img: "jersey",
+      img: "teamwear",
     },
     {
       title: "Workwear Payper",

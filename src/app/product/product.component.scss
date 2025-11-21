@@ -200,12 +200,8 @@ h1 {
     display: flex;
     gap: 16px;
     align-items: center;
-
-
-
-
     p {
-        font-size: 25px;
+        font-size: 21px;
         width: 89%;
         font-weight: bold;
     }
@@ -213,7 +209,6 @@ h1 {
 
 
 @media (max-width: 1024px) {
-
     .box-container {
         height: unset;
         width: unset;
@@ -231,7 +226,6 @@ h1 {
         p {
             font-size: 18px;
         }
-
     }
 
     .name {

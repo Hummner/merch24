@@ -25,18 +25,10 @@ export class ServiceComponent implements AfterViewInit, OnInit {
 
 
   constructor(private route: ActivatedRoute) {
-    console.log(this.service);
     this.route.params.subscribe((params => this.product = params['id']))
-    console.log(this.product);
-
-
-
-
   }
 
   ngOnInit(): void {
-
-
   }
 
   ngAfterViewInit(): void {
@@ -48,11 +40,17 @@ export class ServiceComponent implements AfterViewInit, OnInit {
       let slug = seoDetail[link].slug
       this.router.navigateByUrl('/category' + slug);
     }
+    if (link == "photos") {
+      this.goToPage()
+    }
+  }
 
+  goToPage() {
+    window.open("https://merch24.eu/bine-photos", "_blank");
   }
 
   isSeoKey(key: string): key is keyof typeof seoDetail {
-    return  key in seoDetail
+    return key in seoDetail
   }
 
   showPhoto(img: string) {
