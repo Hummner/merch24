@@ -4,6 +4,9 @@ import { CategoryServiceService } from '../services/category-service.service';
 import { Location } from '@angular/common';
 import AOS from 'aos'
 import { Meta, Title } from '@angular/platform-browser';
+import { seoDetail, getSeoBySlug } from './../../seoDetail';
+
+type SeoKey = keyof typeof seoDetail;
 
 @Component({
   selector: 'app-product',
@@ -20,29 +23,40 @@ export class ProductComponent implements AfterViewInit {
 
   constructor(private route: ActivatedRoute, private location: Location, private title: Title, private meta: Meta) {
     this.route.params.subscribe((params => {
-      this.product = params['id'];
+      const link = params['id'];
+
+      if (getSeoBySlug(link)) {
+        let key = this.getSeoKeyBySlug(link)
+        this.product = key
+        console.log(key);
+        
+      }
+
+
+
       window.scrollTo({ top: 0, behavior: "instant" });
       this.currentlyProduct = this.getDeatail(this.product);
       console.log(this.currentlyProduct);
-
     }))
-
-
-    let link = this.product
-
-
-
-
   }
 
   ngAfterViewInit(): void {
     AOS.init()
     console.log(this.product);
-    
+
     this.getSeoCategorie(this.product)
     this.showName()
 
 
+  }
+
+  getSeoKeyBySlug(slug: string): SeoKey | undefined {
+    const keys = Object.keys(seoDetail) as SeoKey[];
+    console.log(keys);
+    
+    return keys.find(
+      key => seoDetail[key].slug === slug
+    );
   }
 
   getSeoCategorie(id: keyof CategoryServiceService["seoDetail"]) {
@@ -56,7 +70,7 @@ export class ProductComponent implements AfterViewInit {
   }
 
   showName() {
-    const id: keyof CategoryServiceService["seoDetail"]= this.product;
+    const id: keyof CategoryServiceService["seoDetail"] = this.product;
     const seo = this.categoryService.seoDetail[id]
     return seo.name
   }

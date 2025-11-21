@@ -24,7 +24,7 @@ export const routes: Routes = [
         }
     },
     {
-        path: "product/:id",
+        path: "category/:id",
         component: ProductComponent,
         data: {
             title: "Produktdetails | Merch24",

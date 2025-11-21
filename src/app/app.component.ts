@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./shared/header/header.component";
 import { FooterComponent } from "./shared/footer/footer.component";
+import { SeoService } from './services/seoService.service';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,12 @@ import { FooterComponent } from "./shared/footer/footer.component";
 })
 export class AppComponent {
   title = 'merch24';
+
+  constructor(private seo: SeoService) { }
+
+  ngOnInit(): void {
+    this.seo.init();
+  }
 }
+
+

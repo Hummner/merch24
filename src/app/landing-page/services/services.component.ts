@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, inject } from '@angular/core';
 import { ServiceComponent } from "./service/service.component";
 import { CategoryServiceService } from '../../services/category-service.service';
-import AOS from 'aos'
-import { Meta, Title } from '@angular/platform-browser';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-services',
@@ -13,7 +12,7 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class ServicesComponent implements AfterViewInit {
 
-  constructor(private title: Title, private meta: Meta) {
+  constructor() {
 
   }
 
@@ -23,11 +22,5 @@ export class ServicesComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     AOS.init()
-    this.title.setTitle('Fanartikel, Teamwear & Workwear | Merch24');
-    this.meta.updateTag({
-      name: 'descripton',
-      content: 'Wähle deine Kategorie und entdecke stylishe Fanartikel, Teamwear und Workwear für echte Sportfans und Teams.'
-    }
-    )
   }
 }

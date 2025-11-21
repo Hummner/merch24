@@ -3,7 +3,6 @@ import { ServicesComponent } from "./services/services.component";
 import { HEROComponent } from "./hero/hero.component";
 import { GreetingComponent } from "./greeting/greeting.component";
 import {MatButtonModule} from '@angular/material/button';
-import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
@@ -13,22 +12,9 @@ import { Title, Meta } from '@angular/platform-browser';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent {
 
-  constructor(private title: Title, private meta: Meta) {
+  constructor() {
 
   }
-
-
-  ngOnInit(): void {
-
-    this.title.setTitle('Merch24 | Full-Service-Agentur für Merchandise & Branding in Essen');
-    this.meta.updateTag({
-      name: 'descripton',
-      content: 'Individuelle Fanartikel für Fußball, Eishockey und mehr. Schnelle Produktion, starke Qualität, fairer Preis.'
-    })
-    
-  }
-
-
 }

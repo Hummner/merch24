@@ -3,6 +3,9 @@ import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import AOS from 'aos';
+import { seoDetail } from '../../../../seoDetail';
+
+type SeoKey = keyof typeof seoDetail;
 
 @Component({
   selector: 'app-service',
@@ -19,11 +22,14 @@ export class ServiceComponent implements AfterViewInit, OnInit {
   product!: string;
   switchImage = false;
 
+
+
   constructor(private route: ActivatedRoute) {
     console.log(this.service);
-
     this.route.params.subscribe((params => this.product = params['id']))
     console.log(this.product);
+
+
 
 
   }
@@ -36,9 +42,17 @@ export class ServiceComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     setTimeout(() => AOS.refreshHard(), 0);
   }
-  
+
   navigateTo(link: string) {
-    this.router.navigateByUrl('/product/' + link);
+    if (this.isSeoKey(link)) {
+      let slug = seoDetail[link].slug
+      this.router.navigateByUrl('/category' + slug);
+    }
+
+  }
+
+  isSeoKey(key: string): key is keyof typeof seoDetail {
+    return  key in seoDetail
   }
 
   showPhoto(img: string) {
