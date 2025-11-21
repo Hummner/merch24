@@ -28,35 +28,23 @@ export class ProductComponent implements AfterViewInit {
       if (getSeoBySlug(link)) {
         let key = this.getSeoKeyBySlug(link)
         this.product = key
-        console.log(key);
-        
       }
-
-
-
       window.scrollTo({ top: 0, behavior: "instant" });
       this.currentlyProduct = this.getDeatail(this.product);
-      console.log(this.currentlyProduct);
     }))
   }
 
   ngAfterViewInit(): void {
     AOS.init()
-    console.log(this.product);
-
     this.getSeoCategorie(this.product)
     this.showName()
-
-
   }
 
   getSeoKeyBySlug(slug: string): SeoKey | undefined {
     const keys = Object.keys(seoDetail) as SeoKey[];
-    console.log(keys);
-    
-    return keys.find(
-      key => seoDetail[key].slug === slug
-    );
+    let url = "/" + slug
+    let key = keys.find(key => seoDetail[key].slug === url);
+    return key
   }
 
   getSeoCategorie(id: keyof CategoryServiceService["seoDetail"]) {
@@ -66,7 +54,6 @@ export class ProductComponent implements AfterViewInit {
       name: 'descripton',
       content: seo.title
     })
-
   }
 
   showName() {

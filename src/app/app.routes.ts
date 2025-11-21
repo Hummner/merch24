@@ -25,11 +25,7 @@ export const routes: Routes = [
     },
     {
         path: "category/:id",
-        component: ProductComponent,
-        data: {
-            title: "Produktdetails | Merch24",
-            description: "Erfahre mehr über Materialien und besondere Merkmale deines Fanartikels."
-        }
+        component: ProductComponent
     },
     {
         path: "contact",
