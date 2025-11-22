@@ -1,33 +1,33 @@
-LICENSE – Open-Source-Komponenten und Ressourcen
+LICENSE – Open-Source Components and Resources
 
-Projekt: merch24
+Project: merch24
 
-Diese Website verwendet folgende Open-Source-Komponenten und Ressourcen:
+This website uses the following open-source components and resources:
 
 1. Angular
-   © Google LLC
-   Lizenz: MIT-Lizenz
+   (c) Google LLC
+   License: MIT License
    https://opensource.org/licenses/MIT
 
 2. Angular Material
-   © Google LLC
-   Lizenz: MIT-Lizenz
+   (c) Google LLC
+   License: MIT License
    https://opensource.org/licenses/MIT
 
 3. AOS (Animate On Scroll)
-   © Michał Śník
-   Lizenz: MIT-Lizenz
+   (c) Michal Snik
+   License: MIT License
    https://opensource.org/licenses/MIT
 
-4. Google Fonts (lokal eingebunden)
-   © Google LLC
-   Lizenz: SIL Open Font License 1.1
+4. Google Fonts (locally hosted)
+   (c) Google LLC
+   License: SIL Open Font License 1.1
    https://openfontlicense.org/
 
-5. Bilder von Pixabay
-   © Pixabay
-   Lizenz: Pixabay License
+5. Images from Pixabay
+   (c) Pixabay
+   License: Pixabay License
    https://pixabay.com/service/license/
 
-Hinweis:
-Diese Website nutzt ausschließlich lokal eingebundene Google Fonts. Es findet keine Übertragung personenbezogener Daten an Google statt.
+Note:
+This website exclusively uses locally hosted Google Fonts. No personal data is transmitted to Google.
