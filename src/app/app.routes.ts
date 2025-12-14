@@ -11,8 +11,8 @@ export const routes: Routes = [
         path: "",
         component: LandingPageComponent,
         data: {
-            title: "Merch24 | Full-Service-Agentur für Merchandise & Branding",
-            description: "Individuelle Fanartikel für Fußball, Eishokey und mehr. Schnelle Produktion, starke Qualität, fairer Preis."
+            title: "Merch24 | Full-Service-Agentur für Merchandise & Branding in Essen",
+            description: "Individuelle Fanartikel für Fußball, Eishockey und mehr. Schnelle Produktion, starke Qualität und faire Preise – direkt aus dem Ruhrgebiet."
         }
     },
     {

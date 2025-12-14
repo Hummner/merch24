@@ -51,7 +51,7 @@ export class ProductComponent implements AfterViewInit {
     const seo = this.categoryService.seoDetail[id]
     this.title.setTitle(seo.title)
     this.meta.updateTag({
-      name: 'descripton',
+      name: 'description',
       content: seo.title
     })
   }
