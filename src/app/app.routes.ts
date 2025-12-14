@@ -5,6 +5,7 @@ import { ProductComponent } from './product/product.component';
 import { ContactComponent } from './contact/contact.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { WithdrawalComponent } from './withdrawal/withdrawal.component';
+import { NewsComponent } from './news/news.component';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,14 @@ export const routes: Routes = [
         data: {
             title: "Merch24 | Full-Service-Agentur für Merchandise & Branding in Essen",
             description: "Individuelle Fanartikel für Fußball, Eishockey und mehr. Schnelle Produktion, starke Qualität und faire Preise – direkt aus dem Ruhrgebiet."
+        }
+    },
+    {
+        path: "news",
+        component: NewsComponent,
+        data: {
+            title: "Aktuelles | Merch24 – Merchandise & Branding aus Essen",
+            description: "Aktuelles von Merch24: Neuigkeiten, Projekte und Updates rund um Fanartikel, Merchandise und Branding – aus Essen im Ruhrgebiet."
         }
     },
     {
