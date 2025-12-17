@@ -274,17 +274,29 @@
         <div class="contact-form-section" id="form">
             <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" novalidate #formEl>
                 <h2>Kontaktformular</h2>
-                <div class="name">
-                    <input type="text" class="first-name" placeholder="Vorname" name="firstName"
-                        [(ngModel)]="contactData.firstName" required>
-                    <input type="text" class="last-name" placeholder="Nachname" name="lastName"
-                        [(ngModel)]="contactData.lastName" required>
+
+                <input type="text" class="first-name" placeholder="Vorname" name="firstName"
+                    [(ngModel)]="contactData.firstName" required #firstnameCtrl="ngModel">
+                <div class="error" *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || contactForm.submitted)">
+                    Bitte gib einen gültigen Vorname ein.
                 </div>
+                <input type="text" class="last-name" placeholder="Nachname" name="lastName"
+                    [(ngModel)]="contactData.lastName" required #lastnameCtrl="ngModel">
+                <div class="error" *ngIf="lastnameCtrl.invalid && (lastnameCtrl.touched || contactForm.submitted)">
+                    Bitte gib einen gültigen Nachname ein.
+                </div>
+
                 <input type="email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" class="email"
-                    placeholder="Email" name="email" [(ngModel)]="contactData.email" required>
+                    placeholder="Email" name="email" [(ngModel)]="contactData.email" required #emailCtrl="ngModel">
+                <div class="error" *ngIf="emailCtrl.invalid && (emailCtrl.touched || contactForm.submitted)">
+                    Bitte gib eine gültige Email ein.
+                </div>
                 <input type="tel" class="tel" placeholder="Telefonnummer" name="telephone"
                     [(ngModel)]="contactData.telephone" pattern="^[0-9\s\-+]{6,20}$">
-                <select name="category" id="category" [(ngModel)]="contactData.subject" required>
+                <div class="error" *ngIf="emailCtrl.invalid && (emailCtrl.touched || contactForm.submitted)">
+                    Bitte gib eine gültige Telefonnummer ein.
+                </div>
+                <select name="category" id="category" [(ngModel)]="contactData.subject" required #optionCtrl="ngModel">
                     <option value="">Wähl ein Thema...</option>
                     <option value="Stickerei – edel & langlebig">Stickerei – edel & langlebig</option>
                     <option value="Flexdruck & Foliendruck & DTF & UV-DTF & Siebdruck">Flexdruck & Foliendruck & DTF
@@ -299,18 +311,27 @@
                     <option value="Teamwear von Stanno & Puma & Jako einheitlich auftreten">Workwear Payper</option>
                     <option value="Sonstiges">Sonstiges</option>
                 </select>
+                <div class="error" *ngIf="optionCtrl.invalid && (optionCtrl.touched || contactForm.submitted)">
+                    Bitte gib ein gültiges Thema ein.
+                </div>
                 <textarea name="textarea_input" id="textarea_input" placeholder="Deine Nachricht..." required
-                    [(ngModel)]="contactData.message" minlength="50"></textarea>
+                    [(ngModel)]="contactData.message" minlength="50" #msgCtrl="ngModel"></textarea>
+                <div class="error" *ngIf="msgCtrl.invalid && (msgCtrl.touched || contactForm.submitted)">
+                    Bitte gib eine Nachricht mit mindestens 50 Zeichen ein.
+                </div>
                 <div class="privacy">
-                    <input type="checkbox" id="checkbox" [(ngModel)]="isChecked" required name="checkbox">
+                    <input type="checkbox" id="checkbox" [(ngModel)]="isChecked" required name="checkbox"
+                        #checkboxCtrl="ngModel">
                     <label for="checkbox" class="policy">Ich habe die <span
                             (click)="this.router.navigateByUrl('/privacy-policy'); $event.stopPropagation()">Datenschutzerklärung</span>
                         gelesen und akzeptiere sie</label>
                 </div>
+                <div class="error" *ngIf="checkboxCtrl.invalid && (checkboxCtrl.touched || contactForm.submitted)">
+                    Bitte akzeptiere unsere Datenschutzerklärung.
+                </div>
 
                 <button type="submit" class="primary-button"
-                    [ngClass]="{'primary-button-disabled': !formEl.checkValidity()}"
-                    (click)="!formEl.checkValidity() && formEl.reportValidity()">
+                    [ngClass]="{'primary-button-disabled': contactForm.invalid}">
                     <span>Senden</span>
                 </button>
 

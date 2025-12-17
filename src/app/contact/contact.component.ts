@@ -61,6 +61,10 @@ export class ContactComponent implements OnInit {
   };
 
   onSubmit(ngForm: NgForm) {
+    if (ngForm.invalid) {
+      ngForm.form.markAllAsTouched();
+      return;
+    }
     this.trySubmit = true;
     if (ngForm.submitted && ngForm.valid && !this.mailTest) {
       this.http.post(this.post.endPoint, this.post.body(this.contactData))
@@ -79,7 +83,7 @@ export class ContactComponent implements OnInit {
         });
       this.trySubmit = false;
 
-    } else if (ngForm.submitted && ngForm.valid &&  this.mailTest) {
+    } else if (ngForm.submitted && ngForm.valid && this.mailTest) {
 
       // ngForm.resetForm();
       console.log("Sent mail", this.contactData);
@@ -88,6 +92,6 @@ export class ContactComponent implements OnInit {
     }
   };
 
-  
+
 
 }

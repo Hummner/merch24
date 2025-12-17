@@ -160,6 +160,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: 8px;
     width: 100%;
 
@@ -178,6 +179,7 @@ textarea {
     font-size: 21px;
     flex: 1;
     resize: vertical;
+    width: 100%;
 
     &::placeholder {
         color: rgba(110, 110, 110, 0.63);
@@ -257,7 +259,9 @@ textarea {
     margin-top: 36px;
 }
 
-
+.error {
+    color: rgb(227, 57, 57);
+}
 
 @media (max-width:1024px) {
     .text {
@@ -299,15 +303,6 @@ textarea {
 
     p {
         padding: 0;
-    }
-
-    .name {
-        flex-direction: column;
-
-        input {
-            width: 100%;
-        }
-
     }
 
     .privacy {
