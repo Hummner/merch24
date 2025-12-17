@@ -5,30 +5,23 @@
         <h3>Hier findest du unsere aktuellen Neuigkeiten, Artikel und Angebote auf einen Blick.</h3>
 
         <div class="content-container">
+            @for (card of [1,2,3]; track $index) {
 
-            <div class="container">
-                <div class="img-site">
-                    <img src="assets/img/fanschals.jpg" alt="">
-                </div>
-                <div class="text-container">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, maiores expedita minima in voluptas
-                    ad nemo vero tempora nesciunt, itaque earum ipsam! Corrupti aut ipsum deserunt amet facere explicabo
-                    non.
-                </div>
+            <div class="card" (mouseenter)="onEnter($index)" (mouseleave)="onLeave($index)"
+                [class.is-active]="activeIndex === $index" [class.is-leaving]="leavingIndex === $index">
+                <div class="container">
 
+
+                    <div class="img-site">
+                        <img src="assets/img/fanschals.jpg" alt="">
+                        <div class="text-container">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="container">
-                <div class="img-site">
-                    <img src="assets/img/fanschals.jpg" alt="">
-                </div>
-                <div class="text-container">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, maiores expedita minima in voluptas
-                    ad nemo vero tempora nesciunt, itaque earum ipsam! Corrupti aut ipsum deserunt amet facere explicabo
-                    non.
-                </div>
-
-            </div>
-
+            }
 
         </div>
 
