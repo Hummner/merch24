@@ -5,9 +5,13 @@
         <h3>Hier findest du unsere aktuellen Neuigkeiten, Artikel und Angebote auf einen Blick.</h3>
 
         <div class="content-container">
-            @for (card of [1,2,3]; track $index) {
+           
 
-            <div class="card" (mouseenter)="onEnter($index)" (mouseleave)="onLeave($index)"
+            @for (service of categories; track $index) {
+            <app-service [service]="service"></app-service>
+            
+
+            <!-- <div class="card" (mouseenter)="onEnter($index)" (mouseleave)="onLeave($index)"
                 [class.is-active]="activeIndex === $index" [class.is-leaving]="leavingIndex === $index">
                 <div class="container">
 
@@ -20,7 +24,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
             }
 
         </div>
