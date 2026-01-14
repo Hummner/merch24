@@ -1,8 +1,8 @@
 section {
     display: flex;
     justify-content: center;
-    padding: 0 64px;
-    margin-top: 200px;
+    flex-direction: column;
+    align-items: center;
 
 }
 
@@ -23,9 +23,17 @@ section {
 }
 
 .content-container {
-    display: flex;
-    gap: 50px;
-    margin-top: 500px;
+  width: 100%;
+}
+
+:host ::ng-deep ngb-carousel {
+  width: 100%;
+}
+
+:host ::ng-deep .carousel-item img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card {
