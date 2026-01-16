@@ -1,0 +1,21 @@
+<section>
+
+
+    <ngb-carousel>
+        @for (element of carousel; track $index) {
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img [src]="element.image" alt="Random first slide" />
+            </div>
+            <div class="carousel-caption">
+                <h3>{{element.title}}</h3>
+                <p>{{element.text}}</p>
+            </div>
+        </ng-template>
+
+        }
+        </ngb-carousel>
+
+        
+
+</section>

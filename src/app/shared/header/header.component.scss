@@ -9,6 +9,7 @@ section {
     width: 100%;
     background-color: var(--bg-color);
     transition: background-color 125ms ease-in-out;
+    z-index: 2;
 
 }
 
