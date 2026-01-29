@@ -1,17 +1,19 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, TemplateRef, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from "@angular/router";
 import { ViewportScroller } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import {MatInputModule} from '@angular/material/input';
 
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule],
+  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule, MatInputModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 
@@ -19,9 +21,13 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 export class HeaderComponent {
   viewPosition!: [number, number];
   headerOpacity = true;
+  private offcanvasService = inject(NgbOffcanvas);
+
+
 
   constructor(private view: ViewportScroller) {
     this.viewPosition = view.getScrollPosition()
+
 
   }
 
@@ -40,5 +46,9 @@ export class HeaderComponent {
 
   getOpacity() {
     return this.headerOpacity ? 'opacity' : '-'
+  }
+
+  openEnd(content: TemplateRef<any>) {
+    this.offcanvasService.open(content, { position: 'end' });
   }
 }
