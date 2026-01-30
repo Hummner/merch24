@@ -6,14 +6,17 @@ import { ViewportScroller } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { ShippingcartServiceService } from '../../services/shippingcart-service.service';
+import { CartItems } from '../../interfaces/cart-items';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule, MatInputModule],
+  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule, MatInputModule, MatBadgeModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 
@@ -21,7 +24,10 @@ import {MatInputModule} from '@angular/material/input';
 export class HeaderComponent {
   viewPosition!: [number, number];
   headerOpacity = true;
+
   private offcanvasService = inject(NgbOffcanvas);
+  private shippingcartService = inject(ShippingcartServiceService);
+  cart: CartItems[] = [];
 
 
 
@@ -32,7 +38,7 @@ export class HeaderComponent {
   }
 
 
-  @HostListener('window:scroll', ['$event']) // for window scroll events
+  @HostListener('window:scroll') // for window scroll events
   onScroll() {
     this.viewPosition = this.view.getScrollPosition();
 
@@ -51,4 +57,18 @@ export class HeaderComponent {
   openEnd(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
   }
+
+  ngOnInit() {
+    this.shippingcartService.cart$.subscribe(items => this.cart = items);
+  }
+
+  itemPrice(item: CartItems, value: string): number {
+    const number= Number(value);
+    item.total = number * item.price;
+    console.log("Amount: ", number, " - Item price: ", item.price);
+    
+
+    return item.total  = number * item.price;
+  }
 }
+

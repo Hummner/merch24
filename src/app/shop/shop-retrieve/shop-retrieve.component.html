@@ -1,0 +1,70 @@
+<section>
+    <div class="container-md">
+        <div class="row">
+            <div class="col-lg-6 col-xs-12 ">
+                <img src="assets/img/fanschals.jpg" alt="" style="width: 100%;">
+            </div>
+            <div class="col-lg-6 col-xs-12 ">
+                <h2>Cheerleader Schal</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint non excepturi dignissimos, consectetur
+                    veritatis ipsam porro minus voluptates laudantium perspiciatis eaque? Fuga in est hic maxime
+                    provident quasi cumque deleniti!</p>
+
+                <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate class="d-flex gap-4 align-items-center row">
+                    <div class="d-flex flex-column justify-content-center">
+                        <mat-label>Menge:</mat-label>
+                        <mat-select matNativeControl required placeholder="Menge" class="amount-selector"
+                            name="amountForm" [(ngModel)]="selectedAmount" #amountForm="ngModel">
+                            @for (number of amount; track number) {
+                            <mat-option [value]="number">{{number}}</mat-option>
+                            }
+                        </mat-select>
+                        <div *ngIf="amountForm.invalid && amountForm.touched" class="error">
+                            Wählen Sie bitte eine Menge.
+                        </div>
+
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+
+                        <mat-label>Größe:</mat-label>
+                        <mat-select matNativeControl required placeholder="Größe" class="amount-selector"
+                            name="sizeForm" [(ngModel)]="selectedSize" #sizeForm="ngModel">
+                            @for (size of sizes; track size) {
+                            <mat-option [value]="size" required>{{size}}</mat-option>
+                            }
+                        </mat-select>
+                        <div *ngIf="amountForm.invalid && amountForm.touched" class="error">
+                            Bitte wählen Sie eine Größe aus.
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column justify-content-center">
+
+                        <mat-label>Farbe:</mat-label>
+                        <mat-select matNativeControl required placeholder="Farbe" class="amount-selector"
+                            name="colorForm" [(ngModel)]="selectedColor" #colorForm="ngModel">
+                            @for (color of colors; track color) {
+                            <mat-option [value]="color" required>{{color}}</mat-option>
+                            }
+                        </mat-select>
+                        <div *ngIf="colorForm.invalid && colorForm.touched" class="error">
+                            Bitte wählen Sie eine Farbe aus.
+                        </div>
+                    </div>
+
+                    <h3>
+                        Preis: {{totalPrice | currency:'EUR'}}
+                    </h3>
+
+                    <button type="submit" class="btn btn-primary">In den Warenkorb</button>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
