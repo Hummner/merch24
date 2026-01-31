@@ -1,4 +1,4 @@
-import { Component, HostListener, TemplateRef, inject } from '@angular/core';
+import { Component, HostListener, OnInit, TemplateRef, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from "@angular/router";
@@ -21,7 +21,7 @@ import {MatBadgeModule} from '@angular/material/badge';
   styleUrl: './header.component.scss',
 
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   viewPosition!: [number, number];
   headerOpacity = true;
 
@@ -54,12 +54,14 @@ export class HeaderComponent {
     return this.headerOpacity ? 'opacity' : '-'
   }
 
-  openEnd(content: TemplateRef<any>) {
+  openCart(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
   }
 
   ngOnInit() {
+    this.shippingcartService.loadLocalStorageCart()
     this.shippingcartService.cart$.subscribe(items => this.cart = items);
+
   }
 
   itemPrice(item: CartItems, value: string): number {
@@ -70,5 +72,12 @@ export class HeaderComponent {
 
     return item.total  = number * item.price;
   }
+
+  deleteItemFromCart(item: CartItems) {
+    this.shippingcartService.delelteItem(item);
+  }
+
+  
+  
 }
 

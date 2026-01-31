@@ -23,6 +23,7 @@ export class ShopRetrieveComponent {
   selectedSize: string | null = null;
   productPrice = 10.00;
   productName = 'Produkt 1';
+  id = 1;
   shippoingcartService = inject(ShippingcartServiceService);
 
 
@@ -40,7 +41,8 @@ export class ShopRetrieveComponent {
         amount: this.selectedAmount!,
         color: this.selectedColor!,
         size: this.selectedSize!,
-        total: this.totalPrice
+        total: this.totalPrice,
+        id: this.id
       }
       this.shippoingcartService.addItem(data);
     }
