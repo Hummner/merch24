@@ -15,7 +15,7 @@
                         <mat-label>Menge:</mat-label>
                         <mat-select matNativeControl required placeholder="Menge" class="amount-selector"
                             name="amountForm" [(ngModel)]="selectedAmount" #amountForm="ngModel">
-                            @for (number of amount; track number) {
+                            @for (number of amount; track $index) {
                             <mat-option [value]="number">{{number}}</mat-option>
                             }
                         </mat-select>
@@ -29,11 +29,11 @@
                         <mat-label>Größe:</mat-label>
                         <mat-select matNativeControl required placeholder="Größe" class="amount-selector"
                             name="sizeForm" [(ngModel)]="selectedSize" #sizeForm="ngModel">
-                            @for (size of sizes; track size) {
+                            @for (size of sizesAvailable; track size) {
                             <mat-option [value]="size" required>{{size}}</mat-option>
                             }
                         </mat-select>
-                        <div *ngIf="amountForm.invalid && amountForm.touched" class="error">
+                        <div *ngIf="sizeForm.invalid && sizeForm.touched" class="error">
                             Bitte wählen Sie eine Größe aus.
                         </div>
                     </div>
@@ -41,9 +41,9 @@
                     <div class="d-flex flex-column justify-content-center">
 
                         <mat-label>Farbe:</mat-label>
-                        <mat-select matNativeControl required placeholder="Farbe" class="amount-selector"
+                        <mat-select matNativeControl required placeholder="Farbe" class="amount-selector" (selectionChange)="getSizes($event.value)"
                             name="colorForm" [(ngModel)]="selectedColor" #colorForm="ngModel">
-                            @for (color of colors; track color) {
+                            @for (color of getColors(); track color) {
                             <mat-option [value]="color" required>{{color}}</mat-option>
                             }
                         </mat-select>
