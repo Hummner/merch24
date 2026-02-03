@@ -59,7 +59,8 @@
             <img src="assets/img/medal.jpg" alt="">
             <div>
                 <p class="card-name m-0">{{item.name}}</p>
-                <p class="m-0">Größe: {{item.size}}</p>
+                <p class="m-0" *ngIf="item.size">Größe: {{item.size}}</p>
+                <p class="m-0">Farbe: {{item.color}}</p>
                 <p class="m-0">
                     Preis: {{item.total}} €
                 </p>

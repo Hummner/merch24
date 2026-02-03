@@ -2,69 +2,96 @@
     <div class="container-md">
         <div class="row">
             <div class="col-lg-6 col-xs-12 ">
-                <img src="assets/img/fanschals.jpg" alt="" style="width: 100%;">
+                <div id="mainCarousel" class="carousel slide mb-3">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let img of variantImages(); let i = index"
+                            [class.active]="i === selectedIndex">
+
+                            <img [src]="img" class="d-block w-100 main-img" alt="slide"
+                                style="width: 100%; max-height: 500px; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <img *ngFor="let img of variantImages(); let i = index" [src]="img" class="thumb"
+                        [class.active-thumb]="i === selectedIndex" (click)="selectImage(i)">
+                </div>
             </div>
             <div class="col-lg-6 col-xs-12 ">
-                <h2>Cheerleader Schal</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint non excepturi dignissimos, consectetur
-                    veritatis ipsam porro minus voluptates laudantium perspiciatis eaque? Fuga in est hic maxime
-                    provident quasi cumque deleniti!</p>
+                <h2 class="mb-3">{{article.name}}</h2>
+                <h4 class="mb-0">
+                    @if (selectedSize == undefined && sizesAvailable.length > 0) {
+                    Bitte Größe auswählen
+                    }
+                    @else {
+                    {{productPrice().toFixed(2).replace(".", ",")}} €
+                    }
 
-                <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate class="d-flex gap-4 align-items-center row">
-                    <div class="d-flex flex-column justify-content-center">
-                        <mat-label>Menge:</mat-label>
-                        <mat-select matNativeControl required placeholder="Menge" class="amount-selector"
-                            name="amountForm" [(ngModel)]="selectedAmount" #amountForm="ngModel">
+                </h4>
+                <p class="m-0">pro Stück excl. Versandkosten</p>
+                <p><img src="assets/icons/delivery_truck.svg" alt=""> Lieferzeit cirka 2 Wochen</p>
+                <div class="d-flex gap-4 align-items-start flex-column justify-content-center">
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold">Menge:</span>
+                        <mat-select required placeholder="Menge" class="amount-selector" [value]="selectedAmount"
+                            (selectionChange)="selectedAmount = $event.value">
                             @for (number of amount; track $index) {
-                            <mat-option [value]="number">{{number}}</mat-option>
+                            <mat-option [value]="number">{{number}} Stk</mat-option>
                             }
                         </mat-select>
-                        <div *ngIf="amountForm.invalid && amountForm.touched" class="error">
-                            Wählen Sie bitte eine Menge.
-                        </div>
-
                     </div>
-                    <div class="d-flex flex-column justify-content-center">
 
-                        <mat-label>Größe:</mat-label>
-                        <mat-select matNativeControl required placeholder="Größe" class="amount-selector"
-                            name="sizeForm" [(ngModel)]="selectedSize" #sizeForm="ngModel">
-                            @for (size of sizesAvailable; track size) {
-                            <mat-option [value]="size" required>{{size}}</mat-option>
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold">Farbe:</span>
+                        <div class="d-flex gap-1 flex-wrap">
+                            @for (color of colors(); track $index) {
+                            <div class="color-picker-radio" [ngStyle]="backgroundColor(color.toLocaleLowerCase())"
+                                [ngClass]="{'selected': selectedColor === color}"
+                                (click)="changeVariant(color.toLocaleLowerCase())">
+                                <div class="color-picker-radio-divider"></div>
+                            </div>
                             }
-                        </mat-select>
-                        <div *ngIf="sizeForm.invalid && sizeForm.touched" class="error">
-                            Bitte wählen Sie eine Größe aus.
                         </div>
                     </div>
+                    @if(this.sizesAvailable.length > 0) {
+                    <div>
+                        <span class="fw-bold">Größe:</span>
+                        <div class="d-flex gap-1">
+                            @for(size of sizesAvailable; track size) {
+                            <div class="size-badge" [ngClass]="{'selected': selectedSize === size }"
+                                (click)="changeSize(size)">
+                                <span>{{size}}</span>
+                            </div>
 
-                    <div class="d-flex flex-column justify-content-center">
-
-                        <mat-label>Farbe:</mat-label>
-                        <mat-select matNativeControl required placeholder="Farbe" class="amount-selector" (selectionChange)="getSizes($event.value)"
-                            name="colorForm" [(ngModel)]="selectedColor" #colorForm="ngModel">
-                            @for (color of getColors(); track color) {
-                            <mat-option [value]="color" required>{{color}}</mat-option>
                             }
-                        </mat-select>
-                        <div *ngIf="colorForm.invalid && colorForm.touched" class="error">
-                            Bitte wählen Sie eine Farbe aus.
                         </div>
+                        <p style="text-decoration: underline;">Größentabelle</p>
                     </div>
 
-                    <h3>
-                        Preis: {{totalPrice | currency:'EUR'}}
-                    </h3>
+                    }
 
-                    <button type="submit" class="btn btn-primary">In den Warenkorb</button>
-
-
-                </form>
-
+                    <button type="button" (click)="addToCart()" [disabled]="addButtonDisabled"
+                        [ngClass]="{disabled: addButtonDisabled}" class="btn btn-primary" style="width: 100%;">In
+                        den Warenkorb</button>
+                </div>
             </div>
         </div>
+        <div>
+            <h3 class="mt-5">Produktbeschreibung</h3>
+            <p>{{article.description}} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
+                laudantium,
+                eos molestias illo quisquam magnam dignissimos? Repellendus est mollitia eius, aut, provident
+                sapiente
+                excepturi perspiciatis eos explicabo sunt vero eveniet.</p>
+        </div>
     </div>
-
-
-
 </section>
+
+
+<button class="carousel-control-prev" type="button" (click)="prev()">
+    <span class="carousel-control-prev-icon"></span>
+</button>
+
+<button class="carousel-control-next" type="button" (click)="next()">
+    <span class="carousel-control-next-icon"></span>
+</button>

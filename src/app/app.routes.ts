@@ -27,7 +27,7 @@ export const routes: Routes = [
         }
     },
             {
-        path: "product/:id",
+        path: "shop/details/:slug",
         component: ShopRetrieveComponent,
         data: {
             title: "Shop | Merch24 – Merchandise & Branding aus Essen",

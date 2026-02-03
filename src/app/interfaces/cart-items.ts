@@ -4,6 +4,6 @@ export interface CartItems {
     price: number;
     amount: number;
     color: string;
-    size: string;
+    size: string | null;
     total?: number;
 }
