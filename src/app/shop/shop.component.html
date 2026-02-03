@@ -4,8 +4,6 @@
             @for (article of articles; track $index) {
 
             <mat-card class="shop-card col-sm-12 col-md-4 col-lg-3 mb-5" appearance="outlined" (click)="viewProductDetail(article.slug)">
-
-
                 <mat-card-header>
                     <mat-card-title class="fw-bold">{{article.name}}</mat-card-title>
                     <mat-card-subtitle>{{article.subtitle}}</mat-card-subtitle>

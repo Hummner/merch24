@@ -40,29 +40,24 @@ export class ShopRetrieveComponent {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const articleSlug = this.route.snapshot.paramMap.get('slug');
+    this.article = articlesDb.find(article => article.slug === articleSlug)!;
+    this.getColors();
 
     this.route.queryParamMap.subscribe(params => {
       const variant = params.get('color');
-      const articleSlug = this.route.snapshot.paramMap.get('slug');
-      this.article = articlesDb.find(article => article.slug === articleSlug)!;
-      console.log(articleSlug, this.article);
-      this.getColors();
-
+      
       if (variant) {
         this.selectedColor = variant;
         this.getVariant(variant)
 
-        console.log("uj varians: ", variant);
-
       } else {
         const firstVariant = Object.keys(this.article.variant)[0] || null;
-        console.log(firstVariant);
 
         if (firstVariant) {
           this.selectedColor = firstVariant;
           this.changeVariant(firstVariant);
           this.getVariant(firstVariant);
-
         }
       }
     })
@@ -111,6 +106,7 @@ export class ShopRetrieveComponent {
   changeVariant(color: string) {
     this.router.navigate([], {
       queryParams: { color: color },
+      replaceUrl: true,
     });
     this.selectedColor = color;
   }
