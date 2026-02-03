@@ -13,10 +13,11 @@
             <a [routerLink]="'/'" fragment="about_me">Über uns</a>
             <a [routerLink]="'/'" fragment="product">Produkte</a>
             <a routerLink="/contact">Kontakt</a>
-            <span class="cart-icon" (click)="openCart(content)"  matBadge="{{cart.length}}" matBadgePosition="after" matBadgeHidden="{{cart.length == 0}}"><img src="assets/icons/cart.svg" alt=""></span>
+            <span class="cart-icon" (click)="openCart(content)" matBadge="{{cart.length}}" matBadgePosition="after"
+                matBadgeHidden="{{cart.length == 0}}"><img src="assets/icons/cart.svg" alt=""></span>
         </nav>
         <div [matMenuTriggerFor]="mobileMenu" class="mobile-menu">
-            <img src="assets/icons/menu.svg" alt="" >
+            <img src="assets/icons/menu.svg" alt="">
         </div>
         <mat-menu #mobileMenu="matMenu">
             <div class="mobile-nav">
@@ -37,47 +38,53 @@
 
 
 <ng-template #content let-offcanvas>
-    <div class="offcanvas-header">
-        <h4 class="offcanvas-title">Warenkorb</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss()"></button>
-    </div>
-
-    @if (cart.length == 0) {
-    <div class="card mx-4">
-        <div class="card-body">
-            Dein Warenkorb is leer!
+    <div class="mx-4">
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" style="color: var(--primary-color);">Warenkorb</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss()"></button>
         </div>
-    </div>
-    }
-    @for (item of cart; track $index) {
 
-    <div class="card mx-4 my-1">
-        <div class="delete-icon" (click)="deleteItemFromCart(item)">
-            <img src="assets/icons/delete.svg" alt="delete">
-        </div>
-        <div class="card-body d-flex justify-content-between align-items-center">
-            <img src="assets/img/medal.jpg" alt="">
-            <div>
-                <p class="card-name m-0">{{item.name}}</p>
-                <p class="m-0" *ngIf="item.size">Größe: {{item.size}}</p>
-                <p class="m-0">Farbe: {{item.color}}</p>
-                <p class="m-0">
-                    Preis: {{item.total}} €
-                </p>
+        @if (cart.length == 0) {
+        <div class="card mx-4">
+            <div class="card-body">
+                Dein Warenkorb is leer!
             </div>
-
-            <div>
-                <label for="amount{{item.name}}">Menge:</label>
-                <input #amount style="width: 50px;" min="1" type="number" [value]="item.amount" id="amount{{item.name}}"
-                    (change)="itemPrice(item, amount.value)">
-            </div>
-
         </div>
+        }
+        @for (item of cart; track $index) {
+
+        <div class="card mb-3">
+
+            <div class="card-body d-flex justify-content-between align-items-start">
+
+                <div class="d-flex align-items-start">
+                    <img [src]="item.image" alt="">
+                    <div>
+                        <h5 class="m-0">{{item.name}}</h5>
+                        <p class="m-0" *ngIf="item.size">Größe: {{item.size}}</p>
+                        <p class="m-0">Menge: {{item.amount}}</p>
+                        <p class="m-0 fw-bold">
+                            Preis: {{itemPrice(item, item.amount)}} €
+                        </p>
+                    </div>
+                </div>
+                <div class="delete-icon" (click)="deleteItemFromCart(item)">
+                    <img src="assets/icons/delete.svg" alt="delete">
+                </div>
+            </div>
+        </div>
+        }
+        <div class="divider"></div>
+        <p class="fw-bold width-100 mb-0" style="color: var(--primary-color);">Gesamtpreis:
+            {{totalPrice.toFixed(2).replace('.', ',')}} €</p>
+        <p style="color: var(--primary-color);">(incl. MwSt. ohne Versandkosten)
+        </p>
+        <div class="d-flex justify-content-center mt-3 mb-5">
+            <button class="btn btn-primary w-100" (click)="goToCheckout(offcanvas)">Zur Kasse</button>
+        </div>
+
+
+
+
     </div>
-    }
-
-
-
-
-
 </ng-template>

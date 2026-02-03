@@ -9,14 +9,15 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
 import { ShippingcartServiceService } from '../../services/shippingcart-service.service';
 import { CartItems } from '../../interfaces/cart-items';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
+import { A11yModule } from "@angular/cdk/a11y";
 
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule, MatInputModule, MatBadgeModule],
+  imports: [MatButtonModule, MatMenuModule, RouterLink, CommonModule, MatInputModule, MatBadgeModule, A11yModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
   private offcanvasService = inject(NgbOffcanvas);
   private shippingcartService = inject(ShippingcartServiceService);
   cart: CartItems[] = [];
+  totalPrice = this.totalCartPrice();
 
 
 
@@ -50,6 +52,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  totalCartPrice() {
+    return this.cart.reduce((acc, item) => acc + (item.price * item.amount), 0);
+  }
+
   getOpacity() {
     return this.headerOpacity ? 'opacity' : '-'
   }
@@ -60,24 +66,33 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.shippingcartService.loadLocalStorageCart()
-    this.shippingcartService.cart$.subscribe(items => this.cart = items);
+    this.shippingcartService.cart$.subscribe(items => {
+      this.cart = items;
+      this.totalPrice = this.totalCartPrice();});
 
   }
 
-  itemPrice(item: CartItems, value: string): number {
-    const number= Number(value);
+  itemPrice(item: CartItems, value: number): number {
+    console.log(item);
+
+    const number = Number(value);
     item.total = number * item.price;
     console.log("Amount: ", number, " - Item price: ", item.price);
-    
 
-    return item.total  = number * item.price;
+
+    return number * item.price;
   }
 
   deleteItemFromCart(item: CartItems) {
     this.shippingcartService.delelteItem(item);
   }
 
-  
-  
+
+  goToCheckout(offcanvas: any) {
+    offcanvas.close();
+    // Navigate to checkout page
+  }
+
+
 }
 

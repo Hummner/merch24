@@ -26,9 +26,6 @@ export class ShopRetrieveComponent {
   selectedColor!: string;
   selectedSize!: string | undefined;
   selectedIndex = 0;
-
-  productName = 'Produkt 1';
-  id = 1;
   shippoingcartService = inject(ShippingcartServiceService);
 
   sizesAvailable: string[] = [];
@@ -45,7 +42,7 @@ export class ShopRetrieveComponent {
   ngOnInit() {
 
     this.route.queryParamMap.subscribe(params => {
-      const variant = params.get('variant');
+      const variant = params.get('color');
       const articleSlug = this.route.snapshot.paramMap.get('slug');
       this.article = articlesDb.find(article => article.slug === articleSlug)!;
       console.log(articleSlug, this.article);
@@ -63,12 +60,6 @@ export class ShopRetrieveComponent {
 
         if (firstVariant) {
           this.selectedColor = firstVariant;
-          this.router.navigate([],
-            {
-              queryParams: { variant: firstVariant },
-            }
-          )
-
           this.changeVariant(firstVariant);
           this.getVariant(firstVariant);
 
@@ -107,8 +98,8 @@ export class ShopRetrieveComponent {
 
   getVariantImages(color: string) {
     const variants = this.article.variant[color] ?? [];
-      const images = variants[0]?.images || [];
-      return this.variantImages.set(images);
+    const images = variants[0]?.images || [];
+    return this.variantImages.set(images);
   }
 
   changeSize(size: string) {
@@ -119,7 +110,7 @@ export class ShopRetrieveComponent {
 
   changeVariant(color: string) {
     this.router.navigate([], {
-      queryParams: { variant: color },
+      queryParams: { color: color },
     });
     this.selectedColor = color;
   }
@@ -128,25 +119,25 @@ export class ShopRetrieveComponent {
   addToCart() {
     this.checkInputs();
     const data: CartItems = {
-      name: this.productName,
+      name: this.article.name,
       price: this.productPrice(),
       amount: this.selectedAmount!,
       color: this.selectedColor!,
       size: this.selectedSize || null,
       total: this.totalPrice,
-      id: this.id
+      sku: this.article.variant[this.selectedColor]?.[0]?.sku || '',
+      image: this.variantImages()[0] || ''
     }
+
     this.shippoingcartService.addItem(data);
   }
 
   checkInputs() {
-    if (!this.selectedColor) {
-      if (this.sizesAvailable.length > 0) {
-        this.addButtonDisabled = true;
-        return;
-      }
+    if (!this.selectedColor || (this.sizesAvailable.length > 0 && !this.selectedSize)) {
+      return this.addButtonDisabled = true;
     }
-    this.addButtonDisabled = false;
+
+    return this.addButtonDisabled = false;
   }
 
 
@@ -156,8 +147,8 @@ export class ShopRetrieveComponent {
 
   getSizes(color: string): string[] {
     const variants = this.article.variant[color] ?? [];
-    this.sizesAvailable = variants.map(variant => variant.size? variant.size : '').filter(size => size !== '');
-    
+    this.sizesAvailable = variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
+
     if (this.sizesAvailable.includes(this.selectedSize!)) {
       return this.sizesAvailable;
     } else {

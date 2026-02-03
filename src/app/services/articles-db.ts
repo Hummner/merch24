@@ -12,6 +12,7 @@ export const articlesDb = [
                 ],
             'blue': [{ id: 3, color: 'blue', size: 'L', stock: 8, sku: 'FT-BLU-L', price: 19.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-blue.png'] }]
         },
+        subtitle: 'Bequeme T-Shirts für jeden Tag.'
 
     },
     {
@@ -23,7 +24,8 @@ export const articlesDb = [
             'red': [{ id: 1, color: 'red', size: 'M', stock: 10, sku: 'FT-RED-M', price: 59.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] },
             { id: 2, color: 'red', size: 'L', stock: 5, sku: 'FT-RED-L', price: 64.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }],
             'blue': [{ id: 3, color: 'blue', size: 'L', stock: 8, sku: 'FT-BLU-L', price: 59.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-blue.png'] }]
-        }
+        },
+        subtitle: 'Bequeme Hoodies für jeden Tag.'
     },
     {
         name: 'Frohnhausen Pullover',
@@ -34,7 +36,8 @@ export const articlesDb = [
             'red': [{ id: 1, color: 'red', size: 'M', stock: 10, sku: 'FT-RED-M', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] },
             { id: 2, color: 'red', size: 'L', stock: 5, sku: 'FT-RED-L', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }],
             'blue': [{ id: 3, color: 'blue', size: 'L', stock: 8, sku: 'FT-BLU-L', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-blue.png'] }]
-        }
+        },
+        subtitle: 'Bequeme Pullover für jeden Tag.'
     },
     {
         name: 'Tasse Frohnhausen',
@@ -43,6 +46,7 @@ export const articlesDb = [
         morePricesExist: false,
         variant: {
             'red': [{ id: 1, color: 'red', stock: 10, sku: 'FTA-RED-M', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }]
-        }
+        },
+        subtitle: 'Tassen für jeden Tag.'
     }
 ]

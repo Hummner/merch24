@@ -10,6 +10,8 @@ export class ShippingcartServiceService {
   cart$ = this.cartSubject.asObservable()
 
 
+
+
   loadLocalStorageCart() {
     const cart = localStorage.getItem("shippingcart")
     if (cart) {
@@ -28,7 +30,7 @@ export class ShippingcartServiceService {
   }
 
   checkItemDuplicate(newItem: CartItems, cart: CartItems[]) {
-    const item = cart.find(i => newItem.id === i.id);
+    const item = cart.find(i => newItem.sku === i.sku);
 
     if (item) {
       this.addAmount(newItem, item, cart)
