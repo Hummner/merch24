@@ -48,5 +48,33 @@ export const articlesDb = [
             'red': [{ id: 1, color: 'red', stock: 10, sku: 'FTA-RED-M', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }]
         },
         subtitle: 'Tassen für jeden Tag.'
-    }
+    },
+    // {   
+    //     name: 'Frohnhausen Pullover',
+    //     description: 'Frohnhausen Pullover in verschiedenen Farben und Größen.',
+    //     slug: 'frohnhausen-pullover',
+    //     colors: {
+    //         red: {
+    //             images: [],
+    //             variants : [
+    //                 {
+    //                     color: "red",
+    //                     size: "M",
+    //                     price: 22,
+    //                     stock: 200,
+
+    //                 }
+    //             ]
+    //         }
+    //     }
+    // }
+
 ]
+
+
+
+
+
+
+
+
