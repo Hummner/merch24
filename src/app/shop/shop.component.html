@@ -8,9 +8,9 @@
                     <mat-card-title class="fw-bold">{{article.name}}</mat-card-title>
                     <mat-card-subtitle>{{article.subtitle}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image src="assets/img/t-shirt/frohnhausen-tshirt-blue.png" alt="Photo of a product">
+                <img mat-card-image [src]="getFirstColorImage(article)" alt="Photo of a product">
                 <mat-card-content>
-                    <p class="m-0"><span>{{article.morePricesExist ? 'ab ' : ''}}</span> {{getFirstVariantPrice(article).toFixed(2).replace('.', ',')}} €</p>
+                    <p class="m-0"><span>{{article.morePricesExist ? 'ab ' : ''}}</span> {{getLowestPrice(article).toFixed(2).replace('.', ',')}} €</p>
                     <p class="fw-normal"><img src="assets/icons/delivery_truck.svg" alt="">Lieferzeit cirka 2 Wochen</p>
                 </mat-card-content>
             </mat-card>

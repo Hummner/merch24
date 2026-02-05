@@ -1,12 +1,13 @@
-import { ArticleVariant } from "./article-variant";
+import { ArticleColors } from "./article-colors";
 
-export type VariantsByColor = Partial<Record<string, ArticleVariant[]>>;
+export type Colors = Record<string, ArticleColors>;
 
 export interface Article {
 name: string;
 subtitle: string;
 description: string;
 slug: string;
-variant: VariantsByColor;
+colors: Colors;
 morePricesExist?: boolean;
+moreVariantsExist?: boolean
 }

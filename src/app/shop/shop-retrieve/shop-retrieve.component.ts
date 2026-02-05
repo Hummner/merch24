@@ -32,6 +32,7 @@ export class ShopRetrieveComponent {
   productPrice = signal<number>(0);
   colors = signal<string[]>([]);
   variantImages = signal<string[]>([]);
+  varaintSize = signal<string[]>([]);
   addButtonDisabled = true;
 
 
@@ -46,13 +47,13 @@ export class ShopRetrieveComponent {
 
     this.route.queryParamMap.subscribe(params => {
       const variant = params.get('color');
-      
+
       if (variant) {
         this.selectedColor = variant;
         this.getVariant(variant)
 
       } else {
-        const firstVariant = Object.keys(this.article.variant)[0] || null;
+        const firstVariant = Object.keys(this.article.colors)[0] || null;
 
         if (firstVariant) {
           this.selectedColor = firstVariant;
@@ -72,28 +73,31 @@ export class ShopRetrieveComponent {
 
 
   getColors() {
-    if (this.article.variant) {
-      this.colors.set(Object.keys(this.article.variant));
+    if (this.article.colors) {
+      this.colors.set(Object.keys(this.article.colors));
     }
     return this.colors();
   }
 
   getProductPrice(color: string, size: string) {
-    const variants = this.article.variant[color] ?? [];
-    if (size && this.article.variant[color]) {
-      const price = variants.find(variant => variant.size === size)?.price;
+    const color_key = this.article.colors[color];
+    if (size && color_key) {
+      const price = color_key.variants.find(v => v.size === size)?.price;
       console.log(price);
       this.productPrice.set(price || 0);
-    } else if (this.article.variant[color]?.length == 1) {
-      const price = variants[0]?.price;
+    } else if (color_key?.variants.length == 1) {
+      const price = color_key.variants[0].price;
       this.productPrice.set(price || 0);
     }
     return this.totalPrice
   }
 
   getVariantImages(color: string) {
-    const variants = this.article.variant[color] ?? [];
-    const images = variants[0]?.images || [];
+    const color_key = this.article.colors[color];
+    const images = color_key.images;
+    if (images.length == 0) {
+      return this.variantImages.set(['/assets/img/coming.jpg']);
+    }
     return this.variantImages.set(images);
   }
 
@@ -121,11 +125,17 @@ export class ShopRetrieveComponent {
       color: this.selectedColor!,
       size: this.selectedSize || null,
       total: this.totalPrice,
-      sku: this.article.variant[this.selectedColor]?.[0]?.sku || '',
+      sku: this.getSku(),
       image: this.variantImages()[0] || ''
     }
 
     this.shippoingcartService.addItem(data);
+  }
+
+  getSku() {
+    const variants = this.article.colors[this.selectedColor].variants;
+    const size = variants.find(v => v.size == this.selectedSize)?.size;
+    return size || 'No size'
   }
 
   checkInputs() {
@@ -142,8 +152,8 @@ export class ShopRetrieveComponent {
   }
 
   getSizes(color: string): string[] {
-    const variants = this.article.variant[color] ?? [];
-    this.sizesAvailable = variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
+    const color_key = this.article.colors[color];
+    this.sizesAvailable = color_key.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
 
     if (this.sizesAvailable.includes(this.selectedSize!)) {
       return this.sizesAvailable;
@@ -154,8 +164,8 @@ export class ShopRetrieveComponent {
   }
 
   getPrice(color: string, size: string): number | null {
-    const variants = this.article.variant[color] ?? [];
-    const variant = variants.find(variant => variant.size === size);
+    const color_key = this.article.colors[color];
+    const variant = color_key.variants.find(variant => variant.size === size);
     return variant ? variant.price : null;
   }
 
