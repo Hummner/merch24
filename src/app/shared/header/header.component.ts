@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, TemplateRef, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { ViewportScroller } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -12,6 +12,7 @@ import { CartItems } from '../../interfaces/cart-items';
 import { MatBadgeModule } from '@angular/material/badge';
 import { A11yModule } from "@angular/cdk/a11y";
 import { categories } from '../../services/categories';
+import slugify from '../../../../node_modules/slugify'
 
 
 
@@ -33,12 +34,13 @@ export class HeaderComponent implements OnInit {
   cart: CartItems[] = [];
   totalPrice = this.totalCartPrice();
   categories = categories
-  subcategories = signal<[]>([])
-  isSubCatOpen = false
+  subcategories = signal<[{name:string, productategories : string[]}] | [] >([])
+  isSubCatOpen = false;
+  activeCategory = signal<string>('')
 
 
 
-  constructor(private view: ViewportScroller) {
+  constructor(private view: ViewportScroller, private router: Router) {
     this.viewPosition = view.getScrollPosition()
 
 
@@ -99,14 +101,20 @@ export class HeaderComponent implements OnInit {
     // Navigate to checkout page
   }
 
-  showSubcategrioes(category: any) {
-    this.subcategories.set(category.subCategories)
+  showSubcategrioes(category: {name: string, subcategories: [{name:string, productategories : string[]}]}) {
+    this.subcategories.set(category.subcategories)
+    this.activeCategory.set(category.name)
     this.isSubCatOpen = true
   }
 
   hideSubcategrioes() {
     this.subcategories.set([])
+    this.activeCategory.set('')
     this.isSubCatOpen = false
+  }
+
+  navigateToSubcategory(subcategory: string, productcategory: string) {
+    this.router.navigate(['/shop/category/', slugify(this.activeCategory()).toLowerCase(), slugify(subcategory).toLowerCase(), slugify(productcategory).toLowerCase()])
   }
 
 

@@ -23,26 +23,39 @@
 
 
     </section>
-    <section class="sub-header">
-        <div class="content">
+    <section class="sub-header" (mouseleave)="hideSubcategrioes()">
+        <div class="header-extansion">
             <div class="shop-category-header">
                 <div class="main-categories">
-                    @for (category of categories; track $index) {
-                    <div (mouseenter)="showSubcategrioes(category)" (mouseleave)="hideSubcategrioes()">
-                        <h4>
+                    @for (category of categories; track $index;) {
+                    <div (mouseenter)="showSubcategrioes(category)" class="pe-pointer">
+                        <h4 [ngClass]="{'active-cat': activeCategory() == category.name}">
                             {{category.name}}
                         </h4>
                     </div>
+
                     }
                 </div>
             </div>
 
 
+
         </div>
-        <div class="content subcategories" *ngIf="isSubCatOpen">
-            @for (subcatogory of subcategories(); track $index) {
-                <p>{{subcatogory}}</p>
-            }
+        <div class="subcategories" *ngIf="isSubCatOpen">
+            <div class="d-flex justify-content-evenly w-100 mw-1920">
+                @for (subcatogory of subcategories(); track $index) {
+                <div class="d-flex flex-column">
+                    <h5 class="pe-pointer">{{subcatogory.name}}</h5>
+                    <div class="product-categories">
+                        @for (productategory of subcatogory.productategories; track $index) {
+                        <p class="pe-pointer" (click)="navigateToSubcategory(subcatogory.name, productategory)">{{productategory}}</p>
+
+                        }
+                    </div>
+                </div>
+
+                }
+            </div>
 
         </div>
     </section>

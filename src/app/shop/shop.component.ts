@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { articlesDb } from '../services/articles-db';
 import { ArticleVariant } from '../interfaces/article-variant';
 import { Article } from '../interfaces/article';
+import { ActivatedRoute } from '@angular/router';
 
 
 interface FoodNode {
@@ -25,11 +26,27 @@ interface FoodNode {
 export class ShopComponent implements OnInit {
 
   articles = articlesDb;
+  category!: string | null;
+  subcategory!: string | null;
+  productcategory!: string | null
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
+    this.category = this.route.snapshot.paramMap.get('category');
+    this.subcategory = this.route.snapshot.paramMap.get('subcategory');
+    this.productcategory = this.route.snapshot.paramMap.get('productcategory');
+
+    this.loadPage();
+
+  }
+
+  loadPage() {
+    if (this.category && this.subcategory && this.productcategory) {
+      
+    }
   }
 
   viewProductDetail(slug: string) {

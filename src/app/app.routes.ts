@@ -9,6 +9,7 @@ import { NewsComponent } from './news/news.component';
 import { ShopComponent } from './shop/shop.component';
 import { ShopRetrieveComponent } from './shop/shop-retrieve/shop-retrieve.component';
 import { OrderComponent } from './order/order.component';
+import { ShopCategoryComponent } from './shop-category/shop-category.component';
 
 export const routes: Routes = [
     {
@@ -27,7 +28,7 @@ export const routes: Routes = [
             description: "Unsere Produkte für Fans aller Sportarten – individuell gestaltet, schnell produziert und fair preislich. Direkt aus dem Ruhrgebiet."
         }
     },
-        {
+    {
         path: "order",
         component: OrderComponent,
     },
@@ -38,6 +39,10 @@ export const routes: Routes = [
             title: "Shop | Merch24 – Merchandise & Branding aus Essen",
             description: "Unsere Produkte für Fans aller Sportarten – individuell gestaltet, schnell produziert und fair preislich. Direkt aus dem Ruhrgebiet."
         }
+    },
+    {
+        path: "shop/category/:category/:subcategory/:productcategory",
+        component: ShopComponent
     },
     {
         path: "news",

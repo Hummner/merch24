@@ -1,40 +1,61 @@
 export const categories: any = [
     {
-        name: "Collections",
-        subCategories: [
+        name: "Team Collections",
+        subcategories: [
             {
-                name: "Eagels"
+                name: "Eishockey",
+                productategories: [
+                    'Herne Ev', 'Eagles', 'DEG'
+                ]
             },
             {
-                name: "Neuser HV"
+                name: "Inliner",
+                productategories: [
+                    'Krefeld HV', 'Herne HV'
+                ]
             },
             {
-                name: "Herne EV"
+                name: "Fußball",
+                productategories: [
+                    'RWE', 'Schale 04', 'Köln FC'
+                ]
             },
             {
-                name: "DEG"
+                name: "Hanball",
+                productategories: [
+                    'Essen', 'Bremen', 'München'
+                ]
             }
         ]
     },
     {
         name: "Geschenke",
-        subCategories: [
+        subcategories: [
             {
                 name: "Tassen"
             }
         ]
     },
     {
-        name: "Kleidung",
-        subCategories: [
+        name: "Bekleidung",
+        subcategories: [
             {
-                name: "T-shirts"
+                name: "Männer",
+                productategories: [
+                    'T-shirt', 'Hoddie', 'Caps', 'Trikot', 'Schals'
+                ]
             },
             {
-                name: "Hoodies"
+                name: "Frauen",
+                productategories: [
+                    'T-shirt', 'Hoddie', 'Caps', 'Trikot', 'Schals'
+                ]
             },
             {
-                name: "Mützen"
+                name: "Kids",
+                productategories: [
+                    'T-shirt', 'Hoddie', 'Caps', 'Trikot', 'Schals'
+                ]
             }
         ]
     }

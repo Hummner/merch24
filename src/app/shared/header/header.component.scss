@@ -24,29 +24,61 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-color);
+    flex-direction: column;
+
     width: 100%;
 }
 
 
 
 .main-categories {
-    padding: 8px 0;
+    padding: 12px 64px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 48px;
     position: relative;
+    max-width: 1920px;
+    width: 100%;
 
-    >h4 {
-        color: white;
+    h4 {
+        color: var(--bg-color);
         margin: 0;
     }
 }
 
 .subcategories {
-    position: absolute;
-    bottom: 0;
+    background-color: var(--bg-color);
+    padding: 12px 64px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.shop-category-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.header-extansion {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary-color);
+    width: 100%;
+}
+
+.active-cat {
+    text-decoration: underline;
+    
+}
+
+.pe-pointer {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 ::ng-deep .offcanvas {
@@ -167,6 +199,10 @@ nav {
 
         }
     }
+}
+
+.mw-1920 {
+    max-width: 1920px !important;
 }
 
 @media (max-width: 1024px) {
