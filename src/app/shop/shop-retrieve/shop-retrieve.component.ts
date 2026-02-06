@@ -93,7 +93,7 @@ export class ShopRetrieveComponent {
   }
 
   getVariantImages(color: string) {
-    const color_key = this.article.colors[color];
+    const color_key = this.article.colors[color]!;
     const images = color_key.images;
     if (images.length == 0) {
       return this.variantImages.set(['/assets/img/coming.jpg']);
@@ -133,7 +133,7 @@ export class ShopRetrieveComponent {
   }
 
   getSku() {
-    const variants = this.article.colors[this.selectedColor].variants;
+    const variants = this.article.colors[this.selectedColor]!.variants;
     const size = variants.find(v => v.size == this.selectedSize)?.size;
     return size || 'No size'
   }
@@ -152,7 +152,7 @@ export class ShopRetrieveComponent {
   }
 
   getSizes(color: string): string[] {
-    const color_key = this.article.colors[color];
+    const color_key = this.article.colors[color]!;
     this.sizesAvailable = color_key.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
 
     if (this.sizesAvailable.includes(this.selectedSize!)) {
@@ -164,15 +164,17 @@ export class ShopRetrieveComponent {
   }
 
   getPrice(color: string, size: string): number | null {
-    const color_key = this.article.colors[color];
+    const color_key = this.article.colors[color]!;
     const variant = color_key.variants.find(variant => variant.size === size);
     return variant ? variant.price : null;
   }
 
 
   backgroundColor(color: string) {
+    const hex = this.article.colors[color]?.hex
+
     return {
-      'background-color': color.toLowerCase(), important: 'true'
+      'background-color': hex, important: 'true'
     }
   }
 

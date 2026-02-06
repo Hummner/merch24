@@ -1,63 +1,14 @@
 export const articlesDb = [
-    // {
-    //     name: 'Frohnhausen T-Shirt',
-    //     description: 'Frohnhausen T-Shirt in verschiedenen Farben und Größen.',
-    //     slug: 'frohnhausen-tshirt',
-    //     morePricesExist: true,
-    //     variant: {
-    //         'red':
-    //             [
-    //                 { id: 1, color: 'red', size: 'M', stock: 10, sku: 'FT-RED-M', price: 19.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png', 'assets/img/t-shirt/cyan.png'] },
-    //                 { id: 2, color: 'red', size: 'L', stock: 5, sku: 'FT-RED-L', price: 26.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }
-    //             ],
-    //         'blue': [{ id: 3, color: 'blue', size: 'L', stock: 8, sku: 'FT-BLU-L', price: 19.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-blue.png'] }]
-    //     },
-    //     subtitle: 'Bequeme T-Shirts für jeden Tag.'
-
-    // },
-    // {
-    //     name: 'Frohnhausen Hoodie',
-    //     description: 'Frohnhausen Hoodie in verschiedenen Farben und Größen.',
-    //     slug: 'frohnhausen-hoodie',
-    //     morePricesExist: true,
-    //     variant: {
-    //         'red': [{ id: 1, color: 'red', size: 'M', stock: 10, sku: 'FT-RED-M', price: 59.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] },
-    //         { id: 2, color: 'red', size: 'L', stock: 5, sku: 'FT-RED-L', price: 64.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }],
-    //         'blue': [{ id: 3, color: 'blue', size: 'L', stock: 8, sku: 'FT-BLU-L', price: 59.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-blue.png'] }]
-    //     },
-    //     subtitle: 'Bequeme Hoodies für jeden Tag.'
-    // },
-    // {
-    //     name: 'Frohnhausen Pullover',
-    //     description: 'Frohnhausen Pullover in verschiedenen Farben und Größen.',
-    //     slug: 'frohnhausen-pullover',
-    //     morePricesExist: false,
-    //     variant: {
-    //         'red': [{ id: 1, color: 'red', size: 'M', stock: 10, sku: 'FT-RED-M', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] },
-    //         { id: 2, color: 'red', size: 'L', stock: 5, sku: 'FT-RED-L', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }],
-    //         'blue': [{ id: 3, color: 'blue', size: 'L', stock: 8, sku: 'FT-BLU-L', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-blue.png'] }]
-    //     },
-    //     subtitle: 'Bequeme Pullover für jeden Tag.'
-    // },
-    // {
-    //     name: 'Tasse Frohnhausen',
-    //     description: 'Frohnhausen Tasse in verschiedenen Farben und Größen.',
-    //     slug: 'frohnhausen-tasse',
-    //     morePricesExist: false,
-    //     variant: {
-    //         'red': [{ id: 1, color: 'red', stock: 10, sku: 'FTA-RED-M', price: 44.99, images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'] }]
-    //     },
-    //     subtitle: 'Tassen für jeden Tag.'
-    // },
     {
         name: 'Frohnhausen Pullover',
         description: 'Frohnhausen Pullover in verschiedenen Farben und Größen.',
         slug: 'frohnhausen-pullover',
         subtitle: 'Tassen für jeden Tag',
-        morePricesExist: false,
+        morePricesExist: true,
         colors: {
             red: {
                 images: ['assets/img/t-shirt/frohnhausen-tshirt-red.png'],
+                hex: "#ff0000",
                 variants: [
                     {
                         id: 1,
@@ -75,6 +26,113 @@ export const articlesDb = [
                         sale_price: 19,
                         stock: 200,
                         sku: "FP-RED-L"
+
+                    }
+
+                ]
+            },
+            cyan: {
+                images: ['assets/img/t-shirt/cyan.png'],
+                hex: "#00e1ff",
+                variants: [
+                    {
+                        id: 1,
+                        size: "M",
+                        price: 26,
+                        sale_price: 19,
+                        stock: 200,
+                        sku: "FP-RED-M"
+
+                    },
+                    {
+                        id: 2,
+                        size: "L",
+                        price: 22,
+                        sale_price: 19,
+                        stock: 200,
+                        sku: "FP-RED-L"
+
+                    }
+
+                ]
+            }
+        }
+    },
+    {
+        name: 'Sons of Ruhrpott',
+        description: 'Sons of Ruhrpott in verschiedenen Größen.',
+        slug: 'sons-of-ruhrpott',
+        subtitle: 'Ruhrpott Collection',
+        morePricesExist: true,
+        colors: {
+            black: {
+                images: ['assets/img/t-shirt/sons-of-ruhrpott-front.png', 'assets/img/t-shirt/sons-of-ruhrpott-back.png'],
+                hex: "#000000",
+                variants: [
+                    {
+                        id: 1,
+                        size: "M",
+                        price: 49.99,
+                        sale_price: 49.99,
+                        stock: 200,
+                        sku: "FP-RED-M"
+
+                    },
+                    {
+                        id: 2,
+                        size: "L",
+                        price: 59.99,
+                        sale_price: 49.99,
+                        stock: 200,
+                        sku: "FP-RED-L"
+
+                    }
+
+                ]
+            }
+        }
+    },
+    {
+        name: 'Kaffebecher',
+        description: 'Love my Lif...',
+        slug: 'coffe-cup',
+        subtitle: 'Ruhrpott Collection',
+        morePricesExist: true,
+        colors: {
+            white: {
+                images: ['assets/img/t-shirt/mug-hockey.png'],
+                hex: "#ffffff",
+                variants: [
+                    {
+                        id: 1,
+                        price: 49.99,
+                        sale_price: 49.99,
+                        stock: 200,
+                        sku: "FP-RED-M"
+
+                    }
+                ]
+            }
+        }
+    },
+    {
+        name: 'Love Hockey T-Shirt',
+        description: 'Love Hockey',
+        slug: 'love-hockey-t-shirt',
+        subtitle: 'Hockey Collection',
+        morePricesExist: true,
+        colors: {
+            white: {
+                images: ['assets/img/t-shirt/hockey-tshirt-white-front.png', 'assets/img/t-shirt/hockey-tshirt-white-back.png'],
+                hex: "#ffffff",
+                variants: [
+                    {
+                        id: 1,
+                        size: "M",
+                        price: 49.99,
+                        sale_price: 49.99,
+                        stock: 200,
+                        sku: "FP-RED-M"
 
                     }
                 ]
