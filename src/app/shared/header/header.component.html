@@ -1,40 +1,66 @@
-<section [ngClass]="getOpacity()">
-    <div class="content">
-        <div class="logo">
-            <a [routerLink]="'/'" fragment="home"><img src="assets/img/logo/logo.png" alt=""></a>
-            <span>Deine Agentur für alles</span>
-        </div>
+<header>
+    <section [ngClass]="getOpacity()" class="main-header">
+        <div class="content">
 
-
-
-        <nav>
-            <a [routerLink]="'/'">Home</a>
-            <a [routerLink]="'/shop'">Shop</a>
-            <a [routerLink]="'/'" fragment="about_me">Über uns</a>
-            <a [routerLink]="'/'" fragment="product">Produkte</a>
-            <a routerLink="/contact">Kontakt</a>
-            <span class="cart-icon" (click)="openCart(content)" matBadge="{{cart.length}}" matBadgePosition="after"
-                matBadgeHidden="{{cart.length == 0}}"><img src="assets/icons/cart.svg" alt=""></span>
-        </nav>
-        <div [matMenuTriggerFor]="mobileMenu" class="mobile-menu">
-            <img src="assets/icons/menu.svg" alt="">
-        </div>
-        <mat-menu #mobileMenu="matMenu">
-            <div class="mobile-nav">
-                <a [routerLink]="'/'" fragment="home">Home</a>
+            <div class="logo">
+                <a [routerLink]="'/'" fragment="home"><img src="assets/img/logo/logo.png" alt=""></a>
+                <span>Deine Agentur für alles</span>
+            </div>
+            <nav>
+                <a [routerLink]="'/'">Home</a>
+                <a [routerLink]="'/shop'">Shop</a>
                 <a [routerLink]="'/'" fragment="about_me">Über uns</a>
                 <a [routerLink]="'/'" fragment="product">Produkte</a>
                 <a routerLink="/contact">Kontakt</a>
+                <span class="cart-icon" (click)="openCart(content)" matBadge="{{cart.length}}" matBadgePosition="after"
+                    matBadgeHidden="{{cart.length == 0}}"><img src="assets/icons/cart.svg" alt=""></span>
+            </nav>
+            <div [matMenuTriggerFor]="mobileMenu" class="mobile-menu">
+                <img src="assets/icons/menu.svg" alt="">
             </div>
 
-        </mat-menu>
+        </div>
 
 
+    </section>
+    <section class="sub-header">
+        <div class="content">
+            <div class="shop-category-header">
+                <div class="main-categories">
+                    @for (category of categories; track $index) {
+                    <div (mouseenter)="showSubcategrioes(category)" (mouseleave)="hideSubcategrioes()">
+                        <h4>
+                            {{category.name}}
+                        </h4>
+                    </div>
+                    }
+                </div>
+            </div>
+
+
+        </div>
+        <div class="content subcategories" *ngIf="isSubCatOpen">
+            @for (subcatogory of subcategories(); track $index) {
+                <p>{{subcatogory}}</p>
+            }
+
+        </div>
+    </section>
+
+</header>
+
+
+
+
+<mat-menu #mobileMenu="matMenu">
+    <div class="mobile-nav">
+        <a [routerLink]="'/'" fragment="home">Home</a>
+        <a [routerLink]="'/'" fragment="about_me">Über uns</a>
+        <a [routerLink]="'/'" fragment="product">Produkte</a>
+        <a routerLink="/contact">Kontakt</a>
     </div>
 
-
-</section>
-
+</mat-menu>
 
 
 <ng-template #content let-offcanvas>

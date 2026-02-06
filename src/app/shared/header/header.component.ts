@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, TemplateRef, inject } from '@angular/core';
+import { Component, HostListener, OnInit, TemplateRef, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from "@angular/router";
@@ -11,6 +11,8 @@ import { ShippingcartServiceService } from '../../services/shippingcart-service.
 import { CartItems } from '../../interfaces/cart-items';
 import { MatBadgeModule } from '@angular/material/badge';
 import { A11yModule } from "@angular/cdk/a11y";
+import { categories } from '../../services/categories';
+
 
 
 
@@ -30,6 +32,9 @@ export class HeaderComponent implements OnInit {
   private shippingcartService = inject(ShippingcartServiceService);
   cart: CartItems[] = [];
   totalPrice = this.totalCartPrice();
+  categories = categories
+  subcategories = signal<[]>([])
+  isSubCatOpen = false
 
 
 
@@ -68,7 +73,8 @@ export class HeaderComponent implements OnInit {
     this.shippingcartService.loadLocalStorageCart()
     this.shippingcartService.cart$.subscribe(items => {
       this.cart = items;
-      this.totalPrice = this.totalCartPrice();});
+      this.totalPrice = this.totalCartPrice();
+    });
 
   }
 
@@ -91,6 +97,16 @@ export class HeaderComponent implements OnInit {
   goToCheckout(offcanvas: any) {
     offcanvas.close();
     // Navigate to checkout page
+  }
+
+  showSubcategrioes(category: any) {
+    this.subcategories.set(category.subCategories)
+    this.isSubCatOpen = true
+  }
+
+  hideSubcategrioes() {
+    this.subcategories.set([])
+    this.isSubCatOpen = false
   }
 
 
