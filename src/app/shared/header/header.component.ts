@@ -13,6 +13,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { A11yModule } from "@angular/cdk/a11y";
 import { categories } from '../../services/categories';
 import slugify from '../../../../node_modules/slugify'
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -34,13 +35,13 @@ export class HeaderComponent implements OnInit {
   cart: CartItems[] = [];
   totalPrice = this.totalCartPrice();
   categories = categories
-  subcategories = signal<[{name:string, productategories : string[]}] | [] >([])
+  subcategories = signal<[{ name: string, productategories: string[] }] | []>([])
   isSubCatOpen = false;
   activeCategory = signal<string>('')
 
 
 
-  constructor(private view: ViewportScroller, private router: Router) {
+  constructor(private view: ViewportScroller, private router: Router, private http: HttpClient) {
     this.viewPosition = view.getScrollPosition()
 
 
@@ -78,6 +79,18 @@ export class HeaderComponent implements OnInit {
       this.totalPrice = this.totalCartPrice();
     });
 
+    this.getDataFromDB()
+
+  }
+
+
+  getDataFromDB() {
+    const respond = this.http.get('http://127.0.0.1:8000/api/category/').subscribe((data) => {
+      console.log(data);
+      
+
+    })
+    
   }
 
   itemPrice(item: CartItems, value: number): number {
@@ -101,7 +114,7 @@ export class HeaderComponent implements OnInit {
     // Navigate to checkout page
   }
 
-  showSubcategrioes(category: {name: string, subcategories: [{name:string, productategories : string[]}]}) {
+  showSubcategrioes(category: { name: string, subcategories: [{ name: string, productategories: string[] }] }) {
     this.subcategories.set(category.subcategories)
     this.activeCategory.set(category.name)
     this.isSubCatOpen = true
