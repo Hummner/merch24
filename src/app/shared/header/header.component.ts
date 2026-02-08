@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   private shippingcartService = inject(ShippingcartServiceService);
   cart: CartItems[] = [];
   totalPrice = this.totalCartPrice();
-  categories = categories
+  categories!: Category[];
   subcategories = signal<Category[]>([])
   isSubCatOpen = false;
   activeCategory = signal<string>('')
@@ -98,8 +98,9 @@ export class HeaderComponent implements OnInit {
 
 
   getDataFromDB() {
-    const respond = this.http.get('http://127.0.0.1:8000/api/category/').subscribe((data) => {
+    const respond = this.http.get<Category[]>('http://127.0.0.1:8000/api/category/').subscribe(data => {
       console.log(data);
+      this.categories = data
 
 
     })
