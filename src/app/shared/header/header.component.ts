@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, TemplateRef, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { ViewportScroller } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -14,6 +14,7 @@ import { A11yModule } from "@angular/cdk/a11y";
 import { categories } from '../../services/categories';
 import slugify from '../../../../node_modules/slugify'
 import { HttpClient } from '@angular/common/http';
+import { Category } from '../../interfaces/category';
 
 
 
@@ -35,14 +36,16 @@ export class HeaderComponent implements OnInit {
   cart: CartItems[] = [];
   totalPrice = this.totalCartPrice();
   categories = categories
-  subcategories = signal<[{ name: string, productategories: string[] }] | []>([])
+  subcategories = signal<Category[]>([])
   isSubCatOpen = false;
   activeCategory = signal<string>('')
+  isShop!: boolean
 
 
 
-  constructor(private view: ViewportScroller, private router: Router, private http: HttpClient) {
+  constructor(private view: ViewportScroller, private router: Router, private http: HttpClient, private route: ActivatedRoute) {
     this.viewPosition = view.getScrollPosition()
+
 
 
   }
@@ -73,6 +76,16 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe(() => {
+      if (this.router.url.includes('/shop')) {
+        return this.isShop = true;
+      }
+      return this.isShop = false;
+    })
+
+
+
+
     this.shippingcartService.loadLocalStorageCart()
     this.shippingcartService.cart$.subscribe(items => {
       this.cart = items;
@@ -87,10 +100,10 @@ export class HeaderComponent implements OnInit {
   getDataFromDB() {
     const respond = this.http.get('http://127.0.0.1:8000/api/category/').subscribe((data) => {
       console.log(data);
-      
+
 
     })
-    
+
   }
 
   itemPrice(item: CartItems, value: number): number {
@@ -114,8 +127,8 @@ export class HeaderComponent implements OnInit {
     // Navigate to checkout page
   }
 
-  showSubcategrioes(category: { name: string, subcategories: [{ name: string, productategories: string[] }] }) {
-    this.subcategories.set(category.subcategories)
+  showSubcategrioes(category: Category) {
+    this.subcategories.set(category.children)
     this.activeCategory.set(category.name)
     this.isSubCatOpen = true
   }
@@ -126,8 +139,8 @@ export class HeaderComponent implements OnInit {
     this.isSubCatOpen = false
   }
 
-  navigateToSubcategory(subcategory: string, productcategory: string) {
-    this.router.navigate(['/shop/category/', slugify(this.activeCategory()).toLowerCase(), slugify(subcategory).toLowerCase(), slugify(productcategory).toLowerCase()])
+  navigateToSubcategory(subcategoryName: string, productcategory: Category) {
+    this.router.navigate(['/shop/category/', slugify(this.activeCategory()).toLowerCase(), slugify(subcategoryName).toLowerCase(), slugify(productcategory.name).toLowerCase()])
   }
 
 

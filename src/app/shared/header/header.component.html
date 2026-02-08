@@ -23,7 +23,7 @@
 
 
     </section>
-    <section class="sub-header" (mouseleave)="hideSubcategrioes()">
+    <section class="sub-header" (mouseleave)="hideSubcategrioes()" *ngIf="isShop">
         <div class="header-extansion">
             <div class="shop-category-header">
                 <div class="main-categories">
@@ -47,8 +47,8 @@
                 <div class="d-flex flex-column">
                     <h5 class="pe-pointer">{{subcatogory.name}}</h5>
                     <div class="product-categories">
-                        @for (productategory of subcatogory.productategories; track $index) {
-                        <p class="pe-pointer" (click)="navigateToSubcategory(subcatogory.name, productategory)">{{productategory}}</p>
+                        @for (productategory of subcatogory.children; track $index) {
+                        <p class="pe-pointer" (click)="navigateToSubcategory(subcatogory.name, productategory)">{{productategory.name}}</p>
 
                         }
                     </div>

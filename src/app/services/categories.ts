@@ -61,12 +61,14 @@
 //     }
 // ]
 
-export const categories: any =
+import { Category } from "../interfaces/category";
+
+export const categories: Category[] =
     [
         {
-            "id": 1,
-            "name": "Team Collections",
-            "children": [
+            id: 1,
+            name: "Team Collections",
+            children: [
                 {
                     "id": 2,
                     "name": "Eishockey",
@@ -74,6 +76,90 @@ export const categories: any =
                         {
                             "id": 3,
                             "name": "Trikots",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Schal",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Cap",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Inliner",
+                    "children": [
+                        {
+                            "id": 3,
+                            "name": "Trikots",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Schal",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Cap",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 2,
+            name: "Bekleidung",
+            children: [
+                {
+                    "id": 3,
+                    "name": "Herren",
+                    "children": [
+                        {
+                            "id": 3,
+                            "name": "T-shirts",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Hoodies",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Pullover",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Frauen",
+                    "children": [
+                        {
+                            "id": 3,
+                            "name": "T-shirts",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Hoodies",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Pullover",
+                            "children": []
+                        },
+                        {
+                            "id": 3,
+                            "name": "Tops",
                             "children": []
                         }
                     ]

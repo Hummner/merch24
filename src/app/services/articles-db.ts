@@ -63,7 +63,7 @@ export const articlesDb = [
         description: 'Sons of Ruhrpott in verschiedenen Größen.',
         slug: 'sons-of-ruhrpott',
         subtitle: 'Ruhrpott Collection',
-        morePricesExist: true,
+        morePricesExist: false,
         colors: {
             black: {
                 images: ['assets/img/t-shirt/sons-of-ruhrpott-front.png', 'assets/img/t-shirt/sons-of-ruhrpott-back.png'],
@@ -97,7 +97,7 @@ export const articlesDb = [
         description: 'Love my Lif...',
         slug: 'coffe-cup',
         subtitle: 'Ruhrpott Collection',
-        morePricesExist: true,
+        morePricesExist: false,
         colors: {
             white: {
                 images: ['assets/img/t-shirt/mug-hockey.png'],
@@ -120,7 +120,7 @@ export const articlesDb = [
         description: 'Love Hockey',
         slug: 'love-hockey-t-shirt',
         subtitle: 'Hockey Collection',
-        morePricesExist: true,
+        morePricesExist: false,
         colors: {
             white: {
                 images: ['assets/img/t-shirt/hockey-tshirt-white-front.png', 'assets/img/t-shirt/hockey-tshirt-white-back.png'],
@@ -138,7 +138,30 @@ export const articlesDb = [
                 ]
             }
         }
-    }
+    },
+    {
+        name: 'Mütze -  Haarzopf',
+        description: 'Haarzopf Mütze',
+        slug: 'hut',
+        subtitle: 'Unisex',
+        morePricesExist: false,
+        colors: {
+            black: {
+                images: ['assets/img/t-shirt/hut.png'],
+                hex: "#000000",
+                variants: [
+                    {
+                        id: 1,
+                        price: 19.99,
+                        sale_price: 19,
+                        stock: 200,
+                        sku: "H-RED-M"
+
+                    }
+                ]
+            }
+        }
+    },
 
 ]
 
