@@ -39,14 +39,18 @@ export class ShopComponent implements OnInit {
     this.subcategory = this.route.snapshot.paramMap.get('subcategory');
     this.productcategory = this.route.snapshot.paramMap.get('productcategory');
 
-    this.loadPage();
+    this.route.url.subscribe(segment => {
+      const categories = segment.map(s => s.path).slice(2)
+      let respond = this.getCategoryFromDb(categories);
+    })
+
+    
 
   }
 
-  loadPage() {
-    if (this.category && this.subcategory && this.productcategory) {
-      
-    }
+  getCategoryFromDb(categories: string[]) {
+    const length = categories.length
+    const lastCategoryFromUrl = categories[length - 1]
   }
 
   viewProductDetail(slug: string) {

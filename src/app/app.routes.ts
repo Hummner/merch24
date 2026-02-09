@@ -41,7 +41,7 @@ export const routes: Routes = [
         }
     },
     {
-        path: "shop/category/:category/:subcategory/:productcategory",
+        path: "shop/category/**",
         component: ShopComponent
     },
     {
