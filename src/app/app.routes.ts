@@ -41,8 +41,10 @@ export const routes: Routes = [
         }
     },
     {
-        path: "shop/category/**",
-        component: ShopComponent
+        path: 'shop/category',
+        children: [
+            { path: '**', component: ShopComponent }
+        ]
     },
     {
         path: "news",

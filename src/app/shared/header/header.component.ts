@@ -15,6 +15,8 @@ import { categories } from '../../services/categories';
 import slugify from '../../../../node_modules/slugify'
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../../interfaces/category';
+import { DbService } from '../../services/db.service';
+import { Observable } from 'rxjs';
 
 
 
@@ -33,12 +35,14 @@ export class HeaderComponent implements OnInit {
 
   private offcanvasService = inject(NgbOffcanvas);
   private shippingcartService = inject(ShippingcartServiceService);
+  private db = inject(DbService)
   cart: CartItems[] = [];
   totalPrice = this.totalCartPrice();
   categories!: Category[];
   subcategories = signal<Category[]>([])
   isSubCatOpen = false;
-  activeCategory = signal<string>('')
+  hoverdCategory = signal<string>('')
+  activeCategory = signal<Category | null>(null)
   isShop!: boolean
 
 
@@ -91,6 +95,7 @@ export class HeaderComponent implements OnInit {
       this.cart = items;
       this.totalPrice = this.totalCartPrice();
     });
+    this.db.getCategoryFromDb()
 
     this.getDataFromDB()
 
@@ -98,12 +103,10 @@ export class HeaderComponent implements OnInit {
 
 
   getDataFromDB() {
-    const respond = this.http.get<Category[]>('http://127.0.0.1:8000/api/category/').subscribe(data => {
-      console.log(data);
+    this.db.categories$.subscribe(data => {
       this.categories = data
-
-
     })
+
 
   }
 
@@ -130,20 +133,43 @@ export class HeaderComponent implements OnInit {
 
   showSubcategrioes(category: Category) {
     this.subcategories.set(category.children)
-    this.activeCategory.set(category.name)
+    this.hoverdCategory.set(category.name)
     this.isSubCatOpen = true
   }
 
   hideSubcategrioes() {
     this.subcategories.set([])
-    this.activeCategory.set('')
+    this.hoverdCategory.set('')
     this.isSubCatOpen = false
   }
 
-  navigateToSubcategory(subcategoryName: string, productcategory: Category) {
-    this.router.navigate(['/shop/category/', slugify(this.activeCategory()).toLowerCase(), slugify(subcategoryName).toLowerCase(), slugify(productcategory.name).toLowerCase()])
-  }
+  // navigateToSubcategory(subcategory: Category, productcategory: Category) {
+  //   this.router.navigate(['/shop/category/', slugify(this.activeCategory()).toLowerCase(), slugify(subcategory.name).toLowerCase(), slugify(productcategory.name).toLowerCase()])
+  // }
 
+
+  navigateToSubcategory(subcategory?: Category, productcategory?: Category) {
+    if (subcategory || productcategory) {
+      debugger
+
+      let subcategoryName;
+      let productcategoryName;
+      if (subcategory) {
+        subcategoryName = slugify(subcategory.name).toLocaleLowerCase()
+      }
+
+      if (productcategory) {
+        productcategoryName = slugify(productcategory.name).toLocaleLowerCase()
+      }
+      const array = new Array(subcategoryName, productcategoryName)
+
+      const sublink = (array.join("/"))
+
+      const link = "/shop/category/" + this.hoverdCategory() + "/" +  sublink
+
+      this.router.navigate([link])
+    }
+  }
 
 }
 

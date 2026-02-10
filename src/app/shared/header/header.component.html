@@ -29,7 +29,7 @@
                 <div class="main-categories">
                     @for (category of categories; track $index;) {
                     <div (mouseenter)="showSubcategrioes(category)" class="pe-pointer">
-                        <h4 [ngClass]="{'active-cat': activeCategory() == category.name}">
+                        <h4 [ngClass]="{'active-cat': hoverdCategory() == category.name}">
                             {{category.name}}
                         </h4>
                     </div>
@@ -48,7 +48,7 @@
                     <h5 class="pe-pointer">{{subcatogory.name}}</h5>
                     <div class="product-categories">
                         @for (productategory of subcatogory.children; track $index) {
-                        <p class="pe-pointer" (click)="navigateToSubcategory(subcatogory.name, productategory)">{{productategory.name}}</p>
+                        <p class="pe-pointer" (click)="navigateToSubcategory(subcatogory, productategory)">{{productategory.name}}</p>
 
                         }
                     </div>
