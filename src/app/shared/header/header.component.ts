@@ -11,7 +11,6 @@ import { ShippingcartServiceService } from '../../services/shippingcart-service.
 import { CartItems } from '../../interfaces/cart-items';
 import { MatBadgeModule } from '@angular/material/badge';
 import { A11yModule } from "@angular/cdk/a11y";
-import { categories } from '../../services/categories';
 import slugify from '../../../../node_modules/slugify'
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../../interfaces/category';
@@ -95,7 +94,7 @@ export class HeaderComponent implements OnInit {
       this.cart = items;
       this.totalPrice = this.totalCartPrice();
     });
-    this.db.getCategoryFromDb()
+    this.db.getCategoriesFromDb()
 
     this.getDataFromDB()
 
@@ -104,6 +103,8 @@ export class HeaderComponent implements OnInit {
 
   getDataFromDB() {
     this.db.categories$.subscribe(data => {
+      console.log(data);
+      
       this.categories = data
     })
 
@@ -163,9 +164,10 @@ export class HeaderComponent implements OnInit {
       }
       const array = new Array(subcategoryName, productcategoryName)
 
+      const mainCat = slugify(this.hoverdCategory().toLowerCase())
       const sublink = (array.join("/"))
 
-      const link = "/shop/category/" + this.hoverdCategory() + "/" +  sublink
+      const link = "/shop/category/" + mainCat + "/" +  sublink
 
       this.router.navigate([link])
     }

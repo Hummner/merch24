@@ -8,6 +8,8 @@ import { CartItems } from '../../interfaces/cart-items';
 import { Article } from '../../interfaces/article';
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { articlesDb } from '../../services/articles-db';
+import { ArticleColors } from '../../interfaces/article-colors';
+import { DbService } from '../../services/db.service';
 
 @Component({
   selector: 'app-shop-retrieve',
@@ -35,14 +37,21 @@ export class ShopRetrieveComponent {
   varaintSize = signal<string[]>([]);
   addButtonDisabled = true;
 
+  db = inject(DbService)
+
 
   article!: Article
+  filterdArticles!: Article[]
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const articleSlug = this.route.snapshot.paramMap.get('slug');
-    this.article = articlesDb.find(article => article.slug === articleSlug)!;
+
+    this.db.filterdProducts$.subscribe((data)=> {
+      this.filterdArticles = data
+    })
+    this.article = this.filterdArticles.find(article => article.slug === articleSlug)!;
     this.getColors();
 
     this.route.queryParamMap.subscribe(params => {
@@ -93,12 +102,14 @@ export class ShopRetrieveComponent {
   }
 
   getVariantImages(color: string) {
-    const color_key = this.article.colors[color]!;
+    const color_key: ArticleColors = this.article.colors[color]!;
     const images = color_key.images;
     if (images.length == 0) {
       return this.variantImages.set(['/assets/img/coming.jpg']);
     }
-    return this.variantImages.set(images);
+    
+
+    return this.variantImages.set(images.map(item => item.image));
   }
 
   changeSize(size: string) {

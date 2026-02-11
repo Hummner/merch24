@@ -1,11 +1,14 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { articlesDb } from '../services/articles-db';
 import { ArticleVariant } from '../interfaces/article-variant';
 import { Article } from '../interfaces/article';
+import { ArticleColors } from '../interfaces/article-colors';
 import { ActivatedRoute } from '@angular/router';
+import { DbService } from '../services/db.service';
+import slugify from 'slugify';
 
 
 interface FoodNode {
@@ -25,10 +28,13 @@ interface FoodNode {
 })
 export class ShopComponent implements OnInit {
 
-  articles = articlesDb;
+  articles!: Article[]
   category!: string | null;
   subcategory!: string | null;
   productcategory!: string | null
+
+  db = inject(DbService)
+  categoryId!: number | undefined
 
 
   constructor(private router: Router, private route: ActivatedRoute) { }
@@ -40,17 +46,28 @@ export class ShopComponent implements OnInit {
     this.productcategory = this.route.snapshot.paramMap.get('productcategory');
 
     this.route.url.subscribe(segment => {
-      const categories = segment.map(s => s.path).slice(2)
-      let respond = this.getCategoryFromDb(categories);
+      const categories = segment.map(s => s.path)
+      this.getCategoryPath(categories);
     })
 
-    
+    this.loadProducts()
+
 
   }
 
-  getCategoryFromDb(categories: string[]) {
-    const length = categories.length
-    const lastCategoryFromUrl = categories[length - 1]
+  loadProducts() {
+    this.db.filterdProducts$.subscribe((items) => {
+      this.articles = items
+    })
+  }
+
+  getCategoryPath(categories: string[]) {
+    const path = categories.join("/")
+    return this.db.getProductsFromCategory(path)
+  }
+
+  matchSlug(name: string, target: string) {
+    return target && slugify(name.toLowerCase()) === target
   }
 
   viewProductDetail(slug: string) {
@@ -60,8 +77,16 @@ export class ShopComponent implements OnInit {
 
   getFirstColorImage(article: Article): string {
     const variantKeys = Object.keys(article.colors);
-    const firstImage = article.colors[variantKeys[0]]!.images[0];
-    return firstImage ? firstImage : "assets/img/coming.jpg"
+    const artcileColors: ArticleColors = article.colors[variantKeys[0]]!;
+    if (artcileColors) {
+      const imageArray: {
+        alt: string;
+        id: number;
+        image: string;
+    }[] = artcileColors.images;
+      return imageArray[0].image
+    }
+    return "assets/img/coming.jpg"
   }
 
   getLowestPrice(article: Article): number {
