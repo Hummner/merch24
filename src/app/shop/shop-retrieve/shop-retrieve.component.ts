@@ -47,13 +47,19 @@ export class ShopRetrieveComponent {
 
   ngOnInit() {
     const articleSlug = this.route.snapshot.paramMap.get('slug');
+    if (articleSlug) this.db.getProductFromDB(articleSlug)
 
-    this.db.filterdProducts$.subscribe((data)=> {
-      this.filterdArticles = data
+    this.db.singleProduct$.subscribe(item => {
+      
+      if (!item) return
+      this.article = item
+      this.selectColor();
+      this.getColors();
+
     })
-    this.article = this.filterdArticles.find(article => article.slug === articleSlug)!;
-    this.getColors();
+  }
 
+  selectColor() {
     this.route.queryParamMap.subscribe(params => {
       const variant = params.get('color');
 
@@ -71,6 +77,7 @@ export class ShopRetrieveComponent {
         }
       }
     })
+
   }
 
   getVariant(color: string) {
@@ -107,7 +114,7 @@ export class ShopRetrieveComponent {
     if (images.length == 0) {
       return this.variantImages.set(['/assets/img/coming.jpg']);
     }
-    
+
 
     return this.variantImages.set(images.map(item => item.image));
   }

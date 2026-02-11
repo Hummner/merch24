@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
@@ -26,7 +26,7 @@ interface FoodNode {
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
 
   articles!: Article[]
   category!: string | null;
@@ -47,12 +47,17 @@ export class ShopComponent implements OnInit {
 
     this.route.url.subscribe(segment => {
       const categories = segment.map(s => s.path)
+      if (categories.length == 0) return 
       this.getCategoryPath(categories);
     })
 
     this.loadProducts()
 
 
+  }
+
+  ngOnDestroy(): void {
+    this.db.destroySubProduct()
   }
 
   loadProducts() {
@@ -64,6 +69,10 @@ export class ShopComponent implements OnInit {
   getCategoryPath(categories: string[]) {
     const path = categories.join("/")
     return this.db.getProductsFromCategory(path)
+  }
+
+  getFirstPage() {
+    
   }
 
   matchSlug(name: string, target: string) {

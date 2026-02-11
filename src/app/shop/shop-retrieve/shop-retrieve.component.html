@@ -28,7 +28,7 @@
                         [class.active-thumb]="i === selectedIndex" (click)="selectImage(i)">
                 </div>
             </div>
-            <div class="col-lg-6 col-xs-12 ">
+            <div class="col-lg-6 col-xs-12 " *ngIf="article">
                 <h2 class="mb-3">{{article.name}}</h2>
                 <h4 class="mb-0">
                     @if (selectedSize == undefined && sizesAvailable.length > 0) {
@@ -87,8 +87,8 @@
                 </div>
             </div>
         </div>
-        <div>
-            <h3 class="mt-5">Produktbeschreibung</h3>
+        <div *ngIf="article">
+            <h3 class="mt-5" >Produktbeschreibung</h3>
             <p>{{article.description}} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
                 laudantium,
                 eos molestias illo quisquam magnam dignissimos? Repellendus est mollitia eius, aut, provident

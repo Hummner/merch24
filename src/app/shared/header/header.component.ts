@@ -150,8 +150,10 @@ export class HeaderComponent implements OnInit {
 
 
   navigateToSubcategory(subcategory?: Category, productcategory?: Category) {
+
+    const mainCat = slugify(this.hoverdCategory().toLowerCase())
     if (subcategory || productcategory) {
-      debugger
+ 
 
       let subcategoryName;
       let productcategoryName;
@@ -164,13 +166,15 @@ export class HeaderComponent implements OnInit {
       }
       const array = new Array(subcategoryName, productcategoryName)
 
-      const mainCat = slugify(this.hoverdCategory().toLowerCase())
+      
       const sublink = (array.join("/"))
 
       const link = "/shop/category/" + mainCat + "/" +  sublink
 
-      this.router.navigate([link])
+      return this.router.navigate([link])
     }
+
+    return this.router.navigate(["/shop/category/" + mainCat])
   }
 
 }

@@ -9,7 +9,6 @@
             <nav>
                 <a [routerLink]="'/'">Home</a>
                 <a [routerLink]="'/shop'">Shop</a>
-                <a [routerLink]="'/'" fragment="about_me">Über uns</a>
                 <a [routerLink]="'/'" fragment="product">Produkte</a>
                 <a routerLink="/contact">Kontakt</a>
                 <span class="cart-icon" (click)="openCart(content)" matBadge="{{cart.length}}" matBadgePosition="after"
@@ -29,7 +28,7 @@
                 <div class="main-categories">
                     @for (category of categories; track $index;) {
                     <div (mouseenter)="showSubcategrioes(category)" class="pe-pointer">
-                        <h4 [ngClass]="{'active-cat': hoverdCategory() == category.name}">
+                        <h4 [ngClass]="{'active-cat': hoverdCategory() == category.name}" (click)="navigateToSubcategory(undefined, undefined)">
                             {{category.name}}
                         </h4>
                     </div>
@@ -45,7 +44,7 @@
             <div class="d-flex justify-content-evenly w-100 mw-1920">
                 @for (subcatogory of subcategories(); track $index) {
                 <div class="d-flex flex-column">
-                    <h5 class="pe-pointer">{{subcatogory.name}}</h5>
+                    <h5 class="pe-pointer" (click)="navigateToSubcategory(subcatogory, undefined)">{{subcatogory.name}}</h5>
                     <div class="product-categories">
                         @for (productategory of subcatogory.children; track $index) {
                         <p class="pe-pointer" (click)="navigateToSubcategory(subcatogory, productategory)">{{productategory.name}}</p>
@@ -68,7 +67,6 @@
 <mat-menu #mobileMenu="matMenu">
     <div class="mobile-nav">
         <a [routerLink]="'/'" fragment="home">Home</a>
-        <a [routerLink]="'/'" fragment="about_me">Über uns</a>
         <a [routerLink]="'/'" fragment="product">Produkte</a>
         <a routerLink="/contact">Kontakt</a>
     </div>

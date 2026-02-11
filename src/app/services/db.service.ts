@@ -17,6 +17,9 @@ export class DbService {
   private filterdProductsSubject = new BehaviorSubject(<Article[]>([]))
   filterdProducts$ = this.filterdProductsSubject.asObservable()
 
+  private singleProductSubject = new BehaviorSubject(<Article | undefined>(undefined))
+  singleProduct$ = this.singleProductSubject.asObservable()
+
   constructor(private http: HttpClient) { }
 
   getCategoriesFromDb() {
@@ -36,5 +39,18 @@ export class DbService {
       this.filterdProductsSubject.next(data)
 
     })
+  }
+
+  getProductFromDB(slug: string) {
+    this.http.get<Article>(BASE_URL + 'shop/details/' + slug).subscribe(data => {
+      console.log(data);
+      this.singleProductSubject.next(data)
+
+    })
+  }
+
+
+  destroySubProduct() {
+    this.singleProductSubject.next(undefined)
   }
 }
