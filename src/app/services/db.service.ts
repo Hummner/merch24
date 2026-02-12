@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Category } from '../interfaces/category';
 import { Article } from '../interfaces/article';
+import { Router } from '@angular/router';
 
 const BASE_URL = "http://127.0.0.1:8000/api/"
 
@@ -20,7 +21,7 @@ export class DbService {
   private singleProductSubject = new BehaviorSubject(<Article | undefined>(undefined))
   singleProduct$ = this.singleProductSubject.asObservable()
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getCategoriesFromDb() {
     const respond = this.http.get<Category[]>(BASE_URL + 'category/').subscribe(data => {
@@ -34,7 +35,13 @@ export class DbService {
   }
 
   getProductsFromCategory(path: string) {
-    this.http.get<Article[]>(BASE_URL + 'shop/category/' + path).subscribe(data => {
+    this.http.get<Article[]>(BASE_URL + 'shop/category/' + path).pipe(
+      catchError((e) => {
+        this.router.navigate(['/shop/error/404-not-found'])
+        return throwError(() => new Error('Something bad happened; please try again later.'));
+
+      })
+    ).subscribe(data => {
       console.log(data);
       this.filterdProductsSubject.next(data)
 
@@ -42,7 +49,13 @@ export class DbService {
   }
 
   getProductFromDB(slug: string) {
-    this.http.get<Article>(BASE_URL + 'shop/details/' + slug).subscribe(data => {
+    this.http.get<Article>(BASE_URL + 'shop/details/' + slug).pipe(
+      catchError((e) => {
+        this.router.navigate(['/shop/error/404-not-found'])
+        return throwError(() => new Error('Something bad happened; please try again later.'));
+
+      })
+    ).subscribe(data => {
       console.log(data);
       this.singleProductSubject.next(data)
 
@@ -52,5 +65,19 @@ export class DbService {
 
   destroySubProduct() {
     this.singleProductSubject.next(undefined)
+  }
+
+  getFirstPageProducts() {
+    this.http.get<Article[]>(BASE_URL + 'shop/').pipe(
+      catchError((e) => {
+        this.router.navigate(['/shop/error/404-not-found'])
+        return throwError(() => new Error('Something bad happened; please try again later.'));
+
+      })
+    ).subscribe(data => {
+      console.log(data);
+      this.filterdProductsSubject.next(data)
+
+    })
   }
 }

@@ -10,6 +10,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ShopRetrieveComponent } from './shop/shop-retrieve/shop-retrieve.component';
 import { OrderComponent } from './order/order.component';
 import { ShopCategoryComponent } from './shop-category/shop-category.component';
+import { NotFoundComponent } from './shop/not-found/not-found.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,10 @@ export const routes: Routes = [
             title: "Shop | Merch24 – Merchandise & Branding aus Essen",
             description: "Unsere Produkte für Fans aller Sportarten – individuell gestaltet, schnell produziert und fair preislich. Direkt aus dem Ruhrgebiet."
         }
+    },
+    {
+        path: "shop/error/404-not-found",
+        component: NotFoundComponent
     },
     {
         path: 'shop/category',

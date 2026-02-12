@@ -68,6 +68,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   getCategoryPath(categories: string[]) {
     const path = categories.join("/")
+    if (path == "shop") return this.db.getFirstPageProducts()
     return this.db.getProductsFromCategory(path)
   }
 

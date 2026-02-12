@@ -1,7 +1,7 @@
 <section>
     <div class="container-md">
         <div class="row">
-            <div class="col-lg-6 col-xs-12 ">
+            <div class="col-lg-6 col-xs-12" *ngIf="article">
                 <div id="mainCarousel" class="carousel slide mb-3">
                     <div class="carousel-inner">
                         <div class="carousel-item" *ngFor="let img of variantImages(); let i = index"
