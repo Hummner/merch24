@@ -87,7 +87,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   getFirstColorImage(article: Article): string {
     const variantKeys = Object.keys(article.colors);
-    const artcileColors: ArticleColors = article.colors[variantKeys[0]]!;
+    const artcileColors: ArticleColors = article.colors[0]!;
     if (artcileColors) {
       const imageArray: {
         alt: string;
@@ -104,7 +104,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     const colors = Object.keys(article.colors);
 
     colors.forEach((color: string) => {
-      article.colors[color]!.variants.forEach((variant: ArticleVariant) => {
+      article.colors[Number(color)]!.variants.forEach((variant: ArticleVariant) => {
 
         if (prices.includes(variant.price)) return
         prices.push(variant.price)

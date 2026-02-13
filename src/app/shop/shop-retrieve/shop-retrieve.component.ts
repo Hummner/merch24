@@ -50,9 +50,10 @@ export class ShopRetrieveComponent {
     if (articleSlug) this.db.getProductFromDB(articleSlug)
 
     this.db.singleProduct$.subscribe(item => {
-      
+
       if (!item) return
       this.article = item
+
       this.selectColor();
       this.getColors();
 
@@ -60,19 +61,28 @@ export class ShopRetrieveComponent {
   }
 
   selectColor() {
+
     this.route.queryParamMap.subscribe(params => {
       const variant = params.get('color');
 
       if (variant) {
         this.selectedColor = variant;
-        this.getVariant(variant)
+        if (!this.article.colors.length) return
+        const article = this.article.colors.find((c?: ArticleColors) => c?.color == variant)
+        if (article) {
+          this.getVariant(article)
+        }
+
 
       } else {
-        const firstVariant = Object.keys(this.article.colors)[0] || null;
+
+        if (!this.article) return
+
+        const firstVariant = this.article.colors[0]
 
         if (firstVariant) {
-          this.selectedColor = firstVariant;
-          this.changeVariant(firstVariant);
+          this.selectedColor = firstVariant.color;
+          this.changeVariant(firstVariant.color);
           this.getVariant(firstVariant);
         }
       }
@@ -80,7 +90,7 @@ export class ShopRetrieveComponent {
 
   }
 
-  getVariant(color: string) {
+  getVariant(color: ArticleColors) {
     this.getSizes(color);
     this.getVariantImages(color);
     this.getProductPrice(color, this.selectedSize!);
@@ -90,27 +100,28 @@ export class ShopRetrieveComponent {
 
   getColors() {
     if (this.article.colors) {
-      this.colors.set(Object.keys(this.article.colors));
+      this.colors.set(this.article.colors.map(c => c!.color));
     }
     return this.colors();
   }
 
-  getProductPrice(color: string, size: string) {
-    const color_key = this.article.colors[color];
-    if (size && color_key) {
-      const price = color_key.variants.find(v => v.size === size)?.price;
+  getProductPrice(color: ArticleColors, size: string) {
+    debugger
+    if (size && color) {
+      const price = color.variants.find(v => v.size === size)?.price;
       console.log(price);
-      this.productPrice.set(price || 0);
-    } else if (color_key?.variants.length == 1) {
-      const price = color_key.variants[0].price;
-      this.productPrice.set(price || 0);
+      this.productPrice.set(Number(price) || 0);
+      return price || 0
+      
+    } else if (color?.variants.length == 1) {
+      const price = color.variants[0].price;
+      return price
     }
-    return this.totalPrice
+    return 0
   }
 
-  getVariantImages(color: string) {
-    const color_key: ArticleColors = this.article.colors[color]!;
-    const images = color_key.images;
+  getVariantImages(color: ArticleColors) {
+    const images = color.images;
     if (images.length == 0) {
       return this.variantImages.set(['/assets/img/coming.jpg']);
     }
@@ -121,13 +132,14 @@ export class ShopRetrieveComponent {
 
   changeSize(size: string) {
     this.selectedSize = size;
-    this.getVariant(this.selectedColor);
+
+    this.selectColor();
   }
 
 
   changeVariant(color: string) {
     this.router.navigate([], {
-      queryParams: { color: color },
+      queryParams: { color: color},
       replaceUrl: true,
     });
     this.selectedColor = color;
@@ -151,9 +163,11 @@ export class ShopRetrieveComponent {
   }
 
   getSku() {
-    const variants = this.article.colors[this.selectedColor]!.variants;
-    const size = variants.find(v => v.size == this.selectedSize)?.size;
-    return size || 'No size'
+    // const variants = this.article.colors[this.selectedColor]!.variants;
+    // const size = variants.find(v => v.size == this.selectedSize)?.size;
+    // return size || 'No size'
+
+    return ""
   }
 
   checkInputs() {
@@ -169,9 +183,8 @@ export class ShopRetrieveComponent {
     return this.productPrice() * (this.selectedAmount);
   }
 
-  getSizes(color: string): string[] {
-    const color_key = this.article.colors[color]!;
-    this.sizesAvailable = color_key.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
+  getSizes(colors: ArticleColors): string[] {
+    this.sizesAvailable = colors.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
 
     if (this.sizesAvailable.includes(this.selectedSize!)) {
       return this.sizesAvailable;
@@ -181,15 +194,14 @@ export class ShopRetrieveComponent {
     return this.sizesAvailable;
   }
 
-  getPrice(color: string, size: string): number | null {
-    const color_key = this.article.colors[color]!;
-    const variant = color_key.variants.find(variant => variant.size === size);
+  getPrice(color: ArticleColors, size: string): number | null {
+    const variant = color.variants.find(variant => variant.size === size);
     return variant ? variant.price : null;
   }
 
 
   backgroundColor(color: string) {
-    const hex = this.article.colors[color]?.hex
+    const hex = this.article.colors.find(c => c?.color == color)?.hex
 
     return {
       'background-color': hex, important: 'true'
