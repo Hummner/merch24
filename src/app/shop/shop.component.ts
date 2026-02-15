@@ -47,7 +47,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
     this.route.url.subscribe(segment => {
       const categories = segment.map(s => s.path)
-      if (categories.length == 0) return 
+      if (categories.length == 0) return
       this.getCategoryPath(categories);
     })
 
@@ -73,7 +73,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   getFirstPage() {
-    
+
   }
 
   matchSlug(name: string, target: string) {
@@ -93,15 +93,16 @@ export class ShopComponent implements OnInit, OnDestroy {
         alt: string;
         id: number;
         image: string;
-    }[] = artcileColors.images;
+      }[] = artcileColors.images;
       return imageArray[0].image
     }
     return "assets/img/coming.jpg"
   }
 
-  getLowestPrice(article: Article): number {
+  getLowestPrice(article: Article): string {
     let prices: number[] = [];
     const colors = Object.keys(article.colors);
+    let lowestPrice;
 
     colors.forEach((color: string) => {
       article.colors[color]!.variants.forEach((variant: ArticleVariant) => {
@@ -111,11 +112,17 @@ export class ShopComponent implements OnInit, OnDestroy {
       })
     })
 
-    return Math.min(...prices);
+    lowestPrice = Math.min(...prices).toFixed(2).replace(".", ",")
+
+    if (prices.length > 1) {
+      return "ab " + lowestPrice
+    }
+
+    return lowestPrice;
   }
 
-  getMorePriceText(article: Article) {
-    if (!article.morePricesExist) return
-    return article.morePricesExist ? 'ab' : ''
-  }
+//   getMorePriceText(article: Article) {
+//     if (!article.morePricesExist) return
+//     return article.morePricesExist ? 'ab' : ''
+//   }
 }

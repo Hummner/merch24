@@ -11,8 +11,8 @@
                 </mat-card-header>
                 <img mat-card-image [src]="getFirstColorImage(article)" alt="Photo of a product">
                 <mat-card-content>
-                    <p class="m-0"><span>{{getMorePriceText(article)}}</span>
-                        {{getLowestPrice(article).toFixed(2).replace('.', ',')}} €</p>
+                    <p class="m-0">
+                        {{getLowestPrice(article)}} €</p>
                     <p class="fw-normal"><img src="assets/icons/delivery_truck.svg" alt="">Lieferzeit cirka 2 Wochen</p>
                 </mat-card-content>
             </mat-card>
