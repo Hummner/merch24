@@ -1,4 +1,5 @@
 import { ArticleColors } from "./article-colors";
+import { Manufacturer } from "./manufacturer";
 
 export type Colors = Partial<[ArticleColors]>;
 
@@ -8,6 +9,7 @@ subtitle: string;
 description: string;
 slug: string;
 colors: Colors;
+manufacturer: Manufacturer;
 morePricesExist?: boolean;
 moreVariantsExist?: boolean
 }

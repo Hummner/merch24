@@ -86,3 +86,24 @@ button.disabled {
     border: 2px solid #0d6efd;
     /* Bootstrap kék */
 }
+
+.manufacturer-address {
+    white-space: pre-line;
+}
+
+.manufacturer-box {
+    p {
+        margin: 0;
+    }
+}
+
+.previousArticles {
+
+    p {
+        height: 40px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
+}

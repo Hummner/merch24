@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from "@angular/forms";
 import { NgModel } from '@angular/forms';
@@ -38,6 +38,8 @@ export class ShopRetrieveComponent {
   addButtonDisabled = true;
 
   db = inject(DbService)
+
+  @ViewChild('previousContent', { read: ElementRef }) public previousContent!: ElementRef<any>;
 
 
   article!: Article
@@ -106,13 +108,12 @@ export class ShopRetrieveComponent {
   }
 
   getProductPrice(color: ArticleColors, size: string) {
-    debugger
     if (size && color) {
       const price = color.variants.find(v => v.size === size)?.price;
       console.log(price);
       this.productPrice.set(Number(price) || 0);
       return price || 0
-      
+
     } else if (color?.variants.length == 1) {
       const price = color.variants[0].price;
       return price
@@ -139,7 +140,7 @@ export class ShopRetrieveComponent {
 
   changeVariant(color: string) {
     this.router.navigate([], {
-      queryParams: { color: color},
+      queryParams: { color: color },
       replaceUrl: true,
     });
     this.selectedColor = color;
@@ -221,6 +222,14 @@ export class ShopRetrieveComponent {
   prev() {
     this.selectedIndex =
       (this.selectedIndex - 1 + this.variantImages().length) % this.variantImages().length;
+  }
+
+  public scrollRight(): void {
+    this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  }
+
+  public scrollLeft(): void {
+    this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
   }
 
 

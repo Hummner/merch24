@@ -87,13 +87,28 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="article">
-            <h3 class="mt-5" >Produktbeschreibung</h3>
-            <p>{{article.description}} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
-                laudantium,
-                eos molestias illo quisquam magnam dignissimos? Repellendus est mollitia eius, aut, provident
-                sapiente
-                excepturi perspiciatis eos explicabo sunt vero eveniet.</p>
+        <div *ngIf="article" class="row mt-5">
+            <div class="col-lg-6 col-xs-12">
+                <h3 class="">Produktbeschreibung</h3>
+                <p>{{article.description}} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
+                    laudantium,
+                    eos molestias illo quisquam magnam dignissimos? Repellendus est mollitia eius, aut, provident
+                    sapiente
+                    excepturi perspiciatis eos explicabo sunt vero eveniet.</p>
+            </div>
+            <div class="col-lg-6 col-xs-12 manufacturer-box">
+                <div class="">
+                    <p><strong>Hersteller Informationen</strong></p>
+                    <p>{{article.manufacturer.name}}</p>
+                    <p class="manufacturer-address">{{article.manufacturer.address}}</p>
+                    <p>{{article.manufacturer.link}}</p>
+                </div>
+
+            </div>
         </div>
+        <div class="previousArticles">
+            <p #previousContent> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis ut nam doloremque dicta ipsa. Quis explicabo vel ipsum deleniti accusantium voluptatem. Odit ratione libero assumenda quibusdam amet saepe id quod?</p>
+        </div>
+        <button (click)="scrollRight()">Right</button>
     </div>
 </section>
