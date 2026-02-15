@@ -1,6 +1,6 @@
 import { ArticleColors } from "./article-colors";
 
-export type Colors = Partial<Record<string, ArticleColors>>;
+export type Colors = Partial<[ArticleColors]>;
 
 export interface Article {
 name: string;
