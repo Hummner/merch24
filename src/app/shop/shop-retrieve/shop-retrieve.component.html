@@ -106,9 +106,19 @@
 
             </div>
         </div>
-        <div class="previousArticles">
-            <p #previousContent> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis ut nam doloremque dicta ipsa. Quis explicabo vel ipsum deleniti accusantium voluptatem. Odit ratione libero assumenda quibusdam amet saepe id quod?</p>
+        <div class="previous-articles">
+            <div #previousContent class="previous-banner">
+                @for(item of [1,2,3,4,5,6,7,8,9]; track $index) {
+                <div class="previous-item">
+                    <img src="/assets/img/t-shirt/frohnhausen-tshirt-blue.png" alt="">
+                    <p>39,00 €</p>
+                </div>
+                }
+            </div>
+            <div (click)="scrollLeft()" class="banner-icon"><img src="assets/icons/arrow_forward.svg" alt=""></div>
+            <div (click)="scrollRight()" class=" banner-icon absolute-right"><img
+                    src="assets/icons/arrow_forward.svg" alt=""></div>
         </div>
-        <button (click)="scrollRight()">Right</button>
+
     </div>
 </section>

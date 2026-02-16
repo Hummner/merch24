@@ -97,7 +97,9 @@ button.disabled {
     }
 }
 
-.previousArticles {
+.previous-articles {
+    width: 100%;
+    position: relative;
 
     p {
         height: 40px;
@@ -106,4 +108,73 @@ button.disabled {
         white-space: nowrap;
     }
 
+}
+
+.previous-item {
+    width: 150px;
+    height: 250px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: end; /* ide ugrik */
+
+
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    p {
+        font-weight: bold;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: scale(1.1);
+    }
+
+
+}
+
+.previous-banner {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    padding: 24px;
+    scroll-snap-type: x mandatory;
+    /* EZ A LÉNYEG */
+    scroll-behavior: smooth;
+
+}
+
+.banner-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+    background-color: rgba(0, 0, 0, 0.055);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transform: rotate(180deg);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.158);
+    }
+
+}
+
+.absolute-right {
+    transform: unset;
+    left: unset;
+    right: 0 !important;
 }

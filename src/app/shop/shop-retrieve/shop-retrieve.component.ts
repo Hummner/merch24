@@ -225,11 +225,11 @@ export class ShopRetrieveComponent {
   }
 
   public scrollRight(): void {
-    this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+    this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft + 182), behavior: 'smooth' });
   }
 
   public scrollLeft(): void {
-    this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+    this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft - 182), behavior: 'smooth' });
   }
 
 
