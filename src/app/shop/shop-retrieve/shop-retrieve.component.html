@@ -40,7 +40,7 @@
 
                 </h4>
                 <p class="m-0">pro Stück excl. Versandkosten</p>
-                <p><img src="assets/icons/delivery_truck.svg" alt=""> Lieferzeit cirka 2 Wochen</p>
+                <p><img src="assets/icons/delivery_truck.svg" alt=""> Lieferzeit circa 2 Wochen</p>
                 <div class="d-flex gap-4 align-items-start flex-column justify-content-center">
                     <div class="d-flex flex-column">
                         <span class="fw-bold">Menge:</span>
@@ -106,7 +106,9 @@
 
             </div>
         </div>
+        <h3 class="mt-5">Vor kurzem angeschaut</h3>
         <div class="previous-articles">
+
             <div #previousContent class="previous-banner">
                 @for(item of [1,2,3,4,5,6,7,8,9]; track $index) {
                 <div class="previous-item">
@@ -116,8 +118,8 @@
                 }
             </div>
             <div (click)="scrollLeft()" class="banner-icon"><img src="assets/icons/arrow_forward.svg" alt=""></div>
-            <div (click)="scrollRight()" class=" banner-icon absolute-right"><img
-                    src="assets/icons/arrow_forward.svg" alt=""></div>
+            <div (click)="scrollRight()" class=" banner-icon absolute-right"><img src="assets/icons/arrow_forward.svg"
+                    alt=""></div>
         </div>
 
     </div>
