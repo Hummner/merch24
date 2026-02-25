@@ -55,7 +55,7 @@ export class ShopRetrieveComponent {
 
       if (!item) return
       this.article = item
-
+      this.saveArticle(item)
       this.selectColor();
       this.getColors();
 
@@ -230,6 +230,26 @@ export class ShopRetrieveComponent {
 
   public scrollLeft(): void {
     this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft - 182), behavior: 'smooth' });
+  }
+
+  saveArticle(article: Article) {
+   
+    const recentlyString = localStorage.getItem("recently")
+    let recentlyArray = [];
+    if (recentlyString) {
+      debugger
+      recentlyArray = JSON.parse(recentlyString)
+      if (recentlyArray.some((a: Article) => a.slug === article.slug)) return // maybe with id not with slug
+      if (recentlyArray.length > 5) {
+        recentlyArray = recentlyArray.slice(0, 4)
+      }
+
+    }
+
+    
+    recentlyArray.unshift(article)
+    localStorage.setItem("recently", JSON.stringify(recentlyArray))
+
   }
 
 

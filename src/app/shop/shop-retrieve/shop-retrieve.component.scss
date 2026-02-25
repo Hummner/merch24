@@ -92,6 +92,14 @@ button.disabled {
 }
 
 .manufacturer-box {
+    border: var(--secondary-color) 2px solid;
+    padding: 12px;
+    border-radius: 20px;
+
+    strong {
+        color: var(--primary-color);
+    }
+
     p {
         margin: 0;
     }
@@ -119,7 +127,8 @@ button.disabled {
     display: flex;
     align-items: center;
     flex-direction: column;
-    scroll-snap-align: end; /* ide ugrik */
+    scroll-snap-align: end;
+    /* ide ugrik */
 
 
 
