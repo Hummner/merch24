@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Category } from '../interfaces/category';
 import { Article } from '../interfaces/article';
 import { Router } from '@angular/router';
+import { ArticleColors } from '../interfaces/article-colors';
 
 const BASE_URL = "http://127.0.0.1:8000/api/"
 
@@ -20,6 +21,9 @@ export class DbService {
 
   private singleProductSubject = new BehaviorSubject(<Article | undefined>(undefined))
   singleProduct$ = this.singleProductSubject.asObservable()
+
+  private recentlyArraySubject = new BehaviorSubject(<Article[]>([]))
+  recentlyArray$ = this.recentlyArraySubject.asObservable()
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -79,5 +83,35 @@ export class DbService {
       this.filterdProductsSubject.next(data)
 
     })
+  }
+
+  getRecentlyArticle() {
+    const recentlyString = localStorage.getItem("recently")
+    let recentlyArray = []
+
+    if (recentlyString) {
+      recentlyArray = JSON.parse(recentlyString)
+    }
+    this.recentlyArraySubject.next(recentlyArray)
+  }
+
+  saveRecentlyArticle(article: Article) {
+    const recentlyString = localStorage.getItem("recently")
+    let recentlyArray = [];
+    if (recentlyString) {
+      recentlyArray = JSON.parse(recentlyString)
+      if (recentlyArray.some((a: Article) => a.id === article.id)) return // maybe with id not with slug
+      if (recentlyArray.length > 5) {
+        recentlyArray = recentlyArray.slice(0, 4)
+      }
+    }
+ 
+
+
+
+
+    recentlyArray.unshift(article)
+    localStorage.setItem("recently", JSON.stringify(recentlyArray))
+
   }
 }

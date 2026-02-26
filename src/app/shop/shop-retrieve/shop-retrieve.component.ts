@@ -44,18 +44,20 @@ export class ShopRetrieveComponent {
 
   article!: Article
   filterdArticles!: Article[]
+  recentlyArticles!: Article[]
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const articleSlug = this.route.snapshot.paramMap.get('slug');
+    this.getRecentlyArticles()
     if (articleSlug) this.db.getProductFromDB(articleSlug)
 
     this.db.singleProduct$.subscribe(item => {
 
       if (!item) return
       this.article = item
-      this.saveArticle(item)
+      this.saveRecentlyArticle(item)
       this.selectColor();
       this.getColors();
 
@@ -84,7 +86,7 @@ export class ShopRetrieveComponent {
 
         if (firstVariant) {
           this.selectedColor = firstVariant.color;
-          this.changeVariant(firstVariant.color);
+          this.changeColor(firstVariant.color);
           this.getVariant(firstVariant);
         }
       }
@@ -137,8 +139,16 @@ export class ShopRetrieveComponent {
     this.selectColor();
   }
 
+  changeParam(color: string, size: string) {
+    this.router.navigate([], {
+      queryParams: { size: size, color: color },
+      replaceUrl: true,
+    });
 
-  changeVariant(color: string) {
+  }
+
+
+  changeColor(color: string) {
     this.router.navigate([], {
       queryParams: { color: color },
       replaceUrl: true,
@@ -232,24 +242,14 @@ export class ShopRetrieveComponent {
     this.previousContent.nativeElement.scrollTo({ left: (this.previousContent.nativeElement.scrollLeft - 182), behavior: 'smooth' });
   }
 
-  saveArticle(article: Article) {
-   
-    const recentlyString = localStorage.getItem("recently")
-    let recentlyArray = [];
-    if (recentlyString) {
-      debugger
-      recentlyArray = JSON.parse(recentlyString)
-      if (recentlyArray.some((a: Article) => a.slug === article.slug)) return // maybe with id not with slug
-      if (recentlyArray.length > 5) {
-        recentlyArray = recentlyArray.slice(0, 4)
-      }
+  saveRecentlyArticle(article: Article) {
+    this.db.saveRecentlyArticle(article)
+  }
 
-    }
-
-    
-    recentlyArray.unshift(article)
-    localStorage.setItem("recently", JSON.stringify(recentlyArray))
-
+  getRecentlyArticles() {
+    this.db.recentlyArray$.subscribe((items: Article[]) => {
+      this.recentlyArticles = items;
+    })
   }
 
 

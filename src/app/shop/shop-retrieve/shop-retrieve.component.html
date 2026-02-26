@@ -54,7 +54,7 @@
                             @for (color of colors(); track $index) {
                             <div class="color-picker-radio" [ngStyle]="backgroundColor(color.toLocaleLowerCase())"
                                 [ngClass]="{'selected': selectedColor === color}"
-                                (click)="changeVariant(color.toLocaleLowerCase())">
+                                (click)="changeColor(color.toLocaleLowerCase())">
                                 <div class="color-picker-radio-divider"></div>
                             </div>
                             }
