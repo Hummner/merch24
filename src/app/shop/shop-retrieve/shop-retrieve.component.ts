@@ -65,20 +65,25 @@ export class ShopRetrieveComponent {
   }
 
   selectColor() {
-
+    debugger
     this.route.queryParamMap.subscribe(params => {
-      const variant = params.get('color');
+      const color = params.get('color');
+      const size = params.get('size')
 
-      if (variant) {
-        this.selectedColor = variant;
+      if (color && size) {
+        this.selectedColor = color;
         if (!this.article.colors.length) return
-        const article = this.article.colors.find((c?: ArticleColors) => c?.color == variant)
+        const article = this.article.colors.find((c?: ArticleColors) => c?.color == color)
         if (article) {
-          this.getVariant(article)
+          this.getVariant(article, size)
         }
 
 
       } else {
+
+
+
+
 
         if (!this.article) return
 
@@ -87,15 +92,15 @@ export class ShopRetrieveComponent {
         if (firstVariant) {
           this.selectedColor = firstVariant.color;
           this.changeColor(firstVariant.color);
-          this.getVariant(firstVariant);
+          this.getVariant(firstVariant, size!);
         }
       }
     })
 
   }
 
-  getVariant(color: ArticleColors) {
-    this.getSizes(color);
+  getVariant(color: ArticleColors, size:string) {
+    this.getSizes(color, size);
     this.getVariantImages(color);
     this.getProductPrice(color, this.selectedSize!);
     this.checkInputs()
@@ -135,13 +140,14 @@ export class ShopRetrieveComponent {
 
   changeSize(size: string) {
     this.selectedSize = size;
+    this.changeParam()
 
     this.selectColor();
   }
 
-  changeParam(color: string, size: string) {
+  changeParam() {
     this.router.navigate([], {
-      queryParams: { size: size, color: color },
+      queryParams: {  color: this.selectedColor, size: this.selectedSize, },
       replaceUrl: true,
     });
 
@@ -149,11 +155,12 @@ export class ShopRetrieveComponent {
 
 
   changeColor(color: string) {
-    this.router.navigate([], {
-      queryParams: { color: color },
-      replaceUrl: true,
-    });
+    // this.router.navigate([], {
+    //   queryParams: { color: color },
+    //   replaceUrl: true,
+    // });
     this.selectedColor = color;
+    this.changeParam()
   }
 
 
@@ -194,14 +201,17 @@ export class ShopRetrieveComponent {
     return this.productPrice() * (this.selectedAmount);
   }
 
-  getSizes(colors: ArticleColors): string[] {
+  getSizes(colors: ArticleColors, size:string): string[] {
+    
     this.sizesAvailable = colors.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
 
     if (this.sizesAvailable.includes(this.selectedSize!)) {
       return this.sizesAvailable;
     } else {
-      this.selectedSize = undefined
+      this.selectedSize = this.sizesAvailable[0]
     }
+
+    this.changeParam();
     return this.sizesAvailable;
   }
 
