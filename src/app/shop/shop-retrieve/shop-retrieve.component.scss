@@ -37,7 +37,8 @@ section {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
-    width: 50px;
+    min-width: 50px;
+    width: fit-content;
     height: 25px;
     justify-content: center;
     display: flex;

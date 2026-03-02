@@ -54,6 +54,8 @@ export class ShopRetrieveComponent {
     if (articleSlug) this.db.getProductFromDB(articleSlug)
 
     this.db.singleProduct$.subscribe(item => {
+      this.selectedColor;
+      this.selectedSize;
 
       if (!item) return
       this.article = item
@@ -65,7 +67,6 @@ export class ShopRetrieveComponent {
   }
 
   selectColor() {
-    debugger
     this.route.queryParamMap.subscribe(params => {
       const color = params.get('color');
       const size = params.get('size')
@@ -202,6 +203,7 @@ export class ShopRetrieveComponent {
   }
 
   getSizes(colors: ArticleColors, size:string): string[] {
+    debugger
     
     this.sizesAvailable = colors.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
 
