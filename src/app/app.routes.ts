@@ -11,6 +11,7 @@ import { ShopRetrieveComponent } from './shop/shop-retrieve/shop-retrieve.compon
 import { OrderComponent } from './order/order.component';
 import { ShopCategoryComponent } from './shop-category/shop-category.component';
 import { NotFoundComponent } from './shop/not-found/not-found.component';
+import { ShippingcartDetailComponent } from './order/shippingcart-detail/shippingcart-detail.component';
 
 export const routes: Routes = [
     {
@@ -70,6 +71,10 @@ export const routes: Routes = [
     {
         path: "category/:id",
         component: ProductComponent
+    },
+    {
+        path: "order/shipping-cart",
+        component: ShippingcartDetailComponent
     },
     {
         path: "contact",

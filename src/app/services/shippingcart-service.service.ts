@@ -30,7 +30,7 @@ export class ShippingcartServiceService {
   }
 
   checkItemDuplicate(newItem: CartItems, cart: CartItems[]) {
-    const item = cart.find(i => newItem.sku === i.sku);
+    const item = cart.find(i => newItem.sku === i.sku && newItem.name === i.name && newItem.id === i.id);
 
     if (item) {
       this.addAmount(newItem, item, cart)

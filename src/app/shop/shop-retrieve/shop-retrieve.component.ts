@@ -100,7 +100,7 @@ export class ShopRetrieveComponent {
 
   }
 
-  getVariant(color: ArticleColors, size:string) {
+  getVariant(color: ArticleColors, size: string) {
     this.getSizes(color, size);
     this.getVariantImages(color);
     this.getProductPrice(color, this.selectedSize!);
@@ -148,7 +148,7 @@ export class ShopRetrieveComponent {
 
   changeParam() {
     this.router.navigate([], {
-      queryParams: {  color: this.selectedColor, size: this.selectedSize, },
+      queryParams: { color: this.selectedColor, size: this.selectedSize, },
       replaceUrl: true,
     });
 
@@ -168,6 +168,7 @@ export class ShopRetrieveComponent {
   addToCart() {
     this.checkInputs();
     const data: CartItems = {
+      id: this.article.id,
       name: this.article.name,
       price: this.productPrice(),
       amount: this.selectedAmount!,
@@ -202,13 +203,12 @@ export class ShopRetrieveComponent {
     return this.productPrice() * (this.selectedAmount);
   }
 
-  getSizes(colors: ArticleColors, size:string): string[] {
-    debugger
-    
+  getSizes(colors: ArticleColors, size: string): string[] {
     this.sizesAvailable = colors.variants.map(variant => variant.size ? variant.size : '').filter(size => size !== '');
 
-    if (this.sizesAvailable.includes(this.selectedSize!)) {
-      return this.sizesAvailable;
+    if (this.sizesAvailable.includes(size)) {
+      this.selectedSize = size
+      return this.sizesAvailable
     } else {
       this.selectedSize = this.sizesAvailable[0]
     }
