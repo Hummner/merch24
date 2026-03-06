@@ -129,6 +129,7 @@ export class HeaderComponent implements OnInit {
 
   goToCheckout(offcanvas: any) {
     offcanvas.close();
+    this.router.navigateByUrl('order/shipping-cart')
     // Navigate to checkout page
   }
 

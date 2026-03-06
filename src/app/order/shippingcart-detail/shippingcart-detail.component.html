@@ -1,15 +1,60 @@
 <section>
-    <div class="ship-container">
-        <div class="row w-100">
-            <div class="col-3">
-                <p>img</p>
-            </div>
-            <div class="col-9">
-                <p>data</p>
-            </div>
+    <div class="wrapper row">
 
+
+        <div class="shipping-cart col-12 col-lg-8">
+            <h2 class="text-center">Warenkorb Übersicht</h2>
+            <div class="cart-container">
+                @for (item of cart; track $index) {
+                <div class="d-flex w-100 cart-item-container">
+                    <div class="col-3 cart-img">
+                        <img [src]="item.image" alt="image">
+                    </div>
+                    <div class="col-9">
+                        <p class="fw-bold">{{item.name}}</p>
+                        <p>Menge: {{item.amount}}</p>
+                        <p>Größe: {{item.size}}</p>
+                    </div>
+
+                </div>
+                }
+
+
+            </div>
         </div>
+        <div class="casse col-12 col-lg-4">
+            <h2>Kasse</h2>
+            <div class="casse-container">
+                <table>
+                    <tr>
+                        <td>
+                            <p>Zwischensumme ({{cart.length}} Artikel(n))</p>
+                        </td>
+                        <td>
+                            <p>
+                                600 €
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Versand</p>
+                        </td>
+                        <td>
+                            <p>5,99 €</p>
+                        </td>
+                    </tr>
+                    <tr class="last-price">
+                        <td>
+                            <p>Gesamtsumme</p>
+                        </td>
+                        <td>
+                            <p>605,99 €</p>
+                        </td>
 
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-
 </section>
