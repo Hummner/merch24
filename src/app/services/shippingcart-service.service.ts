@@ -8,7 +8,7 @@ import { CartItems } from '../interfaces/cart-items';
 export class ShippingcartServiceService {
   private cartSubject = new BehaviorSubject(<CartItems[]>[])
   cart$ = this.cartSubject.asObservable()
-
+  shippingCost = 5.99
 
 
 
@@ -16,8 +16,23 @@ export class ShippingcartServiceService {
     const cart = localStorage.getItem("shippingcart")
     if (cart) {
       this.cartSubject.next(JSON.parse(cart))
+      this.totalPrice
+      
+      
     }
   }
+
+  get totalPrice() {
+    const prices = this.cartSubject.value.map(item => item.price)
+    console.log("Total Price");
+    
+    return prices.reduce((a,b) => a+b);
+    
+
+    
+  }
+
+
 
 
   addItem(item: CartItems) {
@@ -25,7 +40,6 @@ export class ShippingcartServiceService {
     if (this.checkItemDuplicate(item, cart)) return
     this.cartSubject.next([...cart, item])
     this.saveShippingCart([...cart, item]);
-    console.log(this.cart$);
 
   }
 
@@ -59,7 +73,7 @@ export class ShippingcartServiceService {
   delelteItem(item: CartItems) {
     const cart = this.cartSubject.value;
     const index = cart.indexOf(item);
-    console.log(index);
+   
 
     if (index !== -1) {
       cart.splice(index, 1);

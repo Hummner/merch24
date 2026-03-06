@@ -28,11 +28,11 @@
                 <table>
                     <tr>
                         <td>
-                            <p>Zwischensumme ({{cart.length}} Artikel(n))</p>
+                            <p>Zwischensumme ({{cart.length}} Artikel)</p>
                         </td>
                         <td>
                             <p>
-                                600 €
+                                {{sumPrice.toFixed(2).replace(".", ",")}} €
                             </p>
                         </td>
                     </tr>
@@ -41,7 +41,7 @@
                             <p>Versand</p>
                         </td>
                         <td>
-                            <p>5,99 €</p>
+                            <p>{{shippingCost.toFixed(2).replace(".", ",")}} €</p>
                         </td>
                     </tr>
                     <tr class="last-price">
@@ -49,7 +49,7 @@
                             <p>Gesamtsumme</p>
                         </td>
                         <td>
-                            <p>605,99 €</p>
+                            <p>{{totalPrice.toFixed(2).replace(".", ",")}} €</p>
                         </td>
 
                     </tr>
