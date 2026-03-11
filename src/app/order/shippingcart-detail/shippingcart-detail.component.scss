@@ -27,8 +27,8 @@ section {
 }
 
 .cart-img {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
 
     display: flex;
     justify-content: center;
@@ -45,10 +45,15 @@ section {
     display: flex;
     place-items: center;
     flex-direction: column;
+
+    
 }
 
 .casse-container {
     width: 100%;
+    background-color: var(--tertiary-color);
+    padding: 12px;
+    border-radius: 20px;
 }
 
 tr, table {
@@ -57,8 +62,12 @@ tr, table {
 
 td {
     width: fit-content;
+
+    p {
+        margin-bottom: 2px;
+    }
 }
 
 .last-price {
-    border-top: 1px solid var(--tertiary-color);
+    border-top: 1px solid var(--primary-color);
 }

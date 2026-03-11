@@ -10,10 +10,16 @@
                     <div class="col-3 cart-img">
                         <img [src]="item.image" alt="image">
                     </div>
-                    <div class="col-9">
-                        <p class="fw-bold">{{item.name}}</p>
-                        <p>Menge: {{item.amount}}</p>
-                        <p>Größe: {{item.size}}</p>
+                    <div class="col-9 d-flex justify-content-between">
+                        <div>
+                            <p class="fw-bold">{{item.name}}</p>
+                            <p>Menge: {{item.amount}}</p>
+                            <p>Größe: {{item.size}}</p>
+                        </div>
+                        <div>
+                            <span class="fw-bold">{{item.price.toFixed(2).replace(".",",")}} €</span>
+                        </div>
+
                     </div>
 
                 </div>
@@ -54,6 +60,7 @@
 
                     </tr>
                 </table>
+                <span class="btn btn-primary w-100 mt-2">Weiter zur Kasse</span>
             </div>
         </div>
     </div>
