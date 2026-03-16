@@ -17,6 +17,7 @@ export class ShippingcartDetailComponent implements OnInit {
   sumPrice!: number;
   shippingCost!: number;
   totalPrice!: number;
+  private shippingcartService = inject(ShippingcartServiceService);
 
   ngOnInit(): void {
     this.shippingcart.cart$.subscribe((items) => {
@@ -24,8 +25,12 @@ export class ShippingcartDetailComponent implements OnInit {
       this.sumPrice = this.shippingcart.totalPrice;
       this.shippingCost = this.shippingcart.shippingCost;
       this.totalPrice = this.shippingCost + this.sumPrice;
-      
+
     })
+  }
+
+  deleteItemFromCart(item: CartItems) {
+    this.shippingcartService.delelteItem(item);
   }
 
 }

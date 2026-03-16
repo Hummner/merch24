@@ -29,7 +29,6 @@ section {
 .cart-img {
     height: 100px;
     width: 100px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,4 +69,9 @@ td {
 
 .last-price {
     border-top: 1px solid var(--primary-color);
+}
+
+@media (max-width:768px) {
+    
+    
 }
