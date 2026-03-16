@@ -1,14 +1,14 @@
 section {
-    margin-top: 200px;
+    margin-top: 140px;
     place-items: center;
-
+    margin-bottom: 100px;
 }
 
 .wrapper {
     display: flex;
     width: 100%;
     max-width: 1440px;
-    
+
 }
 
 .cart-container {
@@ -45,7 +45,7 @@ section {
     place-items: center;
     flex-direction: column;
 
-    
+
 }
 
 .casse-container {
@@ -55,7 +55,8 @@ section {
     border-radius: 20px;
 }
 
-tr, table {
+tr,
+table {
     width: 100%;
 }
 
@@ -71,7 +72,4 @@ td {
     border-top: 1px solid var(--primary-color);
 }
 
-@media (max-width:768px) {
-    
-    
-}
+@media (max-width:768px) {}
