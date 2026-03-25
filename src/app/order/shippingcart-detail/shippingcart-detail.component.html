@@ -3,33 +3,49 @@
 
 
         <div class="shipping-cart col-12 col-lg-8">
-            <h2 class="text-center">Warenkorb Übersicht</h2>
-            <div class="cart-container">
-                @for (item of cart; track $index) {
-                <div class="d-flex w-100 cart-item-container">
-                    <div class="cart-img">
-                        <img [src]="item.image" alt="image">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                        <div class="flex-grow-1">
-                            <p class="fw-bold">{{item.name}}</p>
-                            <p class="m-0">Menge: {{item.amount}}</p>
-                            <p>Größe: {{item.size}}</p>
+
+            <mat-stepper linear #stepper>
+                <mat-step>
+                <ng-template matStepLabel>Warenkorb</ng-template>
+
+                
+
+                <h2 class="text-center">Warenkorb Übersicht</h2>
+                <div class="cart-container">
+                    @for (item of cart; track $index) {
+                    <div class="d-flex w-100 cart-item-container">
+                        <div class="cart-img">
+                            <img [src]="item.image" alt="image">
                         </div>
-                        <div class="d-flex flex-column justify-content-between align-items-end flex-shrink-1">
-                            <div class="delete-icon" (click)="deleteItemFromCart(item)">
-                                <img src="assets/icons/delete.svg" alt="delete">
+                        <div class="d-flex justify-content-between flex-grow-1">
+                            <div class="flex-grow-1">
+                                <p class="fw-bold">{{item.name}}</p>
+                                <p class="m-0">Menge: {{item.amount}}</p>
+                                <p>Größe: {{item.size}}</p>
                             </div>
-                            <span class="fw-bold">{{item.price.toFixed(2).replace(".",",")}} €</span>
+                            <div class="d-flex flex-column justify-content-between align-items-end flex-shrink-1">
+                                <div class="delete-icon" (click)="deleteItemFromCart(item)">
+                                    <img src="assets/icons/delete.svg" alt="delete">
+                                </div>
+                                <span class="fw-bold">{{item.price.toFixed(2).replace(".",",")}} €</span>
+                            </div>
+
                         </div>
 
                     </div>
+                    }
+
 
                 </div>
-                }
-
-
-            </div>
+                <button mat-button matStepperNext>Zur Persönlichen Daten</button>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Persönliche Daten</ng-template>
+                    <p>funkioniert</p>
+                    <button mat-button matStepperPrevious>Zurück zum Warenkorb</button>
+                </mat-step>
+                
+            </mat-stepper>
         </div>
         <div class="casse col-12 col-lg-4">
             <h2>Kasse</h2>
@@ -63,7 +79,8 @@
 
                     </tr>
                 </table>
-                <span class="btn btn-primary w-100 mt-2">Weiter zur Kasse</span>
+                
+                <span class="btn btn-primary w-100 mt-2">Kostenpflichtig bestellen</span>
             </div>
         </div>
     </div>
