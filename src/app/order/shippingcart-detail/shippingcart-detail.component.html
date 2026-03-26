@@ -3,17 +3,13 @@
 
 
         <div class="shipping-cart col-12 col-lg-8">
-
             <mat-stepper #stepper>
+
                 <mat-step>
                     <ng-template matStepLabel>Warenkorb</ng-template>
                     <ng-template matStepperIcon="edit">
                         1
                     </ng-template>
-
-
-
-
                     <h2 class="text-center">Warenkorb Übersicht</h2>
                     <div class="cart-container">
                         @for (item of cart; track $index) {
@@ -38,30 +34,34 @@
 
                         </div>
                         }
-
-
-
-
                     </div>
-                    <button mat-button matStepperNext>Zur Persönlichen Daten</button>
+                    <div class="w-100 d-flex justify-content-center my-3">
+                        <button class="primary-button" matStepperNext><span>Weiter</span></button>
+                    </div>
                 </mat-step>
+
                 <mat-step [stepControl]="firstFormGroup">
-                    <ng-template matStepLabel>Persönliche Daten</ng-template>
+                    <ng-template matStepLabel>Versand & Bezahlen</ng-template>
+                    <h2 class="text-center mt-5 mb-3">Lieferadresse </h2>
+                    <div class="divider"></div>
                     <form [formGroup]="firstFormGroup">
                         <ng-template matStepLabel>Fill out your name</ng-template>
-                        <div class="d-flex flex-column align-items-center container-sm col-8">
-
-
-                            <div class="d-flex gap-3 w-100">
-                                <mat-form-field class="d-flex w-50">
+                        <div class="d-flex flex-column align-items-center container-sm">
+                            <div class="d-flex gap-3 w-100 mobile-row">
+                                <mat-form-field class="d-flex w-50 mobile-w-100">
                                     <mat-label>Vorname</mat-label>
                                     <input matInput formControlName="firstName" placeholder="Vorname" required>
                                 </mat-form-field>
-                                <mat-form-field class="d-flex w-50">
+                                <mat-form-field class="d-flex w-50 mobile-w-100">
                                     <mat-label>Nachname</mat-label>
                                     <input matInput formControlName="lastName" placeholder="Nachname" required>
                                 </mat-form-field>
-
+                            </div>
+                            <div class="d-flex w-100">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Firma (optional)</mat-label>
+                                    <input matInput placeholder="Firma">
+                                </mat-form-field>
                             </div>
                             <div class="d-flex w-100">
                                 <mat-form-field class="w-100">
@@ -75,32 +75,33 @@
                                     <input matInput formControlName="address" placeholder="Adresse" required>
                                 </mat-form-field>
                             </div>
-                            <div class="d-flex gap-3 w-100">
-                                <mat-form-field class="w-25">
+                            <div class="d-flex gap-3 w-100 mobile-row">
+                                <mat-form-field class="w-25 mobile-w-100">
                                     <mat-label>PLZ</mat-label>
                                     <input matInput formControlName="zip" placeholder="PLZ" maxlength="5" required>
                                 </mat-form-field>
-                                <mat-form-field class="w-75">
+                                <mat-form-field class="w-75 mobile-w-100">
                                     <mat-label>Stadt</mat-label>
                                     <input matInput formControlName="city" placeholder="Stadt" required>
                                 </mat-form-field>
                             </div>
-
-                            <div>
-                                <button class="btn btn-primary" matStepperNext>Nächste</button>
-                            </div>
+                            <label for="differentBillingAddress">
+                                <input type="checkbox" name="differentBillingAddressCheckbox"
+                                    id="differentBillingAddress"
+                                    (change)="showDifferentBillingAddress  = $any($event.target).checked"><span
+                                    class="px-2">Rehnungadresse
+                                    ist anderes</span>
+                            </label>
                         </div>
+
                     </form>
-                    <div>
-                        <input type="checkbox" name="differentBillingAddressCheckbox" id="differentBillingAddress"
-                        (change)="showDifferentBillingAddress  = $any($event.target).checked"><span>Rehnungadresse ist anderes</span>
-                    </div>
+
+
 
                     <form [formGroup]="secondFormGroup" *ngIf="showDifferentBillingAddress">
-                        <ng-template matStepLabel>Fill out your name</ng-template>
-                        <div class="d-flex flex-column align-items-center container-sm col-8">
-
-
+                        <h2 class="text-center mt-5 mb-3">Rechnungadresse </h2>
+                        <div class="divider"></div>
+                        <div class="d-flex flex-column align-items-center container-sm">
                             <div class="d-flex gap-3 w-100">
                                 <mat-form-field class="d-flex w-50">
                                     <mat-label>Vorname</mat-label>
@@ -110,12 +111,11 @@
                                     <mat-label>Nachname</mat-label>
                                     <input matInput formControlName="lastName" placeholder="Nachname" required>
                                 </mat-form-field>
-
                             </div>
                             <div class="d-flex w-100">
                                 <mat-form-field class="w-100">
-                                    <mat-label>Email</mat-label>
-                                    <input matInput formControlName="email" placeholder="Email" required>
+                                    <mat-label>Firma (optional)</mat-label>
+                                    <input matInput placeholder="Firma">
                                 </mat-form-field>
                             </div>
                             <div class="d-flex w-100">
@@ -134,15 +134,45 @@
                                     <input matInput formControlName="city" placeholder="Stadt" required>
                                 </mat-form-field>
                             </div>
-
-                            <div>
-                                <button class="btn btn-primary" matStepperNext>Nächste</button>
-                            </div>
                         </div>
                     </form>
-                    <button mat-button matStepperPrevious>Zurück zum Warenkorb</button>
-                </mat-step>
 
+                    <h2 class="text-center mt-5 mb-3">Versandart</h2>
+                    <div class="divider"></div>
+                    <mat-radio-group aria-labelledby="radio-group-label" class="radio-group"
+                        [formControl]="shipmentControl">
+                        @for (shipment of shipments; track shipment) {
+                        <label class="radio-container" [ngClass]="{'checked': shipmentControl.value === shipment}">
+                            <mat-radio-button class="radio-button" [value]="shipment">
+                                <h3>{{shipment}}</h3>
+                            </mat-radio-button>
+
+                            <img src="assets/icons/{{shipment}}.svg" alt="">
+                        </label>
+
+                        }
+                    </mat-radio-group>
+
+                    <h2 class="text-center mt-5 mb-3">Zahlungsart</h2>
+                    <div class="divider"></div>
+                    <mat-radio-group aria-labelledby="radio-group-label" class="radio-group"
+                        [formControl]="paymentControl">
+                        @for (payment of payments; track payment) {
+                        <label class="radio-container" [ngClass]="{'checked': paymentControl.value === payment}">
+                            <mat-radio-button class="radio-button" [value]="payment">
+                                <h3>{{payment}}</h3>
+                            </mat-radio-button>
+                            <img src="assets/icons/{{payment}}.svg" alt="">
+                        </label>
+                        }
+                    </mat-radio-group>
+                    <div *ngIf="paymentControl.invalid && paymentControl.touched">
+                        Válassz fizetési módot!
+                    </div>
+                    <div class="w-100 d-flex justify-content-center my-3">
+                        <div matStepperPrevious class="primary-button"><span>Zurück zum Warenkorb</span></div>
+                    </div>
+                </mat-step>
             </mat-stepper>
         </div>
         <div class="casse col-12 col-lg-4">

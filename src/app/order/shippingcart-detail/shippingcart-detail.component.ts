@@ -9,16 +9,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
 @Component({
   selector: 'app-shippingcart-detail',
   standalone: true,
-  imports: [MatStepper, MatStep, MatStepLabel, MatStepperModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatIconModule, CommonModule],
+  imports: [MatRadioModule, MatStepper, MatStep, MatStepLabel, MatStepperModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatIconModule, CommonModule],
   templateUrl: './shippingcart-detail.component.html',
   styleUrl: './shippingcart-detail.component.scss'
 })
@@ -32,6 +33,10 @@ export class ShippingcartDetailComponent implements OnInit {
   private shippingcartService = inject(ShippingcartServiceService);
   private _formBuilder = inject(FormBuilder);
   showDifferentBillingAddress  = false;
+
+  shipments: string[] = ['Lieferung', 'Abholung'];
+  payments: string[] = ['Überweisung', 'Barzahlung'];
+  
 
 
 
@@ -76,6 +81,9 @@ export class ShippingcartDetailComponent implements OnInit {
     zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
     city: ['', Validators.required],
   });
+
+  paymentControl = new FormControl("", Validators.required);
+  shipmentControl = new FormControl("", Validators.required);
 
   deleteItemFromCart(item: CartItems) {
     this.shippingcartService.delelteItem(item);
