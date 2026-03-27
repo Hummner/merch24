@@ -142,33 +142,41 @@
                     <mat-radio-group aria-labelledby="radio-group-label" class="radio-group"
                         [formControl]="shipmentControl">
                         @for (shipment of shipments; track shipment) {
-                        <label class="radio-container" [ngClass]="{'checked': shipmentControl.value === shipment}">
+                        <label class="radio-container"
+                            [ngClass]="{'checked': shipmentControl.value === shipment, 'invalid-radio': shipmentControl.touched && shipmentControl.invalid}">
                             <mat-radio-button class="radio-button" [value]="shipment">
-                                <h3>{{shipment}}</h3>
+                                <h4 class="m-0">{{shipment}}</h4>
                             </mat-radio-button>
 
                             <img src="assets/icons/{{shipment}}.svg" alt="">
                         </label>
 
                         }
+
                     </mat-radio-group>
+                    <div *ngIf="shipmentControl.invalid && shipmentControl.touched">
+                        <span class="errors">Wählen Sie eine Versandart!</span>
+                    </div>
 
                     <h2 class="text-center mt-5 mb-3">Zahlungsart</h2>
                     <div class="divider"></div>
                     <mat-radio-group aria-labelledby="radio-group-label" class="radio-group"
                         [formControl]="paymentControl">
                         @for (payment of payments; track payment) {
-                        <label class="radio-container" [ngClass]="{'checked': paymentControl.value === payment}">
+                        <label class="radio-container"
+                            [ngClass]="{'checked': paymentControl.value === payment, 'invalid-radio': paymentControl.touched && paymentControl.invalid}">
                             <mat-radio-button class="radio-button" [value]="payment">
-                                <h3>{{payment}}</h3>
+                                <h4 class="m-0">{{payment}}</h4>
                             </mat-radio-button>
                             <img src="assets/icons/{{payment}}.svg" alt="">
                         </label>
                         }
+
                     </mat-radio-group>
                     <div *ngIf="paymentControl.invalid && paymentControl.touched">
-                        Válassz fizetési módot!
+                        <span class="errors">Wählen Sie eine Zahlungsmethode!</span>
                     </div>
+
                     <div class="w-100 d-flex justify-content-center my-3">
                         <div matStepperPrevious class="primary-button"><span>Zurück zum Warenkorb</span></div>
                     </div>
@@ -184,7 +192,7 @@
                             <p>Zwischensumme ({{cart.length}} Artikel)</p>
                         </td>
                         <td>
-                            <p>
+                            <p class="text-end">
                                 {{sumPrice.toFixed(2).replace(".", ",")}} €
                             </p>
                         </td>
@@ -193,22 +201,35 @@
                         <td>
                             <p>Versand</p>
                         </td>
-                        <td>
+                        @if (shipmentControl.value == "") {
+                        <td class="text-end">
+                            <p>Wird berechnet</p>
+                        </td>
+                        } @else {
+                        <td class="text-end">
                             <p>{{shippingCost.toFixed(2).replace(".", ",")}} €</p>
                         </td>
+                        }
+
+
                     </tr>
                     <tr class="last-price">
                         <td>
-                            <p>Gesamtsumme</p>
+                            <p class="fw-bold">Gesamtsumme</p>
                         </td>
-                        <td>
-                            <p>{{totalPrice.toFixed(2).replace(".", ",")}} €</p>
+                        <td class="text-end">
+                            <p class="fw-bold">{{totalPrice.toFixed(2).replace(".", ",")}} €</p>
                         </td>
 
                     </tr>
                 </table>
 
-                <span class="btn btn-primary w-100 mt-2">Kostenpflichtig bestellen</span>
+                <div class="d-flex w-100 justify-content-center mt-2">
+                    <button class="primary-button" (click)="toOverview()"><span>Kostenpflichtig
+                            bestellen</span></button>
+                </div>
+
+
             </div>
         </div>
     </div>

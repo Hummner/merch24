@@ -29,7 +29,7 @@ h5 {
 
 .cart-item-container {
     border: 3px solid var(--tertiary-color);
-    border-radius: 20px;
+    border-radius: 3px;
     padding: 12px;
 }
 
@@ -57,9 +57,9 @@ h5 {
 
 .casse-container {
     width: 100%;
-    background-color: var(--tertiary-color);
     padding: 12px;
-    border-radius: 20px;
+    border-radius: 3px;
+    border: 3px solid var(--tertiary-color);
 }
 
 tr,
@@ -85,7 +85,7 @@ td {
     align-items: center;
     border: 2px solid var(--tertiary-color);
     border-radius: 20px;
-    padding: 24px;
+    padding: 8px;
     width: 100%;
     cursor: pointer;
     user-select: none;
@@ -93,7 +93,7 @@ td {
     transition: transform 100ms ease-in-out;
 
 
-    h3 {
+    h4 {
         margin: 0;
     }
 
@@ -112,7 +112,7 @@ td {
 .checked {
     background-color: var(--tertiary-color) !important;
 
-    h3 {
+    h4 {
         color: white !important;
     }
 
@@ -147,6 +147,14 @@ td {
 
 .mobile-row {
     flex-direction: unset;
+}
+
+.invalid-radio {
+    border-color: red !important;
+}
+
+.errors {
+    color: red;
 }
 
 
