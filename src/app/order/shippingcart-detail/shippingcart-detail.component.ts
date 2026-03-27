@@ -32,6 +32,8 @@ export class ShippingcartDetailComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   showDifferentBillingAddress = false;
 
+  
+
   shipments: string[] = ['Lieferung', 'Abholung'];
   payments: string[] = ['Überweisung', 'Barzahlung'];
 
@@ -121,6 +123,10 @@ export class ShippingcartDetailComponent implements OnInit {
 
   checkFormsWithBillingAddress() {
     return this.firstFormGroup.valid && this.paymentControl.valid && this.shipmentControl.valid && this.secondFormGroup.valid
+  }
+
+  stepper() {
+    
   }
 
 }

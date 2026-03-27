@@ -3,7 +3,7 @@
 
 
         <div class="shipping-cart col-12 col-lg-8">
-            <mat-stepper #stepper>
+            <mat-stepper #stepper labelPosition="bottom">
 
                 <mat-step>
                     <ng-template matStepLabel>Warenkorb</ng-template>
@@ -41,7 +41,7 @@
                 </mat-step>
 
                 <mat-step [stepControl]="firstFormGroup">
-                    <ng-template matStepLabel>Versand & Bezahlen</ng-template>
+                    <ng-template matStepLabel>Adresse & Versand</ng-template>
                     <h2 class="text-center mt-5 mb-3">Lieferadresse </h2>
                     <div class="divider"></div>
                     <form [formGroup]="firstFormGroup">
@@ -177,9 +177,29 @@
                         <span class="errors">Wählen Sie eine Zahlungsmethode!</span>
                     </div>
 
-                    <div class="w-100 d-flex justify-content-center my-3">
+                    <div class="w-100 d-flex justify-content-center mt-5">
                         <div matStepperPrevious class="primary-button"><span>Zurück zum Warenkorb</span></div>
                     </div>
+                </mat-step>
+                <mat-step>
+                    <h2>Übersicht</h2>
+                    <div class="row">
+
+                        <div class="col-6">
+                            <p>Lieferadresse</p>
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
                 </mat-step>
             </mat-stepper>
         </div>
@@ -225,8 +245,8 @@
                 </table>
 
                 <div class="d-flex w-100 justify-content-center mt-2">
-                    <button class="primary-button" (click)="toOverview()"><span>Kostenpflichtig
-                            bestellen</span></button>
+                    <button class="primary-button" (click)="toOverview()"><span>Zur Bestellübersicht</span></button>
+                    <button (click)="stepper.next()">stepper.step</button>
                 </div>
 
 

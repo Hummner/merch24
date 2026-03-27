@@ -12,6 +12,7 @@ import { OrderComponent } from './order/order.component';
 import { ShopCategoryComponent } from './shop-category/shop-category.component';
 import { NotFoundComponent } from './shop/not-found/not-found.component';
 import { ShippingcartDetailComponent } from './order/shippingcart-detail/shippingcart-detail.component';
+import { OverviewComponent } from './order/overview/overview.component';
 
 export const routes: Routes = [
     {
@@ -75,6 +76,10 @@ export const routes: Routes = [
     {
         path: "order/shipping-cart",
         component: ShippingcartDetailComponent
+    },
+    {
+        path: "order/overview",
+        component: OverviewComponent
     },
     {
         path: "contact",
