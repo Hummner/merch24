@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://merch24.eu/</loc>
-    <lastmod>2025-10-15</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -18,16 +18,51 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://merch24.eu/privacy-policy</loc>
-    <lastmod>2025-10-15</lastmod>
+    <url>
+    <loc>https://merch24.eu/stickerei-edel-und-langlebig</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://merch24.eu/withdrawal</loc>
-    <lastmod>2025-10-15</lastmod>
+    <loc>https://merch24.eu/druckverfahren-flex-folie-dtf-uv-dtf</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://merch24.eu/fotogeschenke-tassen-und-schluesselanhaenger</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://merch24.eu/vereinsbedarf-fanschals-trikots-wimpel-patches</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://merch24.eu/teamwear-fuer-training-und-spiel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://merch24.eu/pokale-und-medaillen-mit-gravur</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://merch24.eu/designservice-vektorgrafik-und-druckdaten</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://merch24.eu/workwear-payper-fuer-alltag-und-einsatz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

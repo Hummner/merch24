@@ -395,42 +395,42 @@ export class CategoryServiceService {
 
   seoDetail = {
     sticker: {
-      title: "Stickerei edel und langlebig | Merch24",
+      title: "Stickerei edel und langlebig in Essen Fronhausen | Merch24",
       name: "Stickerei",
       content: "Bestickung in hoher Qualität für Logos und Schrift. Waschfest, farbecht und mit edlem Look für Teamwear, Workwear und Vereinsbedarf."
     },
     flex: {
-      title: "Druckverfahren Flex Folie DTF UV DTF | Merch24",
+      title: "Druckverfahren Flex Folie DTF UV DTF in Essen Fronhausen | Merch24",
       name: "Druckverfahren",
       content: "Flexdruck, Foliendruck, DTF und UV DTF für Textilien und harte Oberflächen. Hohe Deckkraft, elastisch, detailgenau und ideal für Namen und Nummern."
     },
     photogift: {
-      title: "Fotogeschenke Tassen und Schlüsselanhänger | Merch24",
+      title: "Fotogeschenke Tassen und Schlüsselanhänger in Essen Fronhausen | Merch24",
       name: "Fotogeschenke",
       content: "Personalisierte Tassen und Schlüsselanhänger in brillanter Druckqualität. Perfekt als Geschenk und bereits ab 1 Stück schnell produziert."
     },
     verein: {
-      title: "Vereinsbedarf Fanschals Trikots Wimpel Patches | Merch24",
+      title: "Vereinsbedarf Fanschals Trikots Wimpel Patches in Essen Fronhausen | Merch24",
       name: "Vereinsbedarf",
       content: "Fanschals, Mützen, Trikots, Wimpel und Patches für Vereine. Individuelles Design, robuste Verarbeitung und ideal für Teams und Events."
     },
     teamwear: {
-      title: "Teamwear für Training und Spiel | Merch24",
+      title: "Teamwear für Training und Spiel in Essen Fronhausen | Merch24",
       name: "Teamwear",
       content: "Trikots, Trainingsanzüge und komplette Mannschaftssätze von Markenherstellern mit professioneller Veredelung. Bequem, strapazierfähig und bereit für Training und Spiel."
     },
     cups: {
-      title: "Pokale und Medaillen mit Gravur | Merch24",
+      title: "Pokale und Medaillen mit Gravur in Essen Fronhausen | Merch24",
       name: "Pokale und Medaillen",
       content: "Pokale, Medaillen und Glaspokale mit individueller Gravur. Viele Größen und Formen, schnelle Produktion und ideal für Turniere und Ehrungen."
     },
     design: {
-      title: "Designservice Vektorgrafik und Druckdaten | Merch24",
+      title: "Designservice Vektorgrafik und Druckdaten in Essen Fronhausen | Merch24",
       name: "Designservice",
       content: "Vektorgrafik, präzise Bildbearbeitung und druckfertige PDF Dateien. Saubere Pfade, korrekte Farbprofile und professionelle Datenaufbereitung."
     },
     payper: {
-      title: "Workwear Payper für Alltag und Einsatz | Merch24",
+      title: "Workwear Payper für Alltag und Einsatz in Essen Fronhausen | Merch24",
       name: "Workwear Payper",
       content: "Softshelljacken, Hosen, Shirts und Hoodies von Payper. Robust, bequem und ideal für Alltag, Beruf und Einsatz."
     }

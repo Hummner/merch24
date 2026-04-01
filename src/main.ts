@@ -1,4 +1,4 @@
-import { bootstrapApplication } from '@angular/platform-browser';
+import { bootstrapApplication, provideClientHydration } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -15,6 +15,6 @@ bootstrapApplication(AppComponent, {
         scrollPositionRestoration: 'enabled'   // Scroll-Position wiederherstellen                 // optional: Offset für feste Navbar
       })
     ),
-    provideAnimations(), provideHttpClient()
+    provideAnimations(), provideHttpClient(), provideClientHydration()
   ]
 });
