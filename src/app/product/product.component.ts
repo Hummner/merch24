@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryServiceService } from '../services/category-service.service';
-import { Location } from '@angular/common';
 import AOS from 'aos'
 import { Meta, Title } from '@angular/platform-browser';
 import { seoDetail, getSeoBySlug } from './../../seoDetail';
+import { isPlatformBrowser } from '@angular/common';
 
 type SeoKey = keyof typeof seoDetail;
 
@@ -15,13 +15,18 @@ type SeoKey = keyof typeof seoDetail;
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
-export class ProductComponent implements AfterViewInit {
+export class ProductComponent implements AfterViewInit, OnInit {
   categoryService = inject(CategoryServiceService)
   router = inject(Router)
   product!: any;
   currentlyProduct!: any;
+  platformId = inject(PLATFORM_ID)
 
-  constructor(private route: ActivatedRoute, private location: Location, private title: Title, private meta: Meta) {
+  constructor(private route: ActivatedRoute, private title: Title, private meta: Meta) {
+
+  }
+
+  ngOnInit(): void {
     this.route.params.subscribe((params => {
       const link = params['id'];
 
@@ -29,13 +34,20 @@ export class ProductComponent implements AfterViewInit {
         let key = this.getSeoKeyBySlug(link)
         this.product = key
       }
-      window.scrollTo({ top: 0, behavior: "instant" });
-      this.currentlyProduct = this.getDeatail(this.product);
+
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }
+
+      this.currentlyProduct = this.getDetail(this.product);
     }))
   }
 
   ngAfterViewInit(): void {
-    AOS.init()
+    if (isPlatformBrowser(this.platformId)) {
+      AOS.init()
+    }
+
     this.getSeoCategorie(this.product)
     this.showName()
   }
@@ -52,7 +64,7 @@ export class ProductComponent implements AfterViewInit {
     this.title.setTitle(seo.title)
     this.meta.updateTag({
       name: 'description',
-      content: seo.title
+      content: seo.content
     })
   }
 
@@ -64,7 +76,7 @@ export class ProductComponent implements AfterViewInit {
 
 
 
-  getDeatail(id: keyof CategoryServiceService["detail"]) {
+  getDetail(id: keyof CategoryServiceService["detail"]) {
     return this.currentlyProduct = this.categoryService.detail[id]
   }
 
