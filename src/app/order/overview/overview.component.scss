@@ -20,3 +20,35 @@ section {
 .item-table td:last-child {
     text-align: right !important;
 }
+
+.checkbox {
+    transform: scale(1.5);
+}
+
+.checkbox-label {
+    cursor: pointer;
+
+    span {
+        user-select: none;
+    }
+}
+
+a {
+    font-size: 21px !important;
+    text-decoration: underline !important;
+    transform: unset !important;
+}
+
+.disabled {
+    background-color: #69696936 !important;
+    cursor: not-allowed !important;
+    transform: unset;
+
+    span {
+        color: #a5a5a5 !important;
+    }
+}
+
+.errors {
+    color: red;
+}

@@ -90,11 +90,49 @@
                     </div>
                     <div class="divider m-0"></div>
                 </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p class="fw-bold fs-5 m-0">Gesamtsumme</p>
+                        <p>{{totalAmount}} Artikel</p>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                        <p class="fw-bold fs-5 m-0">{{totalPrice.toFixed(2).replace(".", ",")}} €</p>
+                        <p>(inkl. MwSt.)</p>
+                    </div>
+
+                </div>
+                <div class="w-100 justify-content-center d-flex flex-column">
+                    <label for="accept-digital-consent" class="checkbox-label">
+                        <input #checkbox class="checkbox mx-2" type="checkbox" name="accept-digital-consent"
+                            id="accept-digital-consent" [(ngModel)]="checked">
+                        <span>Ich habe die <a target="_blank" href="">AGB</a> und <a target="_blank"
+                                href="https://www.merch24.eu/withdrawal">Widerrufsbelehrung</a> gelesen und akzeptiere
+                            sie.</span>
+
+                    </label>
+                    <label for="policy-checkbox" class="checkbox-label">
+                        <input #checkbox class="checkbox mx-2" type="checkbox" name="policy-checkbox"
+                            id="policy-checkbox" [(ngModel)]="checked_policy">
+                        <span>Ich habe die <a target="_blank" href="">Datenschutzerklärung</a> gelesen und akzeptiere
+                            sie.</span>
+
+                    </label>
+
+                </div>
+                <div class="w-100 d-flex justify-content-center">
+                    <p class="errors text-center" *ngIf="checkbox_error && !checked">Bitte stimmen Sie zu, dass wir vor
+                        Ablauf
+                        der Widerrufsfrist mit der Ausführung beginnen.</p>
+                </div>
 
 
 
 
-                <div>
+                <div class="d-flex justify-content-between mt-5">
+                    <button class="secondary-button" (click)="backToShippingCart()"><span>Bearbeiten</span></button>
+                    <button class="primary-button" [ngClass]="{'disabled': !checked}"
+                        (click)="order()"><span>Kostenpflichtig bestellen</span></button>
 
                 </div>
 

@@ -17,19 +17,24 @@ export class ShippingcartServiceService {
     if (cart) {
       this.cartSubject.next(JSON.parse(cart))
       this.totalPrice
-      
-      
+
+
     }
   }
 
   get totalPrice() {
     const prices = this.cartSubject.value.map(item => item.price)
     console.log("Total Price");
-    
-    return prices.reduce((a,b) => a+b);
-    
 
-    
+    return prices.reduce((a, b) => a + b);
+
+
+
+  }
+
+  get totalAmount() {
+    const totalAmount = this.cartSubject.value.map(item => item.amount)
+    return totalAmount.reduce((a, b) => a + b);
   }
 
 
@@ -63,7 +68,7 @@ export class ShippingcartServiceService {
   saveShippingCart(cart: CartItems[]) {
     localStorage.setItem('shippingcart', JSON.stringify(cart));
     const locStorage = localStorage.getItem('shippingcart');
-    
+
 
     if (locStorage == null || locStorage == "[]") {
       localStorage.removeItem('shippingcart');
@@ -73,7 +78,7 @@ export class ShippingcartServiceService {
   delelteItem(item: CartItems) {
     const cart = this.cartSubject.value;
     const index = cart.indexOf(item);
-   
+
 
     if (index !== -1) {
       cart.splice(index, 1);
