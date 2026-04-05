@@ -146,6 +146,14 @@ td {
     gap: 24px;
 }
 
+::ng-deep .mat-step-icon-state-edit {
+    background-color: var(--primary-color) !important;
+}
+
+::ng-deep .mat-step-icon-selected {
+background-color: var(--tertiary-color) !important;
+}
+
 
 .mobile-row {
     flex-direction: unset;
@@ -157,6 +165,15 @@ td {
 
 .errors {
     color: red;
+}
+
+.order-disabled {
+    background-color: #69696936 !important;
+    cursor: not-allowed !important;
+    transform: unset;
+    span {
+        color: #a5a5a5 !important;
+    }
 }
 
 

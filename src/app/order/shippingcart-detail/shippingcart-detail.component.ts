@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ShippingcartServiceService } from '../../services/shippingcart-service.service';
 import { Article } from '../../interfaces/article';
 import { CartItems } from '../../interfaces/cart-items';
@@ -13,6 +13,7 @@ import { FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angu
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatRadioModule } from '@angular/material/radio';
+import { Router } from '@angular/router';
 
 
 
@@ -31,8 +32,11 @@ export class ShippingcartDetailComponent implements OnInit {
   private shippingcartService = inject(ShippingcartServiceService);
   private _formBuilder = inject(FormBuilder);
   showDifferentBillingAddress = false;
+  formsValid = false
 
-  
+  @ViewChild(MatStepper) stepperComp!: MatStepper
+
+
 
   shipments: string[] = ['Lieferung', 'Abholung'];
   payments: string[] = ['Überweisung', 'Barzahlung'];
@@ -40,7 +44,8 @@ export class ShippingcartDetailComponent implements OnInit {
 
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private router: Router
   ) {
     this.matIconRegistry.addSvgIcon(
       'create',
@@ -66,8 +71,9 @@ export class ShippingcartDetailComponent implements OnInit {
     return this.shippingCost + this.sumPrice;
   }
 
-  firstFormGroup = this._formBuilder.group({
+  addressFormGroup = this._formBuilder.group({
     firstName: ['', Validators.required],
+    business: [''],
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     address: ['', Validators.required],
@@ -75,9 +81,10 @@ export class ShippingcartDetailComponent implements OnInit {
     city: ['', Validators.required],
   });
 
-  secondFormGroup = this._formBuilder.group({
+  billingAddressFormGroup = this._formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
+    business: [''],
     email: ['', [Validators.required, Validators.email]],
     address: ['', Validators.required],
     zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
@@ -91,25 +98,78 @@ export class ShippingcartDetailComponent implements OnInit {
     this.shippingcartService.delelteItem(item);
   }
 
+  // nextStep() {
+  //   console.log(this.stepperComp._steps.get(0));
+  //   console.log(this.stepperComp.selectedIndex)
+
+  //   this.stepperComp.selected!.completed = true
+  //   this.stepperComp.next()
+  // }
+
+  // previousStep() {
+  //   this.stepperComp.previous()
+  // }
+
+  // isEditable() {
+  //   const stepperIndex = this.stepperComp.selectedIndex;
+
+  //   const previousStepInex = this.stepperComp._steps.get(stepperIndex - 1)
+
+  // }
+
   toOverview() {
-    console.log(this.firstFormGroup.status,
-    this.paymentControl.status,
-    this.shipmentControl.status,
-  this.secondFormGroup.status);
-
-    if (!this.checkForms()) return
-
-    alert("Danke für deine Bestellung")
-
+    this.markFormAsTouched();
+    if (!this.checkForms()) return this.goToForm()
+    this.saveFormInSessionStorage();
   }
 
-  checkForms() {
-    this.firstFormGroup.markAllAsTouched();
+  saveFormInSessionStorage() {
+    if (!this.showDifferentBillingAddress) {
+      this.renderBillingAddress()
+    }
+    const customerDetails = {
+      "address": this.addressFormGroup.value,
+      "billingAddress": this.billingAddressFormGroup.value,
+      "payment": this.paymentControl.value,
+      "shipment": this.paymentControl.value
+    }
+
+    sessionStorage.setItem("customerDetails", JSON.stringify(customerDetails))
+
+    this.router.navigateByUrl('order/overview')
+  }
+
+  renderBillingAddress() {
+    this.billingAddressFormGroup.setValue({
+      firstName: this.addressFormGroup.value.firstName!,
+      lastName: this.addressFormGroup.value.lastName!,
+      business: this.addressFormGroup.value.business!,
+      email: this.addressFormGroup.value.email!,
+      address: this.addressFormGroup.value.address!,
+      zip: this.addressFormGroup.value.zip!,
+      city: this.addressFormGroup.value.city!,
+    })
+  }
+
+  goToForm() {
+    if (this.stepperComp.selectedIndex == 0) {
+      this.stepperComp.next()
+    }
+  }
+
+  markFormAsTouched() {
+    this.addressFormGroup.markAllAsTouched();
     this.paymentControl.markAllAsTouched();
     this.shipmentControl.markAllAsTouched();
 
     if (this.showDifferentBillingAddress) {
-      this.secondFormGroup.markAllAsTouched();
+      this.billingAddressFormGroup.markAllAsTouched();
+    }
+
+  }
+
+  checkForms(): boolean {
+    if (this.showDifferentBillingAddress) {
       if (this.checkFormsWithBillingAddress()) return true
       return false
     }
@@ -118,15 +178,13 @@ export class ShippingcartDetailComponent implements OnInit {
   }
 
   checkFormsWithoutBillingAddress() {
-    return this.firstFormGroup.valid && this.paymentControl.valid && this.shipmentControl.valid
+    return this.addressFormGroup.valid && this.paymentControl.valid && this.shipmentControl.valid
   }
 
   checkFormsWithBillingAddress() {
-    return this.firstFormGroup.valid && this.paymentControl.valid && this.shipmentControl.valid && this.secondFormGroup.valid
+    return this.addressFormGroup.valid && this.paymentControl.valid && this.shipmentControl.valid && this.billingAddressFormGroup.valid
   }
 
-  stepper() {
-    
-  }
+
 
 }

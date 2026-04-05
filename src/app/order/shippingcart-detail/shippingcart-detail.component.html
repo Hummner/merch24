@@ -3,13 +3,14 @@
 
 
         <div class="shipping-cart col-12 col-lg-8">
-            <mat-stepper #stepper labelPosition="bottom">
+            <mat-stepper #stepper labelPosition="bottom" id="stepperComp">
+
+                
+
 
                 <mat-step>
                     <ng-template matStepLabel>Warenkorb</ng-template>
-                    <ng-template matStepperIcon="edit">
-                        1
-                    </ng-template>
+
                     <h2 class="text-center">Warenkorb Übersicht</h2>
                     <div class="cart-container">
                         @for (item of cart; track $index) {
@@ -40,11 +41,12 @@
                     </div>
                 </mat-step>
 
-                <mat-step [stepControl]="firstFormGroup">
+                <mat-step [stepControl]="addressFormGroup">
                     <ng-template matStepLabel>Adresse & Versand</ng-template>
+                    <p class="errors" *ngIf="addressFormGroup.invalid && addressFormGroup.touched">Bitte überprüfe deine Eingaben und fülle alle Pflichtfelder aus.</p>
                     <h2 class="text-center mt-5 mb-3">Lieferadresse </h2>
                     <div class="divider"></div>
-                    <form [formGroup]="firstFormGroup">
+                    <form [formGroup]="addressFormGroup">
                         <ng-template matStepLabel>Fill out your name</ng-template>
                         <div class="d-flex flex-column align-items-center container-sm">
                             <div class="d-flex gap-3 w-100 mobile-row">
@@ -60,7 +62,7 @@
                             <div class="d-flex w-100">
                                 <mat-form-field class="w-100">
                                     <mat-label>Firma (optional)</mat-label>
-                                    <input matInput placeholder="Firma">
+                                    <input matInput formControlName="business" placeholder="Firma">
                                 </mat-form-field>
                             </div>
                             <div class="d-flex w-100">
@@ -89,8 +91,7 @@
                                 <input type="checkbox" name="differentBillingAddressCheckbox"
                                     id="differentBillingAddress"
                                     (change)="showDifferentBillingAddress  = $any($event.target).checked"><span
-                                    class="px-2">Rehnungadresse
-                                    ist anderes</span>
+                                    class="px-2">Die Rechnungsadresse ist abweichend</span>
                             </label>
                         </div>
 
@@ -98,7 +99,7 @@
 
 
 
-                    <form [formGroup]="secondFormGroup" *ngIf="showDifferentBillingAddress">
+                    <form [formGroup]="billingAddressFormGroup" *ngIf="showDifferentBillingAddress">
                         <h2 class="text-center mt-5 mb-3">Rechnungadresse </h2>
                         <div class="divider"></div>
                         <div class="d-flex flex-column align-items-center container-sm">
@@ -178,29 +179,12 @@
                     </div>
 
                     <div class="w-100 d-flex justify-content-center mt-5">
-                        <div matStepperPrevious class="primary-button"><span>Zurück zum Warenkorb</span></div>
+                        <button matStepperPrevious class="primary-button"><span>Zurück zum Warenkorb</span></button>
                     </div>
                 </mat-step>
-                <mat-step>
-                    <h2>Übersicht</h2>
-                    <div class="row">
-
-                        <div class="col-6">
-                            <p>Lieferadresse</p>
-                        </div>
-                        <div class="col-6">
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-
-
-                </mat-step>
+                <ng-template matStepperIcon="edit">
+                    <img src="assets/icons/check_small.svg" alt="">
+                </ng-template>
             </mat-stepper>
         </div>
         <div class="casse col-12 col-lg-4">
@@ -245,8 +229,9 @@
                 </table>
 
                 <div class="d-flex w-100 justify-content-center mt-2">
-                    <button class="primary-button" (click)="toOverview()"><span>Zur Bestellübersicht</span></button>
-                    <button (click)="stepper.next()">stepper.step</button>
+                    <button class="primary-button" (click)="toOverview()" [ngClass]="{'order-disabled': !checkForms()}"><span>Zur Bestellübersicht</span></button>
+                    <!-- <button (click)="stepper.next()">stepper.step</button> -->
+
                 </div>
 
 

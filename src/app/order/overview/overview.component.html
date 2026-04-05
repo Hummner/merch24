@@ -1,1 +1,110 @@
-<p>overview works!</p>
+<section>
+    <div class="wrapper">
+        <div class="w-100 d-flex justify-content-center align-items-center flex-column gap-5">
+            <h2>Letzter Überblick vor der Bestellung</h2>
+
+
+            <div>
+
+            </div>
+
+            <div class="w-50 d-flex justify-content-between gap-5">
+                <table mat-table class="col-5">
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell>Lieferadresse</th>
+                        <tr>
+                            <td mat-cell>{{customerDetails.address.firstName}} {{customerDetails.address.lastName}}</td>
+                        </tr>
+                        <tr>
+                            <td mat-cell>{{customerDetails.address.business}}</td>
+                        </tr>
+                        <tr>
+                            <td mat-cell>{{customerDetails.address.address}}</td>
+                        </tr>
+                        <tr>
+                            <td mat-cell>{{customerDetails.address.zip}}, {{customerDetails.address.city}}</td>
+                        </tr>
+                    </ng-container>
+                </table>
+                <table mat-table class="col-5">
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell>Rechnungsadresse</th>
+                        <tr>
+                            <td mat-cell>{{customerDetails.billingAddress.firstName}}
+                                {{customerDetails.billingAddress.lastName}}</td>
+                        </tr>
+                        <tr>
+                            <td mat-cell>{{customerDetails.address.business}}</td>
+                        </tr>
+                        <tr>
+                            <td mat-cell>{{customerDetails.billingAddress.address}}</td>
+                        </tr>
+                        <tr>
+                            <td mat-cell>{{customerDetails.billingAddress.zip}}, {{customerDetails.billingAddress.city}}
+                            </td>
+                        </tr>
+                    </ng-container>
+                </table>
+            </div>
+
+            <div *ngIf="cart.length > 0" class="w-100">
+
+                <div class="divider m-0"></div>
+                @for (item of cart; track $index) {
+                <div class="d-flex justify-content-between p-2">
+                    <div class="d-flex gap-3">
+                        <img src="{{item.image}}" style="width: 100px; height: 100px; object-fit: contain;" alt="">
+                        <div>
+                            <p class="fw-bold mb-0">{{item.name}}</p>
+                            <p class="mb-0">Menge: {{item.amount}}</p>
+                            <div class="d-flex align-items-center gap-2 mb-0"> <span>Farbe:</span>
+                                <div style="width: 20px; height: 20px; border-radius: 100%;"
+                                    [ngStyle]="{'background-color': item.color, important: 'true'}"></div>
+                            </div>
+                            <p class="mb-0">Größe: {{item.size}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mb-0 text-end">{{item.price.toFixed(2).replace(".", ",")}} €</p>
+                        <p class="mb-0 text-end">pro Stück</p>
+                    </div>
+
+
+
+                </div>
+                <div class="divider m-0"></div>
+                }
+
+                <div class="">
+                    <div class="d-flex justify-content-between p-2">
+                        <div class="d-flex gap-3 align-items-center">
+                            <img style="height: 100px; width: 100px; object-fit: contain;"
+                                src="assets/icons/delivery_truck.svg" alt="">
+                            <span class="fw-bold">Lieferung</span>
+                        </div>
+                        <div>
+                            <span>6,95 €</span>
+                        </div>
+
+
+                    </div>
+                    <div class="divider m-0"></div>
+                </div>
+
+
+
+
+                <div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</section>
