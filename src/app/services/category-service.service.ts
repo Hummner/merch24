@@ -395,44 +395,44 @@ export class CategoryServiceService {
 
   seoDetail = {
     sticker: {
-      title: "Stickerei edel und langlebig in Essen Fronhausen | Merch24",
+      title: "Stickerei in Essen-Frohnhausen | Hochwertige Bestickung für Kleidung – Merch24",
       name: "Stickerei",
-      content: "Bestickung in hoher Qualität für Logos und Schrift. Waschfest, farbecht und mit edlem Look für Teamwear, Workwear und Vereinsbedarf."
+      content: "Hochwertige Stickerei in Essen-Frohnhausen für langlebige und edle Textilveredelung. Perfekt geeignet für Logos, Schriftzüge und individuelle Designs auf Teamwear, Workwear und Vereinskleidung. Unsere Bestickung ist besonders strapazierfähig, waschfest und farbecht. Ideal für Unternehmen, Vereine und Marken, die auf professionelle und hochwertige Veredelung setzen."
     },
     flex: {
-      title: "Druckverfahren Flex Folie DTF UV DTF in Essen Fronhausen | Merch24",
+      title: "Textildruck in Essen-Frohnhausen | Flexdruck, DTF & UV-Druck für Kleidung – Merch24",
       name: "Druckverfahren",
-      content: "Flexdruck, Foliendruck, DTF und UV DTF für Textilien und harte Oberflächen. Hohe Deckkraft, elastisch, detailgenau und ideal für Namen und Nummern."
+      content: "Professioneller Textildruck in Essen-Frohnhausen für T-Shirts, Hoodies und viele weitere Produkte. Wir bedrucken Kleidung mit Namen, Logos und Motiven in hoher Qualität. Unsere Drucke sind langlebig, waschfest und farbintensiv. Ideal für Firmenkleidung, Vereinsbedarf und individuelle Designs. Auch für feste Oberflächen mit UV-Druck geeignet."
     },
     photogift: {
-      title: "Fotogeschenke Tassen und Schlüsselanhänger in Essen Fronhausen | Merch24",
+      title: "Fotogeschenke in Essen-Frohnhausen | Personalisierte Tassen & Schlüsselanhänger – Merch24",
       name: "Fotogeschenke",
-      content: "Personalisierte Tassen und Schlüsselanhänger in brillanter Druckqualität. Perfekt als Geschenk und bereits ab 1 Stück schnell produziert."
+      content: "Individuelle Fotogeschenke in Essen-Frohnhausen: Wir gestalten personalisierte Tassen und Schlüsselanhänger mit deinem Wunschmotiv, Foto oder Text. Brillante Druckqualität, langlebig und ideal als Geschenk für jeden Anlass. Bereits ab 1 Stück bestellbar – schnell produziert und perfekt für persönliche Überraschungen."
     },
     verein: {
-      title: "Vereinsbedarf Fanschals Trikots Wimpel Patches in Essen Fronhausen | Merch24",
+      title: "Vereinsbedarf in Essen-Frohnhausen | Fanschals, Trikots & Patches – Merch24",
       name: "Vereinsbedarf",
-      content: "Fanschals, Mützen, Trikots, Wimpel und Patches für Vereine. Individuelles Design, robuste Verarbeitung und ideal für Teams und Events."
+      content: "Hochwertiger Vereinsbedarf in Essen-Frohnhausen: Wir gestalten Fanschals, Trikots, Mützen, Wimpel und Patches nach Wunsch. Ideal für Sportvereine, Fanclubs und Events. Robuste Qualität, langlebige Materialien und individuelle Designs für ein einheitliches Teamgefühl. Perfekt für Training, Spiele und Vereinsauftritte."
     },
     teamwear: {
-      title: "Teamwear für Training und Spiel in Essen Fronhausen | Merch24",
+      title: "Teamwear in Essen-Frohnhausen | Trikots & Trainingsanzüge für Teams – Merch24",
       name: "Teamwear",
-      content: "Trikots, Trainingsanzüge und komplette Mannschaftssätze von Markenherstellern mit professioneller Veredelung. Bequem, strapazierfähig und bereit für Training und Spiel."
+      content: "Moderne Teamwear in Essen-Frohnhausen für Sportarten wie Fußball, Handball, Eishockey und Inlinerhockey. Wir bieten Trikots, Trainingsanzüge und komplette Mannschaftsausstattungen mit individueller Veredelung. Hochwertig, bequem und langlebig – ideal für Training, Spiel und ein einheitliches Auftreten."
     },
     cups: {
-      title: "Pokale und Medaillen mit Gravur in Essen Fronhausen | Merch24",
+      title: "Pokale & Medaillen in Essen-Frohnhausen | Gravur für Turniere – Merch24",
       name: "Pokale und Medaillen",
-      content: "Pokale, Medaillen und Glaspokale mit individueller Gravur. Viele Größen und Formen, schnelle Produktion und ideal für Turniere und Ehrungen."
+      content: "Pokale und Medaillen in Essen-Frohnhausen mit individueller Gravur für verschiedene Sportarten wie Fußball, Handball, Eishockey, Inlinerhockey und mehr. Große Auswahl an Größen und Designs, auch Glaspokale erhältlich. Ideal für Turniere, Wettkämpfe und Ehrungen – schnell produziert und hochwertig verarbeitet."
     },
     design: {
-      title: "Designservice Vektorgrafik und Druckdaten in Essen Fronhausen | Merch24",
+      title: "Designservice in Essen-Frohnhausen | Logos & Druckdaten für Textildruck – Merch24",
       name: "Designservice",
-      content: "Vektorgrafik, präzise Bildbearbeitung und druckfertige PDF Dateien. Saubere Pfade, korrekte Farbprofile und professionelle Datenaufbereitung."
+      content: "Professioneller Designservice in Essen-Frohnhausen für Logos, Teamwear und Druckdaten. Ein gutes Logo ist die Grundlage für hochwertige Ergebnisse – wir erstellen und optimieren Designs für perfekten Druck auf Kleidung und Produkten. Saubere Umsetzung, klare Details und ideal für Vereine, Firmen und Teams."
     },
     payper: {
-      title: "Workwear Payper für Alltag und Einsatz in Essen Fronhausen | Merch24",
+      title: "Workwear in Essen-Frohnhausen | Payper Arbeitskleidung für Beruf & Alltag – Merch24",
       name: "Workwear Payper",
-      content: "Softshelljacken, Hosen, Shirts und Hoodies von Payper. Robust, bequem und ideal für Alltag, Beruf und Einsatz."
+      content: "Hochwertige Workwear in Essen-Frohnhausen von Payper für Handwerk, Industrie und Alltag. Wir bieten robuste Arbeitskleidung wie Softshelljacken, Arbeitshosen, T-Shirts und Hoodies. Bequem, langlebig und ideal für den täglichen Einsatz – auf Wunsch auch mit Logo oder Namen veredelbar."
     }
   };
 }
