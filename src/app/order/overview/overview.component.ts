@@ -60,7 +60,8 @@ export class OverviewComponent implements OnInit {
 
   order() {
     if(!this.checked)  return this.checkbox_error = true;
-    alert("Bestellt")
+    console.log(this.cart);
+    
 
     return false
 

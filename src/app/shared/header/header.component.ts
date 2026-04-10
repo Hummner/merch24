@@ -112,13 +112,8 @@ export class HeaderComponent implements OnInit {
   }
 
   itemPrice(item: CartItems, value: number): number {
-    console.log(item);
-
     const number = Number(value);
     item.total = number * item.price;
-    console.log("Amount: ", number, " - Item price: ", item.price);
-
-
     return number * item.price;
   }
 
