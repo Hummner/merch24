@@ -1,14 +1,7 @@
 <section>
     <div class="content">
-        <!-- <div (click)="back()" class="back-button">
-            <mat-icon>arrow_back</mat-icon>
-
-        </div> -->
-
-            <h1>{{showName()}}</h1>
-
+        <h1>{{showName()}}</h1>
         @for (product of currentlyProduct; track $index) {
-
         <div class="box" data-aos="flip-left">
             <div class="box-header">
                 <div class="name">
@@ -20,7 +13,6 @@
             <div class="box-main">
                 <div class="image">
                     <img src="assets/img/{{product.img}}.jpg" alt="{{product.alt}}">
-
                 </div>
                 <div class="box-container">
                     @for (text of product.text; track $index) {
@@ -28,23 +20,45 @@
                         <div class="icon">
                             <img src="assets/icons/check.svg" alt="">
                         </div>
-
                         <p>{{text}}</p>
-
-
-
                     </div>
                     }
                     <div (click)="router.navigateByUrl('contact')" class="primary-button">
                         <span>Jetzt Anfragen!</span>
                     </div>
                 </div>
-
             </div>
-
         </div>
         }
+    </div>
+</section>
 
+<section>
+
+    <div class="content">
+        @for (product of currentlyProduct; track $index) {
+        <div class="content-box">
+            <img class="img-box" src="assets/img/{{product.img}}.jpg" alt="">
+
+            @for (text of product.text; track $index) {
+            <p class="shape-text">{{text}}</p>
+
+
+
+            }
+
+            <div (click)="router.navigateByUrl('contact')" class="primary-button">
+                <span>Jetzt Anfragen!</span>
+            </div>
+        </div>
+
+        <!-- <p class="shape-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint aliquam nobis iure magnam. Voluptates
+                iusto nobis unde maiores, sapiente dolore aperiam ipsam recusandae saepe! Autem officiis rerum
+                fugiat doloremque ullam?</p> -->
+
+
+
+        }
     </div>
 
 </section>

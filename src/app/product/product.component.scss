@@ -56,6 +56,7 @@ h1 {
 :host {
     display: flex;
     flex: 1;
+    flex-direction: column;
 }
 
 .images {
@@ -200,6 +201,7 @@ h1 {
     display: flex;
     gap: 16px;
     align-items: center;
+
     p {
         font-size: 21px;
         width: 89%;
@@ -257,4 +259,58 @@ h1 {
     h1 {
         font-size: 36px;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.content-box {
+    align-items: stretch;
+    width: 100%;
+}
+
+.img-box {
+    width: 50%;
+    height: 320px;
+    clip-path: polygon(0 0, 72% 0, 100% 100%, 0 100%);
+    shape-outside: polygon(0 0, 77% 0, 105% 100%, 0 100%);
+    background-color: #000000;
+    float: left;
+    object-fit: cover;
+}
+
+
+.shape-text {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+
+
+.shape-text::before {
+    content: "";
+    width: 36px;
+    height: 24px;
+    top: 4px;
+    background: url(/assets/icons/check_small_24.svg) no-repeat;
+    background-position: 0px 2px;
+    display: inline-block;
+}
+
+.text-class {
+    width: 45%;
+    background: #b31919;
+    position: relative;
+    z-index: 2;
+    min-height: 320px;
+    box-sizing: border-box;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
 }
