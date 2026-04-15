@@ -4,10 +4,6 @@
 
         <div class="shipping-cart col-12 col-lg-8">
             <mat-stepper #stepper labelPosition="bottom" id="stepperComp">
-
-                
-
-
                 <mat-step>
                     <ng-template matStepLabel>Warenkorb</ng-template>
 
@@ -30,9 +26,7 @@
                                     </div>
                                     <span class="fw-bold">{{item.price.toFixed(2).replace(".",",")}} €</span>
                                 </div>
-
                             </div>
-
                         </div>
                         }
                     </div>
@@ -94,10 +88,7 @@
                                     class="px-2">Die Rechnungsadresse ist abweichend</span>
                             </label>
                         </div>
-
                     </form>
-
-
 
                     <form [formGroup]="billingAddressFormGroup" *ngIf="showDifferentBillingAddress">
                         <h2 class="text-center mt-5 mb-3">Rechnungadresse </h2>
@@ -214,8 +205,6 @@
                             <p>{{shippingCost.toFixed(2).replace(".", ",")}} €</p>
                         </td>
                         }
-
-
                     </tr>
                     <tr class="last-price">
                         <td>
@@ -224,7 +213,6 @@
                         <td class="text-end">
                             <p class="fw-bold">{{totalPrice.toFixed(2).replace(".", ",")}} €</p>
                         </td>
-
                     </tr>
                 </table>
 
@@ -233,7 +221,6 @@
                     <!-- <button (click)="stepper.next()">stepper.step</button> -->
 
                 </div>
-
 
             </div>
         </div>
