@@ -79,12 +79,7 @@ export class ShopRetrieveComponent {
           this.getVariant(article, size)
         }
 
-
       } else {
-
-
-
-
 
         if (!this.article) return
 
@@ -134,15 +129,12 @@ export class ShopRetrieveComponent {
     if (images.length == 0) {
       return this.variantImages.set(['/assets/img/coming.jpg']);
     }
-
-
     return this.variantImages.set(images.map(item => item.image));
   }
 
   changeSize(size: string) {
     this.selectedSize = size;
-    this.changeParam()
-
+    this.changeParam();
     this.selectColor();
   }
 

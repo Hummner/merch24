@@ -52,8 +52,6 @@ export class ShopComponent implements OnInit, OnDestroy {
     })
 
     this.loadProducts()
-
-
   }
 
   ngOnDestroy(): void {
