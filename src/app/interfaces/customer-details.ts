@@ -1,3 +1,6 @@
+type ShipmentMethod = "Lieferung" | "Abholung";
+type PaymentMethod = "Barzahlung" | "Überweisung"
+
 export interface CustomerDetails {
     "address": {
         "firstName": string,
@@ -18,7 +21,7 @@ export interface CustomerDetails {
         "zip": string,
         "city": string
     },
-    "payment": string,
-    "shipment": string,
+    "payment": PaymentMethod,
+    "shipment": ShipmentMethod,
 
 }

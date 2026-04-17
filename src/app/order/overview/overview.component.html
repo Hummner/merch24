@@ -121,7 +121,7 @@
 
                 </div>
                 <div class="w-100 d-flex justify-content-center">
-                    <p class="errors text-center" *ngIf="checkbox_error && !checked">Bitte stimmen Sie zu, dass wir vor
+                    <p class="errors text-center" *ngIf="checkbox_error && (!checked || !checked_policy)">Bitte stimmen Sie zu, dass wir vor
                         Ablauf
                         der Widerrufsfrist mit der Ausführung beginnen.</p>
                 </div>
@@ -131,8 +131,8 @@
 
                 <div class="d-flex justify-content-between mt-5">
                     <button class="secondary-button" (click)="backToShippingCart()"><span>Bearbeiten</span></button>
-                    <button class="primary-button" [ngClass]="{'disabled': !checked}"
-                        (click)="order()"><span>Kostenpflichtig bestellen</span></button>
+                    <button class="primary-button" [ngClass]="{'disabled': !checked || !checked_policy}"
+                        (click)="checkCheckboxs()"><span>Kostenpflichtig bestellen</span></button>
 
                 </div>
 

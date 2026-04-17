@@ -131,7 +131,7 @@ export class ShippingcartDetailComponent implements OnInit {
       "address": this.addressFormGroup.value,
       "billingAddress": this.billingAddressFormGroup.value,
       "payment": this.paymentControl.value,
-      "shipment": this.paymentControl.value
+      "shipment": this.shipmentControl.value
     }
 
     sessionStorage.setItem("customerDetails", JSON.stringify(customerDetails))

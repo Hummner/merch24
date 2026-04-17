@@ -105,13 +105,28 @@ export class DbService {
         recentlyArray = recentlyArray.slice(0, 4)
       }
     }
- 
+
 
 
 
 
     recentlyArray.unshift(article)
     localStorage.setItem("recently", JSON.stringify(recentlyArray))
+
+  }
+
+
+  async postOrder(order: any) {
+    try {
+      this.http.post(
+        BASE_URL + "shop/order/", order
+      ).subscribe((config) => {
+        console.log('Updated config:', config);
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
 
   }
 }
